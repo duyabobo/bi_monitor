@@ -29,7 +29,7 @@ def detail(request, report_id):
 
 def search(request):
     """
-    提供一个查询页面，用户能够输入结束日期，并发送请求给服务器，然后返回查询的监控数据
+    提供一个查询页面，用户能够输入id，并发送请求给服务器，然后返回查询的监控数据
     :param request:
     :return:
     """
