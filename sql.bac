@@ -1,0 +1,15 @@
+这里维护所有数据表的 create 语句
+
+create table t_interval_report (
+    id BIGINT UNSIGNED NOT NULL DEFAULT 0 AUTOINCREMENT COMMENT 'id自增',
+    start_date DATE NOT NULL COMMENT '日志分析的起始时间',
+    end_date DATE NOT NULL COMMENT '日志分析的结束时间',
+    analysis_type TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '日志分析的类型：0 按照 http_code, 1 按照 delay_time',
+    analysis_key VARCHAR(20) NOT NULL DEFAULT '' COMMENT '统计时分类的标准：可能是 200/300/404/502，也可能是 0~1s，视analysis_type而定',
+    analysis_api VARCHAR(200) NOT NULL DEFAULT '' COMMENT '分析日志的目标api',
+    api_count INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '指定某个analysis_type和analysis_key的统计数目',
+    percent FLOAT[4, 2] NOT NULL DEFAULT 0 '指定某个analysis_type和analysis_key的统计数目所占百分比',
+    average_delay_time FLOAT[10, 2] NOT NULL DEFAULT 0 '指定某个analysis_type和analysis_key的api的平均响应时间',
+    PRIMARY KEY (id),
+    INDEX i_start_stop_interval (start_date, stop_date),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '某个时间段内（start_date, stop_date时间区间内），bi接口日志分析结果';
