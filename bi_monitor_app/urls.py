@@ -4,9 +4,10 @@
 
 from django.conf.urls import url
 
-from views import index, detail
+from views import index, detail, search
 
 urlpatterns = [
     url(r'^$', index, name='index'),
     url(r'^(?P<report_id>[0-9]+)/$', detail, name='detail'),
+    url(r'^search/$', search, name='search'),
 ]
