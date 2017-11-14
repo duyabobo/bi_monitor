@@ -10,6 +10,7 @@ from models import IntervalReport
 
 class ReportAdmin(admin.ModelAdmin):
     fields = ['start_date', 'end_date']
+    list_display = ('start_date', 'end_date', 'analysis_type', 'analysis_key')
 
 
 admin.site.register(IntervalReport, ReportAdmin)
