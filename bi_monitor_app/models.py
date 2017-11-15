@@ -7,7 +7,7 @@ from django.http import Http404
 
 class IntervalReport(models.Model):
     """
-    某个时间段内，bi接口日志分析结果
+    某个时间段内，bi接口日志分析结果，从nginx日志分析统计的结果
     """
     id = models.IntegerField(primary_key=True)
     from_timestamp = models.DateField()  # 开始统计的时间戳，单位毫秒
@@ -38,7 +38,7 @@ class IntervalReport(models.Model):
 
 class BiAccessAnalysis(models.Model):
     """
-    通过网页/api访问BI的日志统计数据
+    通过网页/api访问BI的日志统计数据，从数据库访问记录log中搜集的统计信息
     """
     id = models.IntegerField(primary_key=True)
     from_timestamp = models.IntegerField(default=0)  # 开始统计的时间戳，单位毫秒
@@ -62,3 +62,36 @@ class BiAccessAnalysis(models.Model):
         :return:
         """
         return BiAccessAnalysis.objects.filter(from_timestamp=from_timestamp, end_timestamp=end_timestamp)
+
+
+class NoteWorthyLog(models.Model):
+    """
+    从数据库中查询的值得注意的访问日志记录
+    """
+    id = models.IntegerField(primary_key=True)
+    access_timestamp = models.IntegerField(default=0)  # 接口访问的时间戳
+    method = models.IntegerField(default=0)  # 接口访问的http方法：0 get，1 post，2 put，3 delete
+    report_name = models.CharField(max_length=60)  # 报表名称
+    report_id = models.CharField(max_length=200)  # 报表id
+    user_name = models.CharField(max_length=50)  # 发出访问的用户名
+    delay_microseconds = models.FloatField(default=0)  # 访问接口的响应的时长，单位是毫秒
+    parameters = models.CharField(max_length=500)  # 参数JSON
+    # 下面这俩是api访问时特有的
+    department_name = models.CharField(max_length=20)  # 部门名
+    api_key = models.CharField(max_length=50)  # 用户(原来表是这么注释的）
+
+    class Meta:
+        db_table = 't_noteworthy_log'  # 自定义表名称
+
+    @staticmethod
+    def get_noteworhy_log(from_timestamp, end_timestamp):
+        """
+        查询某个时间区间内值得关注的访问日志记录
+        :param from_timestamp:
+        :param end_timestamp:
+        :return:
+        """
+        return NoteWorthyLog.objects.filter(
+            access_timestamp__gt=from_timestamp,
+            access_timestamp__lte=end_timestamp
+        )

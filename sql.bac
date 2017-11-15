@@ -26,4 +26,20 @@ CREATE TABLE "t_bi_access_analysis" (
     "average" FLOAT[10, 2] NOT NULL COMMENT 'api响应的平均时间，单位毫秒',
      PRIMARY KEY (id),
      INDEX i_from_end_interval (from_timestamp, end_timestamp)
- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '某个时间段内（start_date, stop_date时间区间内），bi接口日志分析结果';
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '某个时间段内通过网页/api访问BI的日志统计数据，从数据库访问记录log中搜集的统计信息';
+
+
+CREATE TABLE "t_noteworthy_log" (
+    "id" BIGINT UNSIGNED NOT NULL DEFAULT 0 AUTOINCREMENT COMMENT 'id自增',
+    "access_timestamp" BIGINT UNSIGNED NOT NULL COMMENT 'api访问的时间戳，单位毫秒',
+    "method" integer NOT NULL DEFAULT 0 COMMENT '接口访问的http方法：0 get，1 post，2 put，3 delete',
+    "report_name" varchar(60) NOT NULL DEFAULT '' COMMENT '报表名称',
+    "report_id" varchar(200) NOT NULL DEFAULT '' COMMENT '报表id',
+    "user_name" varchar(50) NOT NULL DEFAULT '' COMMENT '访问者名称',
+    "delay_microseconds" FLOAT[10, 2] NOT NULL DEFAULT 0 COMMENT '响应时间，单位毫秒',
+    "parameters" varchar(500) NOT NULL DEFAULT '' COMMENT '接口访问的参数',
+    "department_name" varchar(20) NOT NULL DEFAULT '' COMMENT 'api访问专用字段：部门名称',
+    "api_key" varchar(50) NOT NULL DEFAULT '' COMMENT 'api访问专用字段：api key',
+    PRIMARY KEY (id),
+    INDEX i_access_timestamp (access_timestamp)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '从数据库中查询的值得注意的访问日志记录';
