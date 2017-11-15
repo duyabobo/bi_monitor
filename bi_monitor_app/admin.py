@@ -9,9 +9,9 @@ from models import IntervalReport
 
 
 class ReportAdmin(admin.ModelAdmin):
-    fields = ['start_date', 'end_date']
-    list_display = ('start_date', 'end_date', 'analysis_type', 'analysis_key')
-    search_fields = ['analysis_api', 'end_date']
+    fields = ['from_timestamp', 'end_timestamp']
+    list_display = ('from_timestamp', 'end_timestamp', 'analysis_type', 'analysis_key')
+    search_fields = ['analysis_api']
 
 
 admin.site.register(IntervalReport, ReportAdmin)

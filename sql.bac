@@ -2,8 +2,8 @@
 
 create table t_interval_report (
     id BIGINT UNSIGNED NOT NULL DEFAULT 0 AUTOINCREMENT COMMENT 'id自增',
-    start_date DATE NOT NULL COMMENT '日志分析的起始时间',
-    end_date DATE NOT NULL COMMENT '日志分析的结束时间',
+    from_timestamp DATE NOT NULL COMMENT '日志分析的起始时间戳，单位毫秒',
+    end_timestamp DATE NOT NULL COMMENT '日志分析的结束时间戳，单位毫秒',
     analysis_type TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '日志分析的类型：0 按照 http_code, 1 按照 delay_time',
     analysis_key VARCHAR(20) NOT NULL DEFAULT '' COMMENT '统计时分类的标准：可能是 200/300/404/502，也可能是 0~1s，视analysis_type而定',
     analysis_api VARCHAR(200) NOT NULL DEFAULT '' COMMENT '分析日志的目标api',
@@ -13,3 +13,18 @@ create table t_interval_report (
     PRIMARY KEY (id),
     INDEX i_start_stop_interval (start_date, stop_date),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '某个时间段内（start_date, stop_date时间区间内），bi接口日志分析结果';
+
+
+CREATE TABLE "t_bi_access_analysis" (
+    "id" integer NOT NULL,
+    "from_timestamp" integer NOT NULL COMMENT '日志分析的起始时间戳，单位毫秒',
+    "end_timestamp" integer NOT NULL COMMENT '结束统计的时间戳，单位毫秒',
+    "source" integer NOT NULL COMMENT '访问来源：0 WEB, 1 API',
+    "kind" integer NOT NULL COMMENT '统计类别：0 全部，1 0~1s，2 1~2s，3 2~3s，4 3~5s， 5 5~10s，6 10~20s，7 20s+',
+    "num" integer NOT NULL COMMENT '访问次数统计',
+    "percent" real NOT NULL COMMENT '次数占百分比，80代表80%',
+    "average" real NOT NULL COMMENT 'api响应的平均时间',
+     PRIMARY KEY (id),
+     INDEX i_from_end_interval (from_timestamp, end_timestamp)
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '某个时间段内（start_date, stop_date时间区间内），bi接口日志分析结果';
+
