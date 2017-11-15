@@ -9,22 +9,21 @@ create table t_interval_report (
     analysis_api VARCHAR(200) NOT NULL DEFAULT '' COMMENT '分析日志的目标api',
     api_count INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '指定某个analysis_type和analysis_key的统计数目',
     percent FLOAT[4, 2] NOT NULL DEFAULT 0 '指定某个analysis_type和analysis_key的统计数目所占百分比',
-    average_delay_time FLOAT[10, 2] NOT NULL DEFAULT 0 '指定某个analysis_type和analysis_key的api的平均响应时间',
+    average_delay_time FLOAT[10, 2] NOT NULL DEFAULT 0 '指定某个analysis_type和analysis_key的api的平均响应时间，单位毫秒',
     PRIMARY KEY (id),
     INDEX i_start_stop_interval (start_date, stop_date),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '某个时间段内（start_date, stop_date时间区间内），bi接口日志分析结果';
 
 
 CREATE TABLE "t_bi_access_analysis" (
-    "id" integer NOT NULL,
-    "from_timestamp" integer NOT NULL COMMENT '日志分析的起始时间戳，单位毫秒',
-    "end_timestamp" integer NOT NULL COMMENT '结束统计的时间戳，单位毫秒',
-    "source" integer NOT NULL COMMENT '访问来源：0 WEB, 1 API',
-    "kind" integer NOT NULL COMMENT '统计类别：0 全部，1 0~1s，2 1~2s，3 2~3s，4 3~5s， 5 5~10s，6 10~20s，7 20s+',
-    "num" integer NOT NULL COMMENT '访问次数统计',
-    "percent" real NOT NULL COMMENT '次数占百分比，80代表80%',
-    "average" real NOT NULL COMMENT 'api响应的平均时间',
+    "id" BIGINT UNSIGNED NOT NULL DEFAULT 0 AUTOINCREMENT COMMENT 'id自增',
+    "from_timestamp" BIGINT UNSIGNED NOT NULL COMMENT '日志分析的起始时间戳，单位毫秒',
+    "end_timestamp" BIGINT UNSIGNED NOT NULL COMMENT '结束统计的时间戳，单位毫秒',
+    "source" TINYINT UNSIGNED NOT NULL COMMENT '访问来源：0 WEB, 1 API',
+    "kind" TINYINT UNSIGNED NOT NULL COMMENT '统计类别：0 全部，1 0~1s，2 1~2s，3 2~3s，4 3~5s， 5 5~10s，6 10~20s，7 20s+',
+    "num" INT UNSIGNED NOT NULL COMMENT '访问次数统计',
+    "percent" FLOAT[4, 2] NOT NULL COMMENT '次数占百分比，80代表80%',
+    "average" FLOAT[10, 2] NOT NULL COMMENT 'api响应的平均时间，单位毫秒',
      PRIMARY KEY (id),
      INDEX i_from_end_interval (from_timestamp, end_timestamp)
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '某个时间段内（start_date, stop_date时间区间内），bi接口日志分析结果';
-
