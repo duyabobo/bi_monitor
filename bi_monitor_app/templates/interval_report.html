@@ -5,8 +5,12 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css" %}" rel="stylesheet">
+    <link href="{% static "bootstrap-datetimepicker-master/sample in bootstrap v2/bootstrap/css/bootstrap.css" %}" rel="stylesheet">
     <script src="{% static "js/jquery-3.2.1.min.js" %}"></script>
     <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js" %}"></script>
+    <script src="{% static "bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js" %}"></script>
     <style>
         .panel-group{max-height:770px;overflow: auto;}
         .leftMenu{margin:10px;margin-top:5px;}
@@ -41,6 +45,8 @@
             margin-left:127px;
         }
         .row {width:1100px}
+        .add-on {width:25px;height:25px;}
+        .input-date {width:180px;height:25px;}
     </style>
 </head>
 <body>
@@ -58,6 +64,11 @@
         <div id="rightCol">
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade in active" id="home">
+                    <div class="input-append date form_datetime">
+                        <label>search</label>
+                        <input type="text" value="" readonly class="input-date">
+                        <span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
                     <div class="table-responsive">
                         <table class="table">
                             <caption>响应式表格布局</caption>
@@ -125,6 +136,15 @@
 <script>
    $(function () {
       $('#myTab li:eq(1) a').tab('show');
+   });
+   $(".form_datetime").datetimepicker({
+       format: "yyyy-mm-dd hh",
+       autoclose: true,
+       todayBtn: true,
+       todayHighlight: true,
+       keyboardNavigation: true,
+       minView:1,
+       pickerPosition: "bottom-left"
    });
 </script>
 </body>
