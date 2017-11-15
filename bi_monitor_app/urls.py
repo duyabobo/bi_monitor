@@ -4,8 +4,8 @@
 
 from django.conf.urls import url
 
-from views import *
+from views import test
 
 urlpatterns = [
-
+    url(r'^$', test.index, name='index'),
 ]
