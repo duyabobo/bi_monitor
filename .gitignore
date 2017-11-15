@@ -1,3 +1,4 @@
 *.pyc
 bi_monitor/settings.py
 .idea/*
+db.sqlite3
