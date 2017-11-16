@@ -4,10 +4,8 @@
 
 from django.conf.urls import url
 
-from views import test
-from views import interval_report
+from views import index
 
 urlpatterns = [
-    url(r'^$', test.test, name='index'),
-    url(r'^interval_report$', interval_report.index, name='interval_report'),
+    url(r'^$', index.index, name='index'),
 ]

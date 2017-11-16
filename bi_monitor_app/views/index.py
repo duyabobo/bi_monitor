@@ -5,4 +5,4 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'interval_report.html')
+    return render(request, 'index.html')

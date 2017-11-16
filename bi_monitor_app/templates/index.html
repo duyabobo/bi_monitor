@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css" %}" rel="stylesheet">
+    <link href="{% static "bootstrap-datetimepicker-master/sample in bootstrap v2/bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
+    <script src="{% static "js/jquery-3.2.1.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js" %}"></script>
+    <script src="{% static "bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js" %}"></script>
+</head>
+<body>
+    <div id="mainBody">
+        <div id="leftCol">
+            <ul id="myTab" class="nav nav-tabs nav-stacked">
+                {% include "left_column.html" %} {# 左侧的导航条 #}
+            </ul>
+        </div>
+        <div id="rightCol">
+            <div id="myTabContent" class="tab-content">
+                {% include "content_1.html" %} {# 右侧的表格 #}
+                {% include "content_2.html" %}
+            </div>
+        </div>
+    </div>
+<script>
+   $(function () {
+      $('#myTab li:eq(1) a').tab('show');
+   });
+</script>
+</body>
+</html>
