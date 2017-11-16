@@ -22,15 +22,11 @@
         </div>
         <div id="rightCol">
             <div id="myTabContent" class="tab-content">
+                {% include "content_active.html" %}
                 {% include "content_1.html" %} {# 右侧的表格 #}
                 {% include "content_2.html" %}
             </div>
         </div>
     </div>
-<script>
-   $(function () {
-      $('#myTab li:eq(0) a').tab('show');
-   });
-</script>
 </body>
 </html>
