@@ -1,0 +1,15 @@
+<div class="input-append date form_datetime">
+    <input type="text" value="" class="dropdown-toggle" data-toggle="dropdown" readonly style="width:180px;height:25px;">
+    <span class="add-on" style="width:25px;height:25px;"><i class="icon-calendar"></i></span>
+</div>
+<script>
+    $(".form_datetime").datetimepicker({
+       format: {{ format }},
+       autoclose: true,
+       todayBtn: true,
+       todayHighlight: true,
+       keyboardNavigation: true,
+       minView: {{ minView }}, {# 日期最小的选择单位：0是分钟，1是小时，2是天 #}
+       pickerPosition: "bottom-left"
+   });
+</script>
