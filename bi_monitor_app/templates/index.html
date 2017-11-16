@@ -15,11 +15,18 @@
 </head>
 <body>
     <div id="mainBody">
-        <div id="leftCol">
-            <div class="panel-group" id="accordion">
-                {% include "left_column.html" %} {# 左侧的导航条 #}
-            </div>
+        <div class="span3 leftcol">
+            <ul class="nav nav-sidebar bs-docs-sidenav">
+                <li class="active"><a href="#home" data-toggle="tab"><i class="glyphicon glyphicon-menu-right"></i> 排版</a></li>
+                <li class=""><a href="#ios" data-toggle="tab"><i class="glyphicon glyphicon-menu-right"></i> 代码</a></li>
+                <li class=""><a href="#home" data-toggle="tab"><i class="glyphicon glyphicon-menu-right"></i> 表格</a></li>
+                <li class=""><a href="#ios" data-toggle="tab"><i class="glyphicon glyphicon-menu-right"></i> 表单</a></li>
+                <li class=""><a href="#home" data-toggle="tab"><i class="glyphicon glyphicon-menu-right"></i> 按钮</a></li>
+                <li class=""><a href="#ios" data-toggle="tab"><i class="glyphicon glyphicon-menu-right"></i> 图片</a></li>
+                <li class=""><a href="#home" data-toggle="tab"><i class="glyphicon glyphicon-menu-right"></i> 由Glyphicons</a></li>
+            </ul>
         </div>
+
         <div id="rightCol">
             <div id="myTabContent" class="tab-content">
                 {% include "content_active.html" %}
