@@ -17,23 +17,50 @@
     <div id="mainBody">
         <div class="span3 leftcol" style="width:160px">
             <ul class="nav nav-sidebar bs-docs-sidenav">
-                <li class="active"><a href="#home" data-toggle="tab"><i class="glyphicon glyphicon-menu-right"></i> 排版</a></li>
-                <li class=""><a href="#ios" data-toggle="tab"><i class="glyphicon glyphicon-menu-right"></i> 代码</a></li>
-                <li class=""><a href="#home" data-toggle="tab"><i class="glyphicon glyphicon-menu-right"></i> 表格</a></li>
-                <li class=""><a href="#ios" data-toggle="tab"><i class="glyphicon glyphicon-menu-right"></i> 表单</a></li>
-                <li class=""><a href="#home" data-toggle="tab"><i class="glyphicon glyphicon-menu-right"></i> 按钮</a></li>
-                <li class=""><a href="#ios" data-toggle="tab"><i class="glyphicon glyphicon-menu-right"></i> 图片</a></li>
-                <li class=""><a href="#home" data-toggle="tab"><i class="glyphicon glyphicon-menu-right"></i> 由Glyphicons</a></li>
+                {# 左侧的导航条 #}
+                <li><a href="#myContent" data-toggle="tab" class="my_tab_item" id="1"><i class="glyphicon glyphicon-menu-right"></i> 排版</a></li>
+                <li><a href="#myContent" data-toggle="tab" class="my_tab_item" id="2"><i class="glyphicon glyphicon-menu-right"></i> 代码</a></li>
+                <li><a href="#myContent" data-toggle="tab" class="my_tab_item" id="3"><i class="glyphicon glyphicon-menu-right"></i> 表格</a></li>
+                <li><a href="#myContent" data-toggle="tab" class="my_tab_item" id="4"><i class="glyphicon glyphicon-menu-right"></i> 表单</a></li>
+                <li><a href="#myContent" data-toggle="tab" class="my_tab_item" id="5"><i class="glyphicon glyphicon-menu-right"></i> 按钮</a></li>
+                <li><a href="#myContent" data-toggle="tab" class="my_tab_item" id="6"><i class="glyphicon glyphicon-menu-right"></i> 图片</a></li>
+                <li><a href="#myContent" data-toggle="tab" class="my_tab_item" id="7"><i class="glyphicon glyphicon-menu-right"></i> 由Glyphicons</a></li>
             </ul>
         </div>
 
         <div id="rightCol" style="margin-left:270px">
             <div id="myTabContent" class="tab-content">
-                {% include "content_active.html" %}
-                {% include "content_list.html" %} {# 右侧的表格 #}
-                {% include "content_detail.html" %}
+                {# 右侧的内容 #}
+                <div class="tab-pane fade in active" id="myContent">
+                    <div class="table-responsive">
+                        <caption>默认打开的首页活跃页面</caption>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <script>
+            {# 表格列表请求 #}
+            $(document).on("click", ".my_tab_item", function () {
+                $.get(
+                    '/list/',
+                    {'api_id': this.id},
+                    function(data, status) {
+                        $('#rightCol').html(data);
+                    }
+                )
+            });
+            {# 表格详情请求 #}
+            $(document).on("click", ".my_list_item", function () {
+                $.get(
+                    '/content/',
+                    {'api_id': this.id},
+                    function(data, status) {
+                        $('#rightCol').html(data);
+                    }
+                )
+            });
+        </script>
     </div>
 </body>
 </html>
