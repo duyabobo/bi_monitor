@@ -15,7 +15,7 @@
 </head>
 <body>
     <div id="mainBody">
-        <div class="span3 leftcol">
+        <div class="span3 leftcol" style="width:160px">
             <ul class="nav nav-sidebar bs-docs-sidenav">
                 <li class="active"><a href="#home" data-toggle="tab"><i class="glyphicon glyphicon-menu-right"></i> 排版</a></li>
                 <li class=""><a href="#ios" data-toggle="tab"><i class="glyphicon glyphicon-menu-right"></i> 代码</a></li>
@@ -27,11 +27,11 @@
             </ul>
         </div>
 
-        <div id="rightCol">
+        <div id="rightCol" style="margin-left:270px">
             <div id="myTabContent" class="tab-content">
                 {% include "content_active.html" %}
-                {% include "content_1.html" %} {# 右侧的表格 #}
-                {% include "content_2.html" %}
+                {% include "content_list.html" %} {# 右侧的表格 #}
+                {% include "content_detail.html" %}
             </div>
         </div>
     </div>
