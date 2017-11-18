@@ -1,25 +1,29 @@
 {# 二维表格，需要注入的参数有：一个二维数组，二维数组的每个元素数组对应一个表格 #}
-{% for title, t_date in table_datas %}
-    <table class="table">
-        <caption>title: {{ title }}</caption>
+{% for title, head, t_date in table_datas %}
+    <table class="table table-bordered">
+    <div style="text-align: center">
+        {% for t in title %}
+            {{ t }}<br/>
+        {% endfor %}
+    </div>
         <thead>
         <tr>
-            {% for h in t_date.0 %}
+            {% for h in head %}
                 <th>{{ h }}</th>
             {% endfor %}
         </tr>
         </thead>
         <tbody>
         {% for l in t_date %}
-            {% if forloop.counter %}
-                <tr>
-                {% for b in l %}
-                    <td>{{ b }}</td>
-                {% endfor %}
-                </tr>
-            {% endif %}
+            <tr>
+            {% for b in l %}
+                <td>{{ b }}</td>
+            {% endfor %}
+            </tr>
         {% endfor %}
 
         </tbody>
     </table>
+    <br/>
+    <br/>
 {% endfor %}

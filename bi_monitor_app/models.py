@@ -30,7 +30,7 @@ class WeekReportItem(models.Model):
         db_table = 't_week_report_item'  # 自定义表名称
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
     @staticmethod
     def get_items(week_report_id):
