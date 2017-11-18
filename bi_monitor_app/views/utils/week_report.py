@@ -52,3 +52,8 @@ def get_list(page):
     """
     week_reports = WeekReport.objects.values('analysis_date', 'id').all()[50*page: 50*(page+1)]
     return map(lambda x: [x['id'], str(x['analysis_date'])], week_reports)
+
+
+def get_total():
+    """获取总数"""
+    return WeekReport.objects.count()

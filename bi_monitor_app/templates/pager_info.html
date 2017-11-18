@@ -1,0 +1,26 @@
+{# 获取分页信息 #}
+<div>
+    <ul class="pagination" id="page1"></ul>
+</div>
+<div>
+    共{{ total }}条监控记录
+</div>
+<script>
+    Page({
+        num: {{ total_page }},
+        elem: $('#page1'),
+        callback: function(n) {
+            console.log(n);
+        }
+    });
+
+    {# 表格列表请求 #}
+    $(document).on("click", ".pagination li", function () {
+        $.get(
+            '/list/?api_id=' + '{{ api_id }}' + '&page=' + $('.pagination .active').attr('page'),
+            function(data, status) {
+                $('#rightCol').html(data);
+            }
+        )
+    });
+</script>
