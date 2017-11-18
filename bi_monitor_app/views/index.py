@@ -3,6 +3,10 @@
 # date='2017/11/15'
 from django.shortcuts import render
 
+from utils import get_detail_example
+from utils import get_list_example
+from bi_monitor_app.views import title_dict
+
 
 def index(request):
     return render(request, 'index.html')
@@ -14,23 +18,13 @@ def content_detail(request):
     :param request:
     :return:
     """
-    return render(
-        request,
-        'report_detail_2_dime.html',
-        context={
-            'api_id': request.GET['api_id'],
-            'item_id': request.GET['item_id'],
-            'table_dates': [
-                [
-                    'test_title_of_table',
-                    [
-                        ['时间', '接口名', '统计数目'],
-                        ['2017-11-01 11:01:20', '/api/dashboard?', '20233']
-                    ]
-                ]
-            ]
-        }
-    )
+    api_id = request.GET['api_id']  # 指定哪一类监控数据
+    item_id = request.GET['item_id']  # 指定某一条监控数据
+    if api_id == 'example':
+        context = get_detail_example(api_id, item_id)
+    else:
+        context = {'table_datas': []}
+    return render(request, 'report_detail_2_dime.html', context=context)
 
 
 def content_list(request):
@@ -39,16 +33,14 @@ def content_list(request):
     :param request:
     :return:
     """
-    return render(
-        request,
-        'report_list.html',
-        context={
-            'api_id': request.GET['api_id'],
-            'title': 'test_title',
-            'datas': [
-                [1, '2017-11-01'],
-                [2, '2017-11-08'],
-                [3, '2017-11-15']
-            ]
+    api_id = request.GET['api_id']  # 指定哪一类监控数据
+    if api_id == 'example':
+        datas = get_list_example(api_id)
+    else:
+        datas = []
+    return render(request, 'report_list.html', context={
+        'api_id': api_id,
+        'title': title_dict[api_id],
+        'datas': datas
         }
     )

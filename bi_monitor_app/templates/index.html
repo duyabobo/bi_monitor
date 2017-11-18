@@ -18,7 +18,13 @@
         <div class="span3 leftcol" style="width:160px">
             <ul class="nav nav-sidebar bs-docs-sidenav">
                 {# 左侧的导航条，每次增加一个监控项目，都需要增加一个导航条，需要指定<a>的 id 属性为 api_id #}
-                {# api_id 维护在view层的urls文件中 #}
+                {# api_id 维护在views/__init__.py文件中的 title_dict 变量中 #}
+                <li>
+                    <a href="#myContent" data-toggle="tab" class="my_tab_item" api_id="example">
+                        <i class="glyphicon glyphicon-menu-right"></i>
+                        example
+                    </a>
+                </li>
                 <li>
                     <a href="#myContent" data-toggle="tab" class="my_tab_item" api_id="bi_api_week_report">
                         <i class="glyphicon glyphicon-menu-right"></i>
