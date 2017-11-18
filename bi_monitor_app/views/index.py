@@ -14,7 +14,7 @@ def content_detail(request):
     :param request:
     :return:
     """
-    return render(request, 'report_detail.html')
+    return render(request, 'report_detail_2_dime.html')
 
 
 def content_list(request):

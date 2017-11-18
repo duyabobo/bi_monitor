@@ -17,14 +17,14 @@
     <div id="mainBody">
         <div class="span3 leftcol" style="width:160px">
             <ul class="nav nav-sidebar bs-docs-sidenav">
-                {# 左侧的导航条 #}
-                <li><a href="#myContent" data-toggle="tab" class="my_tab_item" id="1"><i class="glyphicon glyphicon-menu-right"></i> 排版</a></li>
-                <li><a href="#myContent" data-toggle="tab" class="my_tab_item" id="2"><i class="glyphicon glyphicon-menu-right"></i> 代码</a></li>
-                <li><a href="#myContent" data-toggle="tab" class="my_tab_item" id="3"><i class="glyphicon glyphicon-menu-right"></i> 表格</a></li>
-                <li><a href="#myContent" data-toggle="tab" class="my_tab_item" id="4"><i class="glyphicon glyphicon-menu-right"></i> 表单</a></li>
-                <li><a href="#myContent" data-toggle="tab" class="my_tab_item" id="5"><i class="glyphicon glyphicon-menu-right"></i> 按钮</a></li>
-                <li><a href="#myContent" data-toggle="tab" class="my_tab_item" id="6"><i class="glyphicon glyphicon-menu-right"></i> 图片</a></li>
-                <li><a href="#myContent" data-toggle="tab" class="my_tab_item" id="7"><i class="glyphicon glyphicon-menu-right"></i> 由Glyphicons</a></li>
+                {# 左侧的导航条，每次增加一个监控项目，都需要增加一个导航条，需要指定<a>的 id 属性为 api_id #}
+                {# api_id 维护在view层的urls文件中 #}
+                <li>
+                    <a href="#myContent" data-toggle="tab" class="my_tab_item" id="bi_api_week_report">
+                        <i class="glyphicon glyphicon-menu-right"></i>
+                        api周报
+                    </a>
+                </li>
             </ul>
         </div>
 
