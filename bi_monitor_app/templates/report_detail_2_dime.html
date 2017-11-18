@@ -5,7 +5,7 @@
         <thead>
         <tr>
             {% for h in t_date.0 %}
-                <th>h</th>
+                <th>{{ h }}</th>
             {% endfor %}
         </tr>
         </thead>
@@ -14,7 +14,7 @@
             {% if forloop.counter %}
                 <tr>
                 {% for b in l %}
-                    <td>b</td>
+                    <td>{{ b }}</td>
                 {% endfor %}
                 </tr>
             {% endif %}

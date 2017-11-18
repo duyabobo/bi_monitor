@@ -1,5 +1,5 @@
-{# 右侧监控结果列表显示，需要注入的变量： title 和 days 列表 #}
-{% for day in days %}
-    <div>{{ title }}</div>
-    <li class=""><a href="#" class="my_list_item">{{ day }}</a></li>
+{# 右侧监控结果列表显示，需要注入的变量： api_id、title 和 days 列表 #}
+<div>{{ title }}</div>
+{% for item_id, day in datas %}
+    <li class=""><a href="#" class="my_list_item" item_id="{{ item_id }}" api_id="{{ api_id }}">{{ day }}</a></li>
 {% endfor %}

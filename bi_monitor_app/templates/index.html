@@ -20,7 +20,7 @@
                 {# 左侧的导航条，每次增加一个监控项目，都需要增加一个导航条，需要指定<a>的 id 属性为 api_id #}
                 {# api_id 维护在view层的urls文件中 #}
                 <li>
-                    <a href="#myContent" data-toggle="tab" class="my_tab_item" id="bi_api_week_report">
+                    <a href="#myContent" data-toggle="tab" class="my_tab_item" api_id="bi_api_week_report">
                         <i class="glyphicon glyphicon-menu-right"></i>
                         api周报
                     </a>
@@ -44,7 +44,9 @@
             $(document).on("click", ".my_tab_item", function () {
                 $.get(
                     '/list/',
-                    {'api_id': this.id},
+                    {
+                        'api_id': this.api_id
+                    },
                     function(data, status) {
                         $('#rightCol').html(data);
                     }
@@ -54,7 +56,10 @@
             $(document).on("click", ".my_list_item", function () {
                 $.get(
                     '/content/',
-                    {'api_id': this.id},
+                    {
+                        'api_id': this.api_id,
+                        'item_id': this.item_id
+                    },
                     function(data, status) {
                         $('#rightCol').html(data);
                     }
