@@ -5,13 +5,20 @@ from django.db import models
 from django.http import Http404
 
 
-class IntervalReport(models.Model):
+class WeekReport(models.Model):
+    """
+    某周的bi访问日志汇总信息
+    """
+    id = models.IntegerField(primary_key=True)
+    analysis_date = models.DateField()  # 统计的日期
+
+
+class WeekReportItem(models.Model):
     """
     某个时间段内，bi接口日志分析结果，从nginx日志分析统计的结果
     """
     id = models.IntegerField(primary_key=True)
-    from_timestamp = models.DateField()  # 开始统计的时间戳，单位毫秒
-    end_timestamp = models.DateField()
+    week_report_id = models.IntegerField()  # 周报id
     analysis_type = models.IntegerField(default=0)  # 统计类别： 0 按照 http_code, 1 按照 delay_time
     analysis_key = models.CharField(max_length=20, default='')  # 可能是 200/300/404/502，也可能是 0~1s
     analysis_api = models.CharField(max_length=200, default='/api/dashboard?')  # 分析的接口： 默认是 '/api/dashboard?'
@@ -20,20 +27,19 @@ class IntervalReport(models.Model):
     average_delay_time = models.FloatField(default=0)  # 接口平均响应时间，单位是毫秒
 
     class Meta:
-        db_table = 't_interval_report'  # 自定义表名称
+        db_table = 't_week_report_item'  # 自定义表名称
 
     def __str__(self):
         return self.id
 
     @staticmethod
-    def select_interval_report(from_timestamp, end_timestamp):
+    def get_items(week_report_id):
         """
-        查询某个时间段内的所有日志分析结果
-        :param from_timestamp: 起始日期
-        :param end_timestamp: 结束日期
+        查询某一个周的所有统计数据
+        :param week_report_id:
         :return:
         """
-        return IntervalReport.objects.filter(from_timestamp=from_timestamp, end_timestamp=end_timestamp)
+        return WeekReportItem.objects.filter(week_report_id=week_report_id)
 
 
 class BiAccessAnalysis(models.Model):
