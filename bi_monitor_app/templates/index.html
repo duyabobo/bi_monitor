@@ -43,10 +43,7 @@
             {# 表格列表请求 #}
             $(document).on("click", ".my_tab_item", function () {
                 $.get(
-                    '/list/',
-                    {
-                        'api_id': this.api_id
-                    },
+                    '/list/?api_id=' + $(this).attr('api_id'),
                     function(data, status) {
                         $('#rightCol').html(data);
                     }
@@ -55,11 +52,7 @@
             {# 表格详情请求 #}
             $(document).on("click", ".my_list_item", function () {
                 $.get(
-                    '/content/',
-                    {
-                        'api_id': this.api_id,
-                        'item_id': this.item_id
-                    },
+                    '/content/?api_id=' + $(this).attr('api_id') + '&item_id=' + $(this).attr('item_id'),
                     function(data, status) {
                         $('#rightCol').html(data);
                     }
