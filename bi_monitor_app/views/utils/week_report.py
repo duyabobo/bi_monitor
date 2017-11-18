@@ -44,10 +44,11 @@ def get_detail(report_id):
     return {'table_datas': table_datas}
 
 
-def get_list():
+def get_list(page):
     """
     获取周报监控报表的列表，分页显示
+    :param page:
     :return:
     """
-    week_reports = WeekReport.objects.all()  # todo 待优化
-    return map(lambda x: [x.id, str(x.analysis_date)], week_reports)
+    week_reports = WeekReport.objects.values('analysis_date', 'id').all()[50*page: 50*(page+1)]
+    return map(lambda x: [x['id'], str(x['analysis_date'])], week_reports)

@@ -37,10 +37,11 @@ def content_list(request):
     :return:
     """
     api_id = request.GET['api_id']  # 指定哪一类监控数据
+    page = request.GET.get('page', 0)
     if api_id == 'example':
         datas = get_list_example()
     elif api_id == 'bi_api_week_report':  # bi访问日志周报报表
-        datas = week_report.get_list()
+        datas = week_report.get_list(page)
     else:
         datas = []
     return render(request, 'report_list.html', context={
