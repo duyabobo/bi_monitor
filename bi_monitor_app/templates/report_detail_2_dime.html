@@ -1,7 +1,7 @@
 {# 一维表格，需要注入的参数有：一个二维数组，二维数组的每个元素数组对应一个表格 #}
 {% for title, t_date in table_dates %}
     <table class="table">
-        <caption>{{ title }}</caption>
+        <caption>title: {{ title }} api_id: {{ api_id }} item_id: {{ item_id }}</caption>
         <thead>
         <tr>
             {% for h in t_date.0 %}

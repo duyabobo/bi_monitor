@@ -18,6 +18,8 @@ def content_detail(request):
         request,
         'report_detail_2_dime.html',
         context={
+            'api_id': request.GET['api_id'],
+            'item_id': request.GET['item_id'],
             'table_dates': [
                 [
                     'test_title_of_table',
@@ -41,7 +43,7 @@ def content_list(request):
         request,
         'report_list.html',
         context={
-            'api_id': 'week_report_api_id',
+            'api_id': request.GET['api_id'],
             'title': 'test_title',
             'datas': [
                 [1, '2017-11-01'],
