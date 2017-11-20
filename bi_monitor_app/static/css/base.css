@@ -7,38 +7,72 @@
 .leftMenu .panel-heading span{position:absolute;right:10px;top:12px;}
 .leftMenu .menu-item-left{padding: 2px; background: transparent; border:1px solid transparent;border-radius: 6px;}
 .leftMenu .menu-item-left:hover{background:#C4E3F3;border:1px solid #1E90FF;}
-*
-{
-    margin:1px;
-    padding:1px;
+* {
+    margin: 0;
+    padding: 0;
 }
 #mainBody
 {
     margin:0 auto;
     border:1px solid #ccc;
-    padding:5px;
+    padding:0;
 }
-#leftCol
+
+.topCol
 {
-    width:100px;
-    height:200px;
-    border:1px solid #ccc;
-    position:absolute;
+    position: fixed;
+    width: 100%;
+    background-color:black;
+    color:blue;
+    left:0;
 }
-#rightCol
+
+.leftCol {
+    float: left;
+    position: fixed;
+    top: 41px;
+    bottom:0;
+    left:0;
+    width:160px;
+    background-color:#3D3D3D
+}
+
+.right {
+    position: fixed;
+    width:85%;
+    top:41px;
+    bottom: 0;
+    margin-left:180px;
+    margin-right:10px
+}
+
+.rightCol
 {
+    top:41px;
+    bottom: 0;
     height:400px;
-    margin-left:170px;
-    margin-right:160px;
 }
 
-.leftcol .glyphicon-menu-right {
-    float: right;
-}
-.leftcol li {
-    width: 130px;
+.bottomCol
+{
+    position: fixed;
+    margin-left:180px;
+    bottom:0
 }
 
-.nav {
-    background-color:#f0f0f0;
+.nav .active {
+    background-color: #FF0000
 }
+
+.nav li a {
+    color: white;
+}
+
+.nav li a:link {background-color: #3D3D3D}
+.nav li a:visited {background-color: #FF0000}
+.nav li a:hover {background-color: #ff8c71}
+.nav li a:active {background-color: #FF0000}
+
+li {list-style-type:none;;padding:0;margin:0;}
+
+ul {margin:0;}

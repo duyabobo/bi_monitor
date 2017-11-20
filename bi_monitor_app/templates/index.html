@@ -17,38 +17,40 @@
 </head>
 <body>
     <div id="mainBody">
-        <div class="span3 leftcol" style="width:160px">
+        <div class="topCol">
+            <div>BI监控</div> dashboard
+        </div>
+        <div class="nav3 leftCol">
             <ul class="nav nav-sidebar bs-docs-sidenav">
                 {# 左侧的导航条，每次增加一个监控项目，都需要增加一个导航条，需要指定<a>的 id 属性为 api_id #}
                 {# api_id 维护在views/__init__.py文件中的 title_dict 变量中 #}
                 <li>
                     <a href="#myContent" data-toggle="tab" class="my_tab_item" api_id="example">
-                        <i class="glyphicon glyphicon-menu-right"></i>
                         example
                     </a>
                 </li>
                 <li>
                     <a href="#myContent" data-toggle="tab" class="my_tab_item" api_id="bi_api_week_report">
-                        <i class="glyphicon glyphicon-menu-right"></i>
                         bi访问日志统计周报
                     </a>
                 </li>
             </ul>
         </div>
 
-        <div id="rightCol" style="margin-left:270px">
-            <div id="myTabContent" class="tab-content">
-                {# 右侧的内容 #}
-                <div class="tab-pane fade in active" id="myContent">
-                    <div class="table-responsive">
-                        <caption>默认打开的首页活跃页面</caption>
+        <div class="right">
+            <div class="rightCol">
+                <div id="myTabContent" class="tab-content">
+                    {# 右侧的内容 #}
+                    <div class="tab-pane fade in active" id="myContent">
+                        <div class="table-responsive">
+                            <caption>默认打开的首页活跃页面</caption>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="bottomCol">
 
-        <div id="bottomCol">
-
+            </div>
         </div>
 
         <script>
@@ -57,13 +59,13 @@
                 $.get(
                     '/list/?api_id=' + $(this).attr('api_id'),
                     function(data, status) {
-                        $('#rightCol').html(data);
+                        $('.rightCol').html(data);
                     }
                 );
                 $.get(
                     '/get_pager/?api_id=' + $(this).attr('api_id'),
                     function (data, ststus) {
-                        $('#bottomCol').html(data)
+                        $('.bottomCol').html(data)
                     }
                 )
             });
@@ -72,7 +74,7 @@
                 $.get(
                     '/content/?api_id=' + $(this).attr('api_id') + '&item_id=' + $(this).attr('item_id'),
                     function(data, status) {
-                        $('#rightCol').html(data);
+                        $('.rightCol').html(data);
                     }
                 )
             });
