@@ -76,6 +76,15 @@
                     }
                 )
             });
+            {# 分页列表请求 #}
+            $(document).on("click", ".pagination li", function () {
+                $.get(
+                    '/list/?api_id=' + $('.nav .active a').attr('api_id') + '&page=' + $('.pagination .active').attr('page'),
+                    function(data, status) {
+                        $('#rightCol').html(data);
+                    }
+                )
+            });
         </script>
     </div>
 </body>
