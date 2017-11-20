@@ -1,7 +1,6 @@
 # coding=utf-8
 # author='duyabo'
 # date='2017/11/15'
-import math
 from django.shortcuts import render
 
 from utils import get_detail_example
@@ -38,7 +37,8 @@ def content_list(request):
     :return:
     """
     api_id = request.GET['api_id']  # 指定哪一类监控数据
-    page = int(request.GET.get('page', 0))
+    page = request.GET.get('page', 1)
+    page = 0 if page == 'undefined' else int(page) - 1  # 分页控件页码从1开始
     if api_id == 'example':
         datas = get_list_example()
     elif api_id == 'bi_api_week_report':  # bi访问日志周报报表
@@ -69,5 +69,5 @@ def get_pager(request):
     return render(request, 'pager_info.html', context={
         'api_id': api_id,
         'total': total,
-        'total_page': int(math.ceil(total/50))
+        'total_page': int(total/50) + 1
     })

@@ -60,18 +60,15 @@
     bottom:0
 }
 
-.nav .active {
-    background-color: #FF0000
-}
-
 .nav li a {
     color: white;
 }
 
-.nav li a:link {background-color: #3D3D3D}
-.nav li a:visited {background-color: #FF0000}
 .nav li a:hover {background-color: #ff8c71}
-.nav li a:active {background-color: #FF0000}
+
+.nav .active {
+    background-color: #FF0000
+}
 
 li {list-style-type:none;;padding:0;margin:0;}
 
