@@ -60,6 +60,10 @@
     bottom:0
 }
 
+.nav li {
+    cursor:pointer;
+}
+
 .nav li a {
     color: white;
 }

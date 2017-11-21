@@ -1,104 +1,16 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
-    <link href="{% static "bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css" %}" rel="stylesheet">
-    <link href="{% static "bootstrap-datetimepicker-master/sample in bootstrap v2/bootstrap/css/bootstrap.css" %}" rel="stylesheet">
-    <link href="{% static "css/base.css" %}" rel="stylesheet">
-    <link href="{% static "css/pager.css" %}" rel="stylesheet">
-    <script src="{% static "js/jquery-3.2.1.min.js" %}"></script>
-    <script src="{% static "js/bootstrap.min.js" %}"></script>
-    <script src="{% static "bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js" %}"></script>
-    <script src="{% static "bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js" %}"></script>
-    <script src="{% static "js/pager.js" %}"></script>
-</head>
-<body>
-    <div id="mainBody">
-        <div class="topCol">
-            <div>BI监控</div> dashboard
-        </div>
-        <div class="nav3 leftCol">
-            <ul class="nav nav-sidebar bs-docs-sidenav">
-                {# 左侧的导航条，每次增加一个监控项目，都需要增加一个导航条，需要指定<a>的 id 属性为 api_id #}
-                {# api_id 维护在views/__init__.py文件中的 title_dict 变量中 #}
-                <li>
-                    <a data-toggle="tab" data-tagert="#myContent" class="my_tab_item" api_id="example">
-                        example
-                    </a>
-                </li>
-                <li>
-                    <a data-toggle="tab" data-tagert="#myContent" class="my_tab_item" api_id="bi_api_week_report">
-                        bi访问日志统计周报
-                    </a>
-                </li>
-            </ul>
-        </div>
+{% extends 'base.html' %}
 
-        <div class="right">
-            <div class="rightCol">
-                <div id="myTabContent" class="tab-content">
-                    {# 右侧的内容 #}
-                    <div class="tab-pane fade in active" id="myContent">
-                        <div class="table-responsive">
-                            <caption>默认打开的首页活跃页面</caption>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="bottomCol">
-
-            </div>
-        </div>
-
-        <script>
-            {# 表格列表请求 #}
-            $(document).on("click", ".my_tab_item", function () {
-                $.get(
-                    '/list/?api_id=' + $(this).attr('api_id'),
-                    function(data, status) {
-                        $('.rightCol').html(data);
-                    }
-                );
-                $.get(
-                    '/get_pager/?api_id=' + $(this).attr('api_id'),
-                    function (data, ststus) {
-                        $('.bottomCol').html(data);
-                    }
-                )
-            });
-            {# 表格详情请求 #}
-            $(document).on("click", ".my_list_item", function () {
-                $.get(
-                    '/content/?api_id=' + $(this).attr('api_id') + '&item_id=' + $(this).attr('item_id'),
-                    function(data, status) {
-                        $('.rightCol').html(data);
-                        $('.bottomCol').hide();
-                    }
-                )
-            });
-            {# 分页列表请求 #}
-            $(document).on("click", ".pagination li", function () {
-                $.get(
-                    '/list/?api_id=' + $('.nav .active a').attr('api_id') + '&page=' + $('.pagination .active').attr('page'),
-                    function(data, status) {
-                        $('.rightCol').html(data);
-                    }
-                )
-            });
-            {# 分页列表请求 #}
-            $(document).on("click", "#back_to_list", function () {
-                $.get(
-                    '/list/?api_id=' + $('.nav .active a').attr('api_id') + '&page=' + $('.pagination .active').attr('page'),
-                    function(data, status) {
-                        $('.rightCol').html(data);
-                        $('.bottomCol').show()
-                    }
-                )
-            });
-        </script>
-    </div>
-</body>
-</html>
+{% block left_list %}
+    {# 每次增加一个监控项目，都需要增加一个导航条，需要指定<a>的 id 属性为 api_id #}
+    {# api_id 维护在views/__init__.py文件中的 title_dict 变量中 #}
+    <li>
+        <a data-toggle="tab" data-tagert="#myContent" class="my_tab_item" api_id="example">
+            example
+        </a>
+    </li>
+    <li>
+        <a data-toggle="tab" data-tagert="#myContent" class="my_tab_item" api_id="bi_api_week_report">
+            bi访问日志统计周报
+        </a>
+    </li>
+{% endblock %}
