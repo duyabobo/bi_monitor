@@ -64,10 +64,10 @@
     color: white;
 }
 
-.nav li a:hover {background-color: #ff8c71}
+.nav li a:hover {background-color: rgba(255, 255, 255, 0.1)}
 
 .nav .active {
-    background-color: #FF0000
+    background-color: #d54635
 }
 
 li {list-style-type:none;;padding:0;margin:0;}

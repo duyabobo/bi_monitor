@@ -1,7 +1,7 @@
 {# 二维表格，需要注入的参数有：一个二维数组，二维数组的每个元素数组对应一个表格 #}
 <a href="#" id="back_to_list">返回</a>
 {% for title, head, t_date in table_datas %}
-    <table class="table table-bordered">
+    <table class="table table-bordered table-hover">
     <div style="text-align: center">
         {% for t in title %}
             {{ t }}<br/>
