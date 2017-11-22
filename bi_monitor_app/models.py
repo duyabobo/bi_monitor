@@ -49,6 +49,15 @@ class HourAnalysis(models.Model):
     class Meta:
         db_table = 't_hour_analysis'  # 自定义表名称
 
+    @staticmethod
+    def get_list(page):
+        """
+        查询某一个周的所有统计数据
+        :param week_report_id:
+        :return:
+        """
+        return HourAnalysis.objects.all()[20*page: 20*(page+1)]
+
 
 class BiAccessAnalysis(models.Model):
     """
@@ -56,11 +65,7 @@ class BiAccessAnalysis(models.Model):
     """
     hour_analysis_id = models.IntegerField(default=0)
     source = models.IntegerField(default=0)  # 访问来源：0 WEB, 1 API
-    # 统计类别：0 全部，1 0~1s，2 1~2s，3 2~3s，4 3~5s， 5 5~10s，6 10~20s，7 20s+
-    kind = models.IntegerField(default=0)
-    num = models.IntegerField(default=0)  # 访问次数统计
-    percent = models.FloatField(default=0)  # 次数占百分比，80代表80%
-    average = models.FloatField(default=0)  # api响应的平均时间
+    table_content = models.CharField(max_length=5000, default='')  # 报表的内容，json存储
 
     class Meta:
         db_table = 't_bi_access_analysis'  # 自定义表名称

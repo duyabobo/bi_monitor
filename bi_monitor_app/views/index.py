@@ -3,8 +3,6 @@
 # date='2017/11/15'
 from django.shortcuts import render
 
-from utils import get_detail_example
-from utils import get_list_example
 from bi_monitor_app.views.utils import week_report
 from bi_monitor_app.views.utils import hour_report
 from bi_monitor_app.views import title_dict
@@ -22,8 +20,8 @@ def content_detail(request):
     """
     api_id = request.GET['api_id']  # 指定哪一类监控数据
     item_id = request.GET['item_id']  # 指定某一条监控数据
-    if api_id == 'example':
-        context = get_detail_example(item_id)
+    if api_id == 'bi_access_hour_report':  # bi访问汇总时报
+        context = hour_report.get_detail(item_id)
     elif api_id == 'bi_api_week_report':  # bi访问日志周报报表
         context = week_report.get_detail(item_id)
     else:
@@ -43,7 +41,7 @@ def content_list(request):
     api_id = request.GET['api_id']  # 指定哪一类监控数据
     page = request.GET.get('page', 1)
     page = 0 if page == 'undefined' else int(page) - 1  # 分页控件页码从1开始
-    if api_id == 'bi_access_hour_report':
+    if api_id == 'bi_access_hour_report':  # bi 访问汇总时报
         head, body = hour_report.get_list(page)
     elif api_id == 'bi_api_week_report':  # bi访问日志周报报表
         head, body = week_report.get_list(page)
@@ -65,8 +63,8 @@ def get_pager(request):
     :return:
     """
     api_id = request.GET['api_id']  # 指定哪一类监控数据
-    if api_id == 'example':
-        total = 101
+    if api_id == 'bi_access_hour_report':  # bi访问汇总时报
+        total = hour_report.get_total()
     elif api_id == 'bi_api_week_report':  # bi访问日志周报报表
         total = week_report.get_total()
     else:
@@ -74,5 +72,5 @@ def get_pager(request):
     return render(request, 'pager_info.html', context={
         'api_id': api_id,
         'total': total,
-        'total_page': int(total/50) + 1
+        'total_page': int(total/20) + 1
     })
