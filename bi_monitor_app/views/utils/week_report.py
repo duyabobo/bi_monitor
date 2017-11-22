@@ -50,7 +50,7 @@ def get_list(page):
     :param page:
     :return: head, body，head 为一个列表，显示为表头，body是一个二维列表，为表格的body。
     """
-    week_reports = WeekReport.objects.values('analysis_date', 'id').all()[20*page: 20*(page+1)]
+    week_reports = WeekReport.objects.values('analysis_date', 'id').all()[10*page: 10*(page+1)]
     head = ['id', '监控日期']
     body = map(lambda x: [x['id'], str(x['analysis_date'])], week_reports)
     return head, body

@@ -56,7 +56,7 @@ class HourAnalysis(models.Model):
         :param week_report_id:
         :return:
         """
-        return HourAnalysis.objects.all()[20*page: 20*(page+1)]
+        return HourAnalysis.objects.all()[10*page: 10*(page+1)]
 
 
 class BiAccessAnalysis(models.Model):
