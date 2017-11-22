@@ -17,32 +17,38 @@
     <script src="{% static "js/base.js" %}"></script>
 </head>
 <body>
-    <div id="mainBody">
-        <div class="topCol">
-            <h5 class="text-warning" style="margin-left:15px; font-size:18px">BI监控<small> dashboard</small></h5>
+    <nav class="navbar navbar-fixed-top navbar-inverse" style="background-color:#428bca;border-color:#428bca;">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" style="color:#FFF;" href="#">
+            <span class="glyphicon glyphicon-grain" aria-hidden="true"></span>&nbsp;移动直播后台管理
+          </a>
         </div>
-        <div class="nav3 leftCol">
-            <ul class="nav nav-sidebar bs-docs-sidenav">
-                {# 左侧的导航条 #}
-                {% block left_list %} {% endblock %}
-            </ul>
+        <div id="navbar" class="collapse navbar-collapse">
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+    <div class="container" style="position:absolute; top:60px; left:90px;">
+      <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-9" id="leftCol">
+            <div class="container">左侧默认</div>
         </div>
-
-        <div class="right">
-            <div class="rightCol">
-                <div id="myTabContent" class="tab-content">
-                    {# 右侧的内容 #}
-                    <div class="tab-pane fade in active" id="myContent">
-                        <div class="table-responsive">
-                            默认打开的首页活跃页面
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="bottomCol">
-                {# 下侧分页器 #}
-            </div>
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+          <div class="list-group">
+              {% block right_list %}
+              {% endblock %}
+            {# 右侧导航 #}
+          </div>
         </div>
+      </div>
+      <div class="bottomCol">
+        {# 下侧分页器 #}
+      </div>
     </div>
 </body>
 </html>
