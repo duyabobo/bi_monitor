@@ -1,4 +1,5 @@
 *.pyc
 .idea/*
 db.sqlite3
+db.sqlite3-journal
 bi_monitor_app/migrations/*

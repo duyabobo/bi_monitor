@@ -80,6 +80,7 @@ class NoteWorthyLog(models.Model):
     从数据库中查询的值得注意的访问日志记录
     """
     hour_analysis_id = models.IntegerField(default=0)
+    source = models.IntegerField(default=0)  # 访问来源：0 WEB, 1 API
     access_timestamp = models.IntegerField(default=0)  # 接口访问的时间戳
     method = models.IntegerField(default=0)  # 接口访问的http方法：0 get，1 post，2 put，3 delete
     report_name = models.CharField(max_length=60)  # 报表名称
