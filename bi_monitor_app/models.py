@@ -2,14 +2,12 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.http import Http404
 
 
 class WeekReport(models.Model):
     """
     某周的bi访问日志汇总信息
     """
-    id = models.IntegerField(primary_key=True)
     analysis_date = models.DateField()  # 统计的日期
 
 
@@ -17,7 +15,6 @@ class WeekReportItem(models.Model):
     """
     某个时间段内，bi接口日志分析结果，从nginx日志分析统计的结果
     """
-    id = models.IntegerField(primary_key=True)
     week_report_id = models.IntegerField()  # 周报id
     analysis_type = models.IntegerField(default=0)  # 统计类别： 0 按照 http_code, 1 按照 delay_time
     analysis_key = models.CharField(max_length=20, default='')  # 可能是 200/300/404/502，也可能是 0~1s
@@ -42,13 +39,22 @@ class WeekReportItem(models.Model):
         return WeekReportItem.objects.filter(week_report_id=week_report_id)
 
 
+class HourAnalysis(models.Model):
+    """
+    按小时统计的日志基本信息，具体统计结果存储在 BiAccessAnalysis 和 NoteWorthyLog
+    """
+    from_timestamp = models.IntegerField(default=0)  # 开始统计的时间戳，单位毫秒
+    end_timestamp = models.IntegerField(default=0)  # 结束统计的时间戳，单位毫秒
+
+    class Meta:
+        db_table = 't_hour_analysis'  # 自定义表名称
+
+
 class BiAccessAnalysis(models.Model):
     """
     通过网页/api访问BI的日志统计数据，从数据库访问记录log中搜集的统计信息
     """
-    id = models.IntegerField(primary_key=True)
-    from_timestamp = models.IntegerField(default=0)  # 开始统计的时间戳，单位毫秒
-    end_timestamp = models.IntegerField(default=0)  # 结束统计的时间戳，单位毫秒
+    hour_analysis_id = models.IntegerField(default=0)
     source = models.IntegerField(default=0)  # 访问来源：0 WEB, 1 API
     # 统计类别：0 全部，1 0~1s，2 1~2s，3 2~3s，4 3~5s， 5 5~10s，6 10~20s，7 20s+
     kind = models.IntegerField(default=0)
@@ -60,21 +66,20 @@ class BiAccessAnalysis(models.Model):
         db_table = 't_bi_access_analysis'  # 自定义表名称
 
     @staticmethod
-    def get_access_analysis(from_timestamp, end_timestamp):
+    def get_items(hour_analysis_id):
         """
         通过开始统计时间、结束统计时间查询统计数据
-        :param from_timestamp:
-        :param end_timestamp:
+        :param hour_analysis_id:
         :return:
         """
-        return BiAccessAnalysis.objects.filter(from_timestamp=from_timestamp, end_timestamp=end_timestamp)
+        return BiAccessAnalysis.objects.filter(hour_analysis_id=hour_analysis_id)
 
 
 class NoteWorthyLog(models.Model):
     """
     从数据库中查询的值得注意的访问日志记录
     """
-    id = models.IntegerField(primary_key=True)
+    hour_analysis_id = models.IntegerField(default=0)
     access_timestamp = models.IntegerField(default=0)  # 接口访问的时间戳
     method = models.IntegerField(default=0)  # 接口访问的http方法：0 get，1 post，2 put，3 delete
     report_name = models.CharField(max_length=60)  # 报表名称
@@ -90,14 +95,10 @@ class NoteWorthyLog(models.Model):
         db_table = 't_noteworthy_log'  # 自定义表名称
 
     @staticmethod
-    def get_noteworhy_log(from_timestamp, end_timestamp):
+    def get_items(hour_analysis_id):
         """
         查询某个时间区间内值得关注的访问日志记录
-        :param from_timestamp:
-        :param end_timestamp:
+        :param hour_analysis_id:
         :return:
         """
-        return NoteWorthyLog.objects.filter(
-            access_timestamp__gt=from_timestamp,
-            access_timestamp__lte=end_timestamp
-        )
+        return NoteWorthyLog.objects.filter(hour_analysis_id=hour_analysis_id)

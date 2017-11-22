@@ -16,25 +16,34 @@ create table t_week_report_item (
     percent FLOAT[4, 2] NOT NULL DEFAULT 0 '指定某个analysis_type和analysis_key的统计数目所占百分比',
     average_delay_time FLOAT[10, 2] NOT NULL DEFAULT 0 '指定某个analysis_type和analysis_key的api的平均响应时间，单位毫秒',
     PRIMARY KEY (id),
+    INDEX i_week_report_id (week_report_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '某个星期的bi接口日志分析结果';
+
+
+CREATE TABLE "t_hour_analysis" (
+    "id" BIGINT UNSIGNED NOT NULL DEFAULT 0 AUTOINCREMENT COMMENT 'id自增',
+    "from_timestamp" BIGINT UNSIGNED NOT NULL COMMENT '日志分析的起始时间戳，单位毫秒',
+    "end_timestamp" BIGINT UNSIGNED NOT NULL COMMENT '结束统计的时间戳，单位毫秒',
+    PRIMARY KEY (id),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '某个星期的bi接口日志分析结果';
 
 
 CREATE TABLE "t_bi_access_analysis" (
     "id" BIGINT UNSIGNED NOT NULL DEFAULT 0 AUTOINCREMENT COMMENT 'id自增',
-    "from_timestamp" BIGINT UNSIGNED NOT NULL COMMENT '日志分析的起始时间戳，单位毫秒',
-    "end_timestamp" BIGINT UNSIGNED NOT NULL COMMENT '结束统计的时间戳，单位毫秒',
+    "hour_analysis_id" BIGINT UNSIGNED NOT NULL DEFAULT COMMENT '时报id';
     "source" TINYINT UNSIGNED NOT NULL COMMENT '访问来源：0 WEB, 1 API',
     "kind" TINYINT UNSIGNED NOT NULL COMMENT '统计类别：0 全部，1 0~1s，2 1~2s，3 2~3s，4 3~5s， 5 5~10s，6 10~20s，7 20s+',
     "num" INT UNSIGNED NOT NULL COMMENT '访问次数统计',
     "percent" FLOAT[4, 2] NOT NULL COMMENT '次数占百分比，80代表80%',
     "average" FLOAT[10, 2] NOT NULL COMMENT 'api响应的平均时间，单位毫秒',
      PRIMARY KEY (id),
-     INDEX i_from_end_interval (from_timestamp, end_timestamp)
+     INDEX i_hour_analysis_id (hour_analysis_id)
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '某个时间段内通过网页/api访问BI的日志统计数据，从数据库访问记录log中搜集的统计信息';
 
 
 CREATE TABLE "t_noteworthy_log" (
     "id" BIGINT UNSIGNED NOT NULL DEFAULT 0 AUTOINCREMENT COMMENT 'id自增',
+    "hour_analysis_id" BIGINT UNSIGNED NOT NULL DEFAULT COMMENT '时报id';
     "access_timestamp" BIGINT UNSIGNED NOT NULL COMMENT 'api访问的时间戳，单位毫秒',
     "method" integer NOT NULL DEFAULT 0 COMMENT '接口访问的http方法：0 get，1 post，2 put，3 delete',
     "report_name" varchar(60) NOT NULL DEFAULT '' COMMENT '报表名称',
@@ -45,5 +54,5 @@ CREATE TABLE "t_noteworthy_log" (
     "department_name" varchar(20) NOT NULL DEFAULT '' COMMENT 'api访问专用字段：部门名称',
     "api_key" varchar(50) NOT NULL DEFAULT '' COMMENT 'api访问专用字段：api key',
     PRIMARY KEY (id),
-    INDEX i_access_timestamp (access_timestamp)
+    INDEX i_hour_analysis_id (hour_analysis_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '从数据库中查询的值得注意的访问日志记录';
