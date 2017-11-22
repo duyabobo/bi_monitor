@@ -48,10 +48,12 @@ def get_list(page):
     """
     获取周报监控报表的列表，分页显示
     :param page:
-    :return:
+    :return: head, body，head 为一个列表，显示为表头，body是一个二维列表，为表格的body。
     """
     week_reports = WeekReport.objects.values('analysis_date', 'id').all()[50*page: 50*(page+1)]
-    return map(lambda x: [x['id'], str(x['analysis_date'])], week_reports)
+    head = ['id', '监控日期']
+    body = map(lambda x: [x['id'], str(x['analysis_date'])], week_reports)
+    return head, body
 
 
 def get_total():

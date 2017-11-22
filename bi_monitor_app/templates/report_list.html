@@ -1,5 +1,21 @@
-{# 右侧监控结果列表显示，需要注入的变量： api_id、title 和 datas 列表所需要的数据 #}
+{# 监控结果列表显示，需要注入的变量： api_id、title、head 和 body 列表所需要的数据 #}
 <div>{{ title }}</div>
-{% for item_id, day in datas %}
-    <li class=""><a href="#" class="my_list_item" item_id="{{ item_id }}" api_id="{{ api_id }}">{{ day }}</a></li>
+<table class="table table-bordered">
+<thead>
+<tr>
+    {% for h in head %}
+        <th>{{ h }}</th>
+    {% endfor %}
+</tr>
+</thead>
+<tbody>
+{% for l in body %}
+    <tr>
+    {% for b in l %}
+        <td><a href="#" class="my_list_item" item_id="{{ l.0 }}" api_id="{{ api_id }}">{{ b }}</a></td>
+    {% endfor %}
+    </tr>
 {% endfor %}
+
+</tbody>
+</table>

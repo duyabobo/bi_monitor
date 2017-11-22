@@ -6,6 +6,7 @@ from django.shortcuts import render
 from utils import get_detail_example
 from utils import get_list_example
 from bi_monitor_app.views.utils import week_report
+from bi_monitor_app.views.utils import hour_report
 from bi_monitor_app.views import title_dict
 
 
@@ -32,23 +33,27 @@ def content_detail(request):
 
 def content_list(request):
     """
-    查询各种类型的监控数据列表
+    查询各种类型的监控数据列表，
+    列表在前端显示的时候是使用 table 展现的，
+    需要从数据库中获取 table 的 head 和 body 内容,
+    注意：body 的 item 第一个字段都是 id
     :param request:
     :return:
     """
     api_id = request.GET['api_id']  # 指定哪一类监控数据
     page = request.GET.get('page', 1)
     page = 0 if page == 'undefined' else int(page) - 1  # 分页控件页码从1开始
-    if api_id == 'example':
-        datas = get_list_example()
+    if api_id == 'bi_access_hour_report':
+        head, body = hour_report.get_list(page)
     elif api_id == 'bi_api_week_report':  # bi访问日志周报报表
-        datas = week_report.get_list(page)
+        head, body = week_report.get_list(page)
     else:
-        datas = []
+        head, body = [], [[], []]
     return render(request, 'report_list.html', context={
         'api_id': api_id,
         'title': title_dict[api_id],
-        'datas': datas
+        'head': head,
+        'body': body
         }
     )
 
