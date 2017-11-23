@@ -1,12 +1,12 @@
 这里维护所有数据表的 create 语句
 
-create table t_week_report (
+create table week_report (
     id BIGINT UNSIGNED NOT NULL DEFAULT 0 AUTOINCREMENT COMMENT 'id自增',
     analysis_date DATE NOT NULL,
     PRIMARY KEY (id),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '按照星期bi接口分析报表的信息';
 
-create table t_week_report_item (
+create table week_report_item (
     id BIGINT UNSIGNED NOT NULL DEFAULT 0 AUTOINCREMENT COMMENT 'id自增',
     week_report_id BIGINT '周报id',
     analysis_type TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '日志分析的类型：0 按照 http_code, 1 按照 delay_time',
@@ -20,7 +20,7 @@ create table t_week_report_item (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '某个星期的bi接口日志分析结果';
 
 
-CREATE TABLE "t_hour_analysis" (
+CREATE TABLE "hour_analysis" (
     "id" BIGINT UNSIGNED NOT NULL DEFAULT 0 AUTOINCREMENT COMMENT 'id自增',
     "from_timestamp" BIGINT UNSIGNED NOT NULL COMMENT '日志分析的起始时间戳，单位毫秒',
     "end_timestamp" BIGINT UNSIGNED NOT NULL COMMENT '结束统计的时间戳，单位毫秒',
@@ -30,7 +30,7 @@ CREATE TABLE "t_hour_analysis" (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '某个星期的bi接口日志分析结果';
 
 
-CREATE TABLE "t_bi_access_analysis" (
+CREATE TABLE "bi_access_analysis" (
     "id" BIGINT UNSIGNED NOT NULL DEFAULT 0 AUTOINCREMENT COMMENT 'id自增',
     "hour_analysis_id" BIGINT UNSIGNED NOT NULL DEFAULT COMMENT '时报id';
     "source" TINYINT UNSIGNED NOT NULL COMMENT '访问来源：0 WEB, 1 API',
@@ -43,7 +43,7 @@ CREATE TABLE "t_bi_access_analysis" (
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '某个时间段内通过网页/api访问BI的日志统计数据，从数据库访问记录log中搜集的统计信息';
 
 
-CREATE TABLE "t_noteworthy_log" (
+CREATE TABLE "noteworthy_log" (
     "id" BIGINT UNSIGNED NOT NULL DEFAULT 0 AUTOINCREMENT COMMENT 'id自增',
     "hour_analysis_id" BIGINT UNSIGNED NOT NULL DEFAULT COMMENT '时报id';
     "access_timestamp" BIGINT UNSIGNED NOT NULL COMMENT 'api访问的时间戳，单位毫秒',

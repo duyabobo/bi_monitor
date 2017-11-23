@@ -4,14 +4,33 @@ from __future__ import unicode_literals
 from django.db import models
 
 
-class WeekReport(models.Model):
+class BaseModel(models.Model):
+    """基础扩展类"""
+
+    class Meta:
+        abstract = True
+
+    @classmethod
+    def get_list(cls, page):
+        """
+        分页查询类方法
+        :param page:
+        :return:
+        """
+        return cls.objects.all().order_by('-id')[10 * page: 10 * (page + 1)]
+
+
+class WeekReport(BaseModel):
     """
     某周的bi访问日志汇总信息
     """
     analysis_date = models.DateField()  # 统计的日期
 
+    class Meta:
+        db_table = 'week_report'  # 自定义表名称
 
-class WeekReportItem(models.Model):
+
+class WeekReportItem(BaseModel):
     """
     某个时间段内，bi接口日志分析结果，从nginx日志分析统计的结果
     """
@@ -24,10 +43,7 @@ class WeekReportItem(models.Model):
     average_delay_time = models.FloatField(default=0)  # 接口平均响应时间，单位是毫秒
 
     class Meta:
-        db_table = 't_week_report_item'  # 自定义表名称
-
-    def __str__(self):
-        return str(self.id)
+        db_table = 'week_report_item'  # 自定义表名称
 
     @staticmethod
     def get_items(week_report_id):
@@ -39,7 +55,7 @@ class WeekReportItem(models.Model):
         return WeekReportItem.objects.filter(week_report_id=week_report_id)
 
 
-class HourAnalysis(models.Model):
+class HourAnalysis(BaseModel):
     """
     按小时统计的日志基本信息，具体统计结果存储在 BiAccessAnalysis 和 NoteWorthyLog
     """
@@ -49,19 +65,10 @@ class HourAnalysis(models.Model):
     api_delay_bg_10 = models.IntegerField(default=0)  # 从api访问的接口响应时间大于10s的次数
 
     class Meta:
-        db_table = 't_hour_analysis'  # 自定义表名称
-
-    @staticmethod
-    def get_list(page):
-        """
-        查询某一个周的所有统计数据
-        :param week_report_id:
-        :return:
-        """
-        return HourAnalysis.objects.all()[10*page: 10*(page+1)]
+        db_table = 'hour_analysis'  # 自定义表名称
 
 
-class BiAccessAnalysis(models.Model):
+class BiAccessAnalysis(BaseModel):
     """
     通过网页/api访问BI的日志统计数据，从数据库访问记录log中搜集的统计信息
     """
@@ -70,7 +77,7 @@ class BiAccessAnalysis(models.Model):
     table_content = models.CharField(max_length=5000, default='')  # 报表的内容，json存储
 
     class Meta:
-        db_table = 't_bi_access_analysis'  # 自定义表名称
+        db_table = 'bi_access_analysis'  # 自定义表名称
 
     @staticmethod
     def get_items(hour_analysis_id):
@@ -82,7 +89,7 @@ class BiAccessAnalysis(models.Model):
         return BiAccessAnalysis.objects.filter(hour_analysis_id=hour_analysis_id)
 
 
-class NoteWorthyLog(models.Model):
+class NoteWorthyLog(BaseModel):
     """
     从数据库中查询的值得注意的访问日志记录
     """
@@ -100,7 +107,7 @@ class NoteWorthyLog(models.Model):
     api_key = models.CharField(max_length=50)  # 用户(原来表是这么注释的）
 
     class Meta:
-        db_table = 't_noteworthy_log'  # 自定义表名称
+        db_table = 'noteworthy_log'  # 自定义表名称
 
     @staticmethod
     def get_items(hour_analysis_id):
@@ -112,7 +119,7 @@ class NoteWorthyLog(models.Model):
         return NoteWorthyLog.objects.filter(hour_analysis_id=hour_analysis_id)
 
 
-class MonitorBiApiMsg(models.Model):
+class MonitorBiApiMsg(BaseModel):
     """
     BI指标监控告警邮件
     """
@@ -129,11 +136,18 @@ class MonitorBiApiMsg(models.Model):
     class Meta:
         db_table = 'monitor_bi_api_msg'  # 自定义表名称
 
-    @staticmethod
-    def get_list(page):
-        """
-        查询某一个周的所有统计数据
-        :param page:
-        :return:
-        """
-        return MonitorBiApiMsg.objects.all().order_by('-search_time')[10 * page: 10 * (page + 1)]
+
+class MonitorBiCacheMsg(BaseModel):
+    """
+    BI强制缓存监控错误信息记录表
+    """
+    t_id = models.CharField(max_length=255)  # 报表ID
+    t_name = models.CharField(max_length=255)  # 报表名称
+    http_status = models.CharField(max_length=100)  # HTTP状态
+    search_type = models.CharField(max_length=100)  # 查询类型
+    error_time = models.CharField(max_length=50)  # 报错时间
+    created_at = models.DateTimeField()  # 记录创建时间
+    updated_at = models.DateTimeField()  # 记录更新时间
+
+    class Meta:
+        db_table = 'monitor_bi_cache_msg'  # 自定义表名称
