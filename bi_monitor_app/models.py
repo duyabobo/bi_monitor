@@ -19,6 +19,14 @@ class BaseModel(models.Model):
         """
         return cls.objects.all().order_by('-id')[10 * page: 10 * (page + 1)]
 
+    @classmethod
+    def get_total(cls):
+        """
+        获取监控数据记录总数
+        :return:
+        """
+        return cls.objects.count()
+
 
 class WeekReport(BaseModel):
     """

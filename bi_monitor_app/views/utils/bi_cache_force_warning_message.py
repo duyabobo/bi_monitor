@@ -27,4 +27,4 @@ def get_list(page):
 
 def get_total():
     """获取总数"""
-    return MonitorBiCacheMsg.objects.count()
+    return MonitorBiCacheMsg.get_total()

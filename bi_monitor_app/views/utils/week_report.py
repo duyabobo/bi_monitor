@@ -58,4 +58,4 @@ def get_list(page):
 
 def get_total():
     """获取总数"""
-    return WeekReport.objects.count()
+    return WeekReport.get_total()

@@ -79,6 +79,8 @@ def get_pager(request):
         total = week_report.get_total()
     elif api_id == 'bi_indicator_monitor_error_message':  # BI指标监控告警邮件
         total = bi_indicator_monitor_error_message.get_total()
+    elif api_id == 'bi_cache_force_warning_message':  # BI强制缓存告警邮件
+        total = bi_cache_force_warning_message.get_total()
     else:
         total = 0
     return render(request, 'pager_info.html', context={

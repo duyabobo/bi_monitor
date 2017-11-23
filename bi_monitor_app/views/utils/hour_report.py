@@ -74,4 +74,4 @@ def get_list(page):
 
 def get_total():
     """获取总数"""
-    return HourAnalysis.objects.count()
+    return HourAnalysis.get_total()

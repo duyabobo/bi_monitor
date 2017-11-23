@@ -31,4 +31,4 @@ def get_list(page):
 
 def get_total():
     """获取总数"""
-    return MonitorBiApiMsg.objects.count()
+    return MonitorBiApiMsg.get_total()
