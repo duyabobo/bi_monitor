@@ -14,6 +14,7 @@ $(document).on("click", ".list-group-item", function () {
             $('.bottomCol').html(data);
         }
     );
+    $('.bottomCol').show()
 });
 // {# 表格详情请求 #}
 $(document).on("click", ".my_list_item", function () {
