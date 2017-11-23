@@ -56,3 +56,186 @@ CREATE TABLE "t_noteworthy_log" (
     PRIMARY KEY (id),
     INDEX i_hour_analysis_id (hour_analysis_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '从数据库中查询的值得注意的访问日志记录';
+
+
+
+
+rename table test_bi_interface_error  to monitor_bi_interface;
+
+
+
+CREATE TABLE bi_monitor.monitor_bi_api_msg (
+	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+	`t_id` varchar(255) NOT NULL DEFAULT '' COMMENT '报表ID',
+	`t_name` varchar(255) NOT NULL DEFAULT '' COMMENT '报表名称',
+	`search_time` varchar(100) NOT NULL DEFAULT '' COMMENT '查询时间',
+	`search_type` varchar(100) NOT NULL DEFAULT '' COMMENT '查询类型',
+	`indicator_name` varchar(255) NOT NULL DEFAULT '' COMMENT '指标名称',
+	`indicator_id` varchar(255) NOT NULL DEFAULT '' COMMENT '指标Indicator',
+	`bi_value` varchar(100) NOT NULL DEFAULT '' COMMENT 'BI显示指标值',
+	`compute_value` varchar(100) NOT NULL DEFAULT '' COMMENT '计算所得指标值',
+	`compute_source` varchar(1000) NOT NULL DEFAULT '' COMMENT '计算数据来源',
+	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
+	PRIMARY KEY (`id`),
+	INDEX idx_t_id (`t_id`)
+) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='BI指标监控错误信息记录表';
+
+
+
+CREATE TABLE bi_monitor.monitor_bi_cache_msg (
+	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+	`t_name` varchar(255) NOT NULL DEFAULT '' COMMENT '报表名称',
+	`t_id` varchar(255) NOT NULL DEFAULT '' COMMENT '报表ID',
+	`http_status` varchar(100) NOT NULL DEFAULT '' COMMENT 'HTTP状态',
+	`search_type` varchar(50) NOT NULL DEFAULT '' COMMENT '查询类型',
+	`error_time` varchar(100) NOT NULL DEFAULT '' COMMENT '报错时间',
+	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
+	PRIMARY KEY (`id`),
+	INDEX idx_t_id (`t_id`)
+) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='BI强制缓存监控错误信息记录表';
+
+
+CREATE TABLE bi_monitor.monitor_bi_data_msg (
+	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+	`t_name` varchar(255) NOT NULL DEFAULT '' COMMENT '报表名称',
+	`t_id` varchar(255) NOT NULL DEFAULT '' COMMENT '报表ID',
+	`indicator_name` varchar(255) NOT NULL DEFAULT '' COMMENT '指标名称',
+	`search_time` varchar(50) NOT NULL DEFAULT '' COMMENT '查询时间',
+	`search_type` varchar(100) NOT NULL DEFAULT '' COMMENT '分组类型',
+	`old_value` varchar(100) NOT NULL DEFAULT '' COMMENT '上次查询值',
+	`new_value` varchar(100) NOT NULL DEFAULT '' COMMENT '此次查询值',
+	`deviation` varchar(100) NOT NULL DEFAULT '' COMMENT '偏差值',
+	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
+	PRIMARY KEY (`id`),
+	INDEX idx_t_id (`t_id`)
+) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='BI数据快照监控错误信息记录表';
+
+
+CREATE TABLE bi_monitor.monitor_bi_enumeration_msg (
+	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+	`db_mname` varchar(100) NOT NULL DEFAULT '' COMMENT '数据库',
+	`t_name` varchar(100) NOT NULL DEFAULT '' COMMENT '表',
+	`t_col` varchar(100) NOT NULL DEFAULT '' COMMENT '字段',
+	`t_value` varchar(1000) NOT NULL DEFAULT '' COMMENT '枚举值',
+	`error_value` varchar(100) NOT NULL DEFAULT '' COMMENT '异常值',
+	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
+	PRIMARY KEY (`id`),
+	INDEX idx_t_name (`t_name`)
+) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='BI业务源库枚举值监控错误信息记录表';
+
+
+CREATE TABLE bi_monitor.monitor_bi_interface_msg (
+	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+	`t_name` varchar(255) NOT NULL DEFAULT '' COMMENT '报表名称',
+	`t_id` varchar(255) NOT NULL DEFAULT '' COMMENT '报表ID',
+	`http_status` varchar(50) NOT NULL DEFAULT '' COMMENT 'HTTP状态',
+	`search_type` varchar(50) NOT NULL DEFAULT '' COMMENT '查询类型',
+	`monitor_type` varchar(50) NOT NULL DEFAULT '' COMMENT '监控类型',
+	`history_error` varchar(50) NOT NULL DEFAULT '' COMMENT '历史错误次数',
+	`continuous_error` varchar(50) NOT NULL DEFAULT '' COMMENT '连续错误次数',
+	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
+	PRIMARY KEY (`id`),
+	INDEX idx_t_name (`t_name`)
+) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='BI接口监控错误信息记录表';
+
+
+CREATE TABLE bi_monitor.monitor_bi_scripts_msg (
+	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+	`alert_msg` varchar(255) NOT NULL DEFAULT '' COMMENT '警报信息',
+	`script_name` varchar(255) NOT NULL DEFAULT '' COMMENT '脚本名称',
+	`script_status` varchar(50) NOT NULL DEFAULT '' COMMENT '脚本状态',
+	`start_time` varchar(50) NOT NULL DEFAULT '' COMMENT '脚本开始时间',
+	`monitor_time` varchar(50) NOT NULL DEFAULT '' COMMENT '监控查询时间',
+	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
+	PRIMARY KEY (`id`),
+	INDEX idx_script_name (`script_name`)
+) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='BI数据清洗脚本监控错误信息记录表';
+
+
+CREATE TABLE bi_monitor.monitor_bi_source_data_msg (
+	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+	`indicator_name` varchar(255) NOT NULL DEFAULT '' COMMENT '指标名称',
+	`search_time` varchar(100) NOT NULL DEFAULT '' COMMENT '查询时间',
+	`source_value` varchar(50) NOT NULL DEFAULT '' COMMENT '业务库值',
+	`bi_value` varchar(50) NOT NULL DEFAULT '' COMMENT 'BI库值',
+	`deviation` varchar(50) NOT NULL DEFAULT '' COMMENT '偏差值',
+	`new_data_time` varchar(50) NOT NULL DEFAULT '' COMMENT '最新数据时间',
+	`script_time` varchar(50) NOT NULL DEFAULT '' COMMENT '脚本捕获时间',
+	`devi_reason` varchar(200) NOT NULL DEFAULT '' COMMENT '偏差原因',
+	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
+	PRIMARY KEY (`id`),
+	INDEX idx_indicator_name (`indicator_name`)
+) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='BI与业务源指标监控错误信息记录表';
+
+CREATE TABLE bi_monitor.monitor_bi_source_groupby_msg (
+	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+	`indicator_name` varchar(255) NOT NULL DEFAULT '' COMMENT '指标名称',
+	`source_name` varchar(100) NOT NULL DEFAULT '' COMMENT '业务源表',
+	`target_name` varchar(50) NOT NULL DEFAULT '' COMMENT '目标表',
+	`search_time` varchar(50) NOT NULL DEFAULT '' COMMENT '查询时间段',
+	`col_value` varchar(50) NOT NULL DEFAULT '' COMMENT '字段值',
+	`source_number` varchar(50) NOT NULL DEFAULT '' COMMENT '业务库数量',
+	`target_number` varchar(50) NOT NULL DEFAULT '' COMMENT 'BI库数量',
+	`deviation` varchar(200) NOT NULL DEFAULT '' COMMENT '偏差值',
+	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
+	PRIMARY KEY (`id`),
+	INDEX idx_indicator_name (`indicator_name`)
+) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='BI与业务源字段监控错误信息记录表';
+
+
+CREATE TABLE bi_monitor.monitor_bi_tables_msg (
+	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+	`db_name` varchar(255) NOT NULL DEFAULT '' COMMENT '数据库名',
+	`t_name` varchar(100) NOT NULL DEFAULT '' COMMENT '表名',
+	`new_data_time` varchar(50) NOT NULL DEFAULT '' COMMENT '最新更新数据时间',
+	`msg` varchar(50) NOT NULL DEFAULT '' COMMENT '信息',
+	`stat` varchar(50) NOT NULL DEFAULT '' COMMENT '状态',
+	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
+	PRIMARY KEY (`id`),
+	INDEX idx_t_name (`t_name`)
+) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='BI与库表更新数据监控错误信息记录表';
+
+CREATE TABLE bi_monitor.monitor_cubes_column_msg (
+	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+	`t_name` varchar(255) NOT NULL DEFAULT '' COMMENT '报表名称',
+	`source_name` varchar(100) NOT NULL DEFAULT '' COMMENT 'source名称',
+	`http_status` varchar(50) NOT NULL DEFAULT '' COMMENT 'HTTP状态',
+	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
+	PRIMARY KEY (`id`),
+	INDEX idx_t_name (`t_name`)
+) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='CUBES接口column监控错误信息记录表';
+
+CREATE TABLE bi_monitor.monitor_cubes_table_msg (
+	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+	`t_name` varchar(255) NOT NULL DEFAULT '' COMMENT '报表名称',
+	`source_name` varchar(100) NOT NULL DEFAULT '' COMMENT 'source名称',
+	`http_status` varchar(50) NOT NULL DEFAULT '' COMMENT 'HTTP状态',
+	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
+	PRIMARY KEY (`id`),
+	INDEX idx_t_name (`t_name`)
+) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='CUBES接口table监控错误信息记录表';
+
+CREATE TABLE bi_monitor.monitor_cubes_uv_pv_msg (
+	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+	`cubes_date` varchar(255) NOT NULL DEFAULT '' COMMENT '日期',
+	`cubes_name` varchar(100) NOT NULL DEFAULT '' COMMENT 'CUBE名称',
+	`usr_name` varchar(50) NOT NULL DEFAULT '' COMMENT '用户',
+	`usr_email` varchar(50) NOT NULL DEFAULT '' COMMENT '邮箱',
+	`total_uv` varchar(50) NOT NULL DEFAULT '' COMMENT 'UV数量',
+	`total_pv` varchar(50) NOT NULL DEFAULT '' COMMENT 'PV数量',
+	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
+	PRIMARY KEY (`id`),
+	INDEX idx_cubes_date (`cubes_date`)
+) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='CUBES用户行为监控错误信息记录表';
