@@ -40,7 +40,7 @@ $(document).on("click", "#box button", function () {
         function(data, status) {
             $('#leftCol').html(data);
         }
-    )
+    );
 });
 // {# 返回的时候分页列表请求 #}
 $(document).on("click", "#back_to_list", function () {
