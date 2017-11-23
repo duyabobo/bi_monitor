@@ -32,7 +32,27 @@ $(document).on("click", "#pageSelect li", function () {
         function(data, status) {
             $('#leftCol').html(data);
         }
-    )
+    );
+    if ($('#pageSelect > li.sel-page').text() === '1')
+    {
+        $('#prePage').attr('disabled', 'disabled');
+        $('#firstPage').attr('disabled', 'disabled');
+    }
+    else
+    {
+        $('#prePage').removeAttr('disabled');
+        $('#firstPage').removeAttr('disabled');
+    };
+    if ($('#pageSelect > li.sel-page').text() === $('#page_num').text())
+    {
+        $('#nextPage').attr('disabled', 'disabled');
+        $('#lastPage').attr('disabled', 'disabled');
+    }
+    else
+    {
+        $('#nextPage').removeAttr('disabled');
+        $('#lastPage').removeAttr('disabled');
+    };
 });
 $(document).on("click", "#box button", function () {
     $.get(
@@ -41,6 +61,26 @@ $(document).on("click", "#box button", function () {
             $('#leftCol').html(data);
         }
     );
+    if ($('#pageSelect > li.sel-page').text() === '1')
+    {
+        $('#prePage').attr('disabled', 'disabled');
+        $('#firstPage').attr('disabled', 'disabled');
+    }
+    else
+    {
+        $('#prePage').removeAttr('disabled');
+        $('#firstPage').removeAttr('disabled');
+    };
+    if ($('#pageSelect > li.sel-page').text() === $('#page_num').text())
+    {
+        $('#nextPage').attr('disabled', 'disabled');
+        $('#lastPage').attr('disabled', 'disabled');
+    }
+    else
+    {
+        $('#nextPage').removeAttr('disabled');
+        $('#lastPage').removeAttr('disabled');
+    };
 });
 // {# 返回的时候分页列表请求 #}
 $(document).on("click", "#back_to_list", function () {
@@ -50,5 +90,25 @@ $(document).on("click", "#back_to_list", function () {
             $('#leftCol').html(data);
             $('.bottomCol').show()
         }
-    )
+    );
+    if ($('#pageSelect > li.sel-page').text() === '1')
+    {
+        $('#prePage').attr('disabled', 'disabled');
+        $('#firstPage').attr('disabled', 'disabled');
+    }
+    else
+    {
+        $('#prePage').removeAttr('disabled');
+        $('#firstPage').removeAttr('disabled');
+    };
+    if ($('#pageSelect > li.sel-page').text() === $('#page_num').text())
+    {
+        $('#nextPage').attr('disabled', 'disabled');
+        $('#lastPage').attr('disabled', 'disabled');
+    }
+    else
+    {
+        $('#nextPage').removeAttr('disabled');
+        $('#lastPage').removeAttr('disabled');
+    };
 });

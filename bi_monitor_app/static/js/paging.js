@@ -46,6 +46,9 @@
                 '&nbsp;页</p>' +
                 '<p class="total-count">' +
                 that.options.totalCount +
+                '</p>'+
+                '<p class="page_num" hidden="hidden" id="page_num">' +
+                that.options.totalPages +
                 '</p>';
             that.el.html(content);
         },
