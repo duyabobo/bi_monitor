@@ -75,3 +75,15 @@ def f5():
             compute_value='不小于',
             compute_source='业务概览-C2C绩效考核-C2销售绩效考核过程指标'
         ).save()
+
+
+def f6():
+    """创建bi强制缓存报警信息数据"""
+    for i in range(133):
+        MonitorBiCacheMsg(
+            t_id='c2c_recheck_without_consign',
+            t_name='c2c_recheck_without_consign',
+            http_status=500,
+            search_type=['今日','当月'][random.randint(0,1)],
+            error_time='2017-11-23 16:20:48'
+        ).save()

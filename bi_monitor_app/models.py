@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from datetime import datetime
 
 from django.db import models
 
@@ -154,8 +155,8 @@ class MonitorBiCacheMsg(BaseModel):
     http_status = models.CharField(max_length=100)  # HTTP状态
     search_type = models.CharField(max_length=100)  # 查询类型
     error_time = models.CharField(max_length=50)  # 报错时间
-    created_at = models.DateTimeField()  # 记录创建时间
-    updated_at = models.DateTimeField()  # 记录更新时间
+    created_at = models.DateTimeField(default=datetime.now())  # 记录创建时间
+    updated_at = models.DateTimeField(default=datetime.now())  # 记录更新时间
 
     class Meta:
         db_table = 'monitor_bi_cache_msg'  # 自定义表名称
