@@ -26,9 +26,17 @@ $(document).on("click", ".my_list_item", function () {
     )
 });
 // {# 分页列表请求 #}
-$(document).on("click", ".pagination li", function () {
+$(document).on("click", "#pageSelect li", function () {
     $.get(
-        '/list/?api_id=' + $('.list-group .active').attr('api_id') + '&page=' + $('.pagination .active').attr('page'),
+        '/list/?api_id=' + $('.list-group .active').attr('api_id') + '&page=' + $("#pageSelect .sel-page").text(),
+        function(data, status) {
+            $('#leftCol').html(data);
+        }
+    )
+});
+$(document).on("click", "#box button", function () {
+    $.get(
+        '/list/?api_id=' + $('.list-group .active').attr('api_id') + '&page=' + $("#pageSelect .sel-page").text(),
         function(data, status) {
             $('#leftCol').html(data);
         }
