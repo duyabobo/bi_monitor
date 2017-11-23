@@ -80,5 +80,5 @@ def get_pager(request):
     return render(request, 'pager_info.html', context={
         'api_id': api_id,
         'total': total,
-        'total_page': int(total/10) + 1
+        'total_page': int(total/10)
     })
