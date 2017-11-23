@@ -24,6 +24,8 @@ CREATE TABLE "t_hour_analysis" (
     "id" BIGINT UNSIGNED NOT NULL DEFAULT 0 AUTOINCREMENT COMMENT 'id自增',
     "from_timestamp" BIGINT UNSIGNED NOT NULL COMMENT '日志分析的起始时间戳，单位毫秒',
     "end_timestamp" BIGINT UNSIGNED NOT NULL COMMENT '结束统计的时间戳，单位毫秒',
+    "web_delay_bg_10" INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '从web访问的接口响应时间大于10s的次数',
+    "api_delay_bg_10" INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '从api访问的接口响应时间大于10s的次数',
     PRIMARY KEY (id),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '某个星期的bi接口日志分析结果';
 

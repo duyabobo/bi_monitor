@@ -65,10 +65,10 @@ def get_list(page):
     hour_analysises = HourAnalysis.get_list(page)
     body = map(
         lambda x:
-        [x.id, timestamp_to_string(x.from_timestamp), timestamp_to_string(x.end_timestamp)],
+        [x.id, timestamp_to_string(x.from_timestamp), timestamp_to_string(x.end_timestamp), x.web_delay_bg_10, x.api_delay_bg_10],
         hour_analysises
     )
-    head = ['id', '统计的起始时间', '统计的结束时间']
+    head = ['id', '统计的起始时间', '统计的结束时间', 'web访问时间大于10s次数', 'api访问时间大于10s次数']
     return head, body
 
 

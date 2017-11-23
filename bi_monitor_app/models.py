@@ -45,6 +45,8 @@ class HourAnalysis(models.Model):
     """
     from_timestamp = models.IntegerField(default=0)  # 开始统计的时间戳，单位毫秒
     end_timestamp = models.IntegerField(default=0)  # 结束统计的时间戳，单位毫秒
+    web_delay_bg_10 = models.IntegerField(default=0)  # 从web访问的接口响应时间大于10s的次数
+    api_delay_bg_10 = models.IntegerField(default=0)  # 从api访问的接口响应时间大于10s的次数
 
     class Meta:
         db_table = 't_hour_analysis'  # 自定义表名称
