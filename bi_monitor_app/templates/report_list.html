@@ -1,4 +1,4 @@
-{# 监控结果列表显示，需要注入的变量： api_id、title、head 和 body 列表所需要的数据 #}
+{# 监控结果列表显示，需要注入的变量： api_id、detail_url_is_needed、title、head 和 body 列表所需要的数据 #}
 <div>{{ title }}</div>
 <table class="table table-bordered">
 <thead>
@@ -12,7 +12,11 @@
 {% for l in body %}
     <tr>
     {% for b in l %}
-        <td><a href="#" class="my_list_item" item_id="{{ l.0 }}" api_id="{{ api_id }}">{{ b }}</a></td>
+        {% if detail_url_is_needed %}
+            <td><a href="#" class="my_list_item" item_id="{{ l.0 }}" api_id="{{ api_id }}">{{ b }}</a></td>
+        {% else %}
+            <td><li>{{ b }}</li></td>
+        {% endif %}
     {% endfor %}
     </tr>
 {% endfor %}

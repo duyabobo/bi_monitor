@@ -59,3 +59,19 @@ def f3():
                     department_name='department_name',
                     api_key='api_key'
                 ).save()
+
+
+def f5():
+    """创建BI指标监控告警数据记录"""
+    for i in range(500):
+        MonitorBiApiMsg(
+            t_id=['operation_both', 'operation_buyer', 'process_index'][random.randint(0, 2)],
+            t_name=['运营指标-双约', '运营指标-售车(核心)', '业务概览-C2C绩效考核-C2销售绩效考核过程指标'][random.randint(0, 2)],
+            search_time='17/11/23',
+            search_type='汇总',
+            indicator_name='新增带看工单 和 实际带看',
+            indicator_id='evaluation_sign_time and appoint_task_success_consigned',
+            bi_value='0小于10',
+            compute_value='不小于',
+            compute_source='业务概览-C2C绩效考核-C2销售绩效考核过程指标'
+        ).save()

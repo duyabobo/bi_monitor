@@ -5,4 +5,5 @@
 title_dict = {
     'bi_access_hour_report': 'bi接口访问统计时报',
     'bi_api_week_report': 'bi访问日志统计周报',
+    'bi_indicator_monitor_error_message': 'BI指标监控告警邮件',
 }

@@ -108,3 +108,30 @@ class NoteWorthyLog(models.Model):
         :return:
         """
         return NoteWorthyLog.objects.filter(hour_analysis_id=hour_analysis_id)
+
+
+class MonitorBiApiMsg(models.Model):
+    """
+    BI指标监控告警邮件
+    """
+    t_id = models.CharField(max_length=255)  # 报表ID
+    t_name = models.CharField(max_length=255)  # 报表名称
+    search_time = models.CharField(max_length=100)  # 查询时间
+    search_type = models.CharField(max_length=100)  # 查询类型
+    indicator_name = models.CharField(max_length=255)  # 指标名称
+    indicator_id = models.CharField(max_length=255)  # 指标Indicator
+    bi_value = models.CharField(max_length=100)  # BI显示指标值
+    compute_value = models.CharField(max_length=100)  # 计算所得指标值
+    compute_source = models.CharField(max_length=1000)  # 计算数据来源
+
+    class Meta:
+        db_table = 'monitor_bi_api_msg'  # 自定义表名称
+
+    @staticmethod
+    def get_list(page):
+        """
+        查询某一个周的所有统计数据
+        :param page:
+        :return:
+        """
+        return MonitorBiApiMsg.objects.all().order_by('-search_time')[10 * page: 10 * (page + 1)]
