@@ -8,6 +8,7 @@ create table email_record (
     end_datetime VARCHAR(50) NOT NULL DEFAULT '' COMMENT '结束统计时间',
     content_count INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '本次邮件发送的报警信息条数',
     PRIMARY KEY (id),
+    INDEX i_email_key (email_key)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '按照星期bi接口分析报表的信息';
 
 create table bi_nginx_log_week_report (

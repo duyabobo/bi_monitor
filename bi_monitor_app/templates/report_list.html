@@ -1,5 +1,5 @@
 {# 监控结果列表显示，需要注入的变量： api_id、detail_url_is_needed、title、head 和 body 列表所需要的数据 #}
-<div>{{ title }}</div>
+<div>{{ name }}</div>
 <table class="table table-bordered">
 <thead>
 <tr>
@@ -9,13 +9,11 @@
 </tr>
 </thead>
 <tbody>
-{% for l in body %}
+{% for line in body %}
     <tr>
-    {% for b in l %}
-        {% if detail_url_is_needed %}
-            <td><a href="#" class="my_list_item" item_id="{{ l.0 }}" api_id="{{ api_id }}">{{ b }}</a></td>
-        {% else %}
-            <td><li>{{ b }}</li></td>
+    {% for b in line %}
+        {% if not forloop.first %}
+            <td><a href="#" class="my_list_item" item_id="{{ line.0 }}" api_id="{{ api_id }}">{{ b }}</a></td>
         {% endif %}
     {% endfor %}
     </tr>

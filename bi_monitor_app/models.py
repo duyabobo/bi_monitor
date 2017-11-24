@@ -17,6 +17,15 @@ class EmailRecord(models.Model):
         db_table = 'email_record'  # 自定义表名称
 
     @classmethod
+    def get_one(cls, email_recorder_id):
+        """
+        获取一个邮件记录的信息
+        :param email_recorder_id:
+        :return:
+        """
+        return cls.objects.get(id=email_recorder_id)
+
+    @classmethod
     def get_list(cls, page, email_key):
         """
         分页查询某一类邮件的邮件列表
@@ -49,7 +58,7 @@ class BaseModel(models.Model):
         :param email_recorder_id:
         :return:
         """
-        return cls.objects.filter(email_recorder_id=email_recorder_id)
+        return cls.objects.filter(email_recorder_id=int(email_recorder_id))
 
 
 class BiNginxLogWeekReport(BaseModel):
@@ -132,8 +141,6 @@ class MonitorBiCacheMsg(BaseModel):
     http_status = models.CharField(max_length=100)  # HTTP状态
     search_type = models.CharField(max_length=100)  # 查询类型
     error_time = models.CharField(max_length=50)  # 报错时间
-    created_at = models.DateTimeField(default=datetime.now())  # 记录创建时间
-    updated_at = models.DateTimeField(default=datetime.now())  # 记录更新时间
 
     class Meta:
         db_table = 'monitor_bi_cache_msg'  # 自定义表名称

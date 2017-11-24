@@ -1,22 +1,18 @@
 # coding=utf-8
 # author='duyabo'
 # date='2017/11/18'
-from datetime import timedelta
-
-# from bi_monitor_app.models import WeekReport
-# from bi_monitor_app.models import WeekReportItem
+from bi_monitor_app.models import BiNginxLogWeekReport, EmailRecord
 
 
-def get_detail(report_id):
+def get_detail(email_recorder_id):
     """
     根据 item_id 获取周报报表监控数据
-    :param report_id:
+    :param email_recorder_id:
     :return:
     """
-    report = WeekReport.objects.get(id=report_id)
-    analysis_date = report.analysis_date
-    report_items = WeekReportItem.objects.filter(week_report_id=report_id)
-    interval_date = "日期: {0} ——> {1}".format(analysis_date, analysis_date - timedelta(days=7))
+    report_items = BiNginxLogWeekReport.get_items(email_recorder_id)
+    email_record = EmailRecord.get_one(email_recorder_id)
+    interval_date = "日期: {0} ——> {1}".format(email_record.from_datetime, email_record.end_datetime)
     table_datas = [
         [
             [
@@ -40,22 +36,5 @@ def get_detail(report_id):
         if item.analysis_type == 0:
             table_datas[0][2].append([item.analysis_key, item.api_count, item.percent])
         if item.analysis_type == 1:
-            table_datas[1][2].append([item.analysis_key, item.api_count, item.percent, item.average_delay_time])
+            table_datas[1][2].append([item.analysis_key, item.api_count, item.percent, item.average_delay_microseconds])
     return {'table_datas': table_datas}
-
-
-def get_list(page):
-    """
-    获取周报监控报表的列表，分页显示
-    :param page:
-    :return: head, body，head 为一个列表，显示为表头，body是一个二维列表，为表格的body。
-    """
-    week_reports = WeekReport.get_list(page)
-    head = ['id', '监控日期']
-    body = map(lambda x: [x.id, str(x.analysis_date)], week_reports)
-    return head, body
-
-
-def get_total():
-    """获取总数"""
-    return WeekReport.get_total()

@@ -3,22 +3,25 @@
 # date='2017/11/22'
 import json
 import random
-import time
+from datetime import datetime, timedelta
 from bi_monitor_app.models import *
 
 
 def f1():
     """创建时报记录"""
     for i in range(500):
-        now = time.time()*1000
-        delta1 = random.randint(1, 1000) * 1000
-        HourAnalysis(from_timestamp=now - delta1,
-                     end_timestamp=now - delta1 - 3600000).save()
-
-
-def f4():
-    """删除统计信息时报"""
-    BiAccessAnalysis.objects.all().delete()
+        now = datetime.now()
+        EmailRecord(
+            email_key=[
+                'bi_access_hour_report',
+                'bi_api_week_report',
+                'bi_indicator_monitor_error_message',
+                'bi_cache_force_warning_message'
+            ][random.randint(0, 3)],
+            analysis_datetime=str(now)[:-10],
+            from_datetime=str(now - timedelta(hours=random.randint(0, 24)))[:-10],
+            end_datetime=str(now - timedelta(hours=random.randint(0, 24)))[:-10],
+        ).save()
 
 
 def f2():
@@ -35,7 +38,7 @@ def f2():
                 ['平均响应时间(ms)', 846.0, 298.0, 1376.0, 2559.0, 3548.0, 6588.0, 12144.0, 0]
             ]
             BiAccessAnalysis(
-                hour_analysis_id=i,
+                email_recorder_id=i,
                 source=source,
                 table_content=json.dumps(table_content)
             ).save()
@@ -44,13 +47,12 @@ def f2():
 def f3():
     """创建值得关注的访问记录信息"""
     for i in range(500):
-        timestramp = time.time() - random.randint(1, 1000)*1000
         for source in [0, 1]:
             for num in range(random.randint(1, 8)):
                 NoteWorthyLog(
-                    hour_analysis_id=i,
+                    email_recorder_id=i,
                     source=source,
-                    access_timestamp=timestramp,
+                    access_datetime=str(datetime.now())[:-10],
                     report_name='report_name',
                     report_id='report_id',
                     user_name='user_name',
@@ -61,10 +63,27 @@ def f3():
                 ).save()
 
 
+def f4():
+    """创建周报测试数据"""
+    for i in range(500):
+        analysis_type = random.randint(0,1)
+        BiNginxLogWeekReport(
+            email_recorder_id=i,
+            analysis_type=analysis_type,
+            analysis_key=[200, 300, 400, 404, 499, 500][random.randint(0, 5)]
+            if analysis_type==0
+            else ['0~1s', '1~2s', '2~3s', '3~5s', '5~10s', '10~20s', '20s+'][random.randint(0,6)],
+            api_count=random.randint(100, 1000),
+            percent=random.randint(0, 100),
+            average_delay_microseconds=random.randint(0, 20000)
+        ).save()
+
+
 def f5():
     """创建BI指标监控告警数据记录"""
     for i in range(500):
         MonitorBiApiMsg(
+            email_recorder_id=i,
             t_id=['operation_both', 'operation_buyer', 'process_index'][random.randint(0, 2)],
             t_name=['运营指标-双约', '运营指标-售车(核心)', '业务概览-C2C绩效考核-C2销售绩效考核过程指标'][random.randint(0, 2)],
             search_time='17/11/23',
@@ -79,8 +98,9 @@ def f5():
 
 def f6():
     """创建bi强制缓存报警信息数据"""
-    for i in range(133):
+    for i in range(500):
         MonitorBiCacheMsg(
+            email_recorder_id=i,
             t_id='c2c_recheck_without_consign',
             t_name='c2c_recheck_without_consign',
             http_status=500,

@@ -2,14 +2,14 @@
 # author='duyabo'
 # date='2017/11/22'
 import json
-# from bi_monitor_app.models import HourAnalysis, BiAccessAnalysis, NoteWorthyLog
-# from bi_monitor_app.utils.time_utils import timestamp_to_string
+
+from bi_monitor_app.models import BiAccessAnalysis, NoteWorthyLog
 
 
-def get_detail(report_id):
+def get_detail(email_recorder_id):
     """
     根据 item_id 获取周报报表监控数据
-    :param report_id:
+    :param email_recorder_id:
     :return:
     """
     table_datas = [
@@ -32,17 +32,17 @@ def get_detail(report_id):
             []
         ]
     ]
-    bi_analysises = BiAccessAnalysis.get_items(report_id)
+    bi_analysises = BiAccessAnalysis.get_items(email_recorder_id)
     for b_a in bi_analysises:
         table_content = json.loads(b_a.table_content)
         if b_a.source == 0:
             table_datas[0].append(table_content)
         if b_a.source == 1:
             table_datas[2].append(table_content)
-    note_worthies = NoteWorthyLog.get_items(report_id)
+    note_worthies = NoteWorthyLog.get_items(email_recorder_id)
     for n_w in note_worthies:
         content = [
-            n_w.access_timestamp,
+            n_w.access_datetime,
             n_w.department_name,
             n_w.method,
             n_w.api_key,
@@ -54,24 +54,3 @@ def get_detail(report_id):
         if n_w.source == 1:
             table_datas[3][2].append(content)
     return {'table_datas': table_datas}
-
-
-def get_list(page):
-    """
-    获取时报的分页列表
-    :param page:
-    :return:
-    """
-    hour_analysises = HourAnalysis.get_list(page)
-    body = map(
-        lambda x:
-        [x.id, timestamp_to_string(x.from_timestamp), timestamp_to_string(x.end_timestamp), x.web_delay_bg_10, x.api_delay_bg_10],
-        hour_analysises
-    )
-    head = ['id', '统计的起始时间', '统计的结束时间', 'web访问时间大于10s次数', 'api访问时间大于10s次数']
-    return head, body
-
-
-def get_total():
-    """获取总数"""
-    return HourAnalysis.get_total()
