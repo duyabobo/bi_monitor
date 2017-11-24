@@ -1,7 +1,7 @@
 # coding=utf-8
 # author='duyabo'
 # date='2017/11/23'
-from bi_monitor_app.models import MonitorBiApiMsg
+# from bi_monitor_app.models import MonitorBiApiMsg
 
 
 def get_list(page):

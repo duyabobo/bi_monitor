@@ -3,8 +3,8 @@
 # date='2017/11/18'
 from datetime import timedelta
 
-from bi_monitor_app.models import WeekReport
-from bi_monitor_app.models import WeekReportItem
+# from bi_monitor_app.models import WeekReport
+# from bi_monitor_app.models import WeekReportItem
 
 
 def get_detail(report_id):

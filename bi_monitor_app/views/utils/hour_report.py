@@ -2,8 +2,8 @@
 # author='duyabo'
 # date='2017/11/22'
 import json
-from bi_monitor_app.models import HourAnalysis, BiAccessAnalysis, NoteWorthyLog
-from bi_monitor_app.utils.time_utils import timestamp_to_string
+# from bi_monitor_app.models import HourAnalysis, BiAccessAnalysis, NoteWorthyLog
+# from bi_monitor_app.utils.time_utils import timestamp_to_string
 
 
 def get_detail(report_id):

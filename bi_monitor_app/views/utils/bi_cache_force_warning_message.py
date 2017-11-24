@@ -1,7 +1,7 @@
 # coding=utf-8
 # author='duyabo'
 # date='2017/11/23'
-from bi_monitor_app.models import MonitorBiCacheMsg
+# from bi_monitor_app.models import MonitorBiCacheMsg
 
 
 def get_list(page):
