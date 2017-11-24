@@ -3,9 +3,11 @@
 {% for title, head, body in table_datas %}
     <table class="table table-bordered">
     <div style="text-align: center">
+    <strong>
         {% for t in title %}
             {{ t }}<br/>
         {% endfor %}
+    </strong>
     </div>
         <thead>
         <tr>

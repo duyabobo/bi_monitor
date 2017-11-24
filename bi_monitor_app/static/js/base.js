@@ -86,7 +86,7 @@ $(document).on("click", "#box button", function () {
 // {# 返回的时候分页列表请求 #}
 $(document).on("click", "#back_to_list", function () {
     $.get(
-        '/list/?api_id=' + $('.list-group .active').attr('api_id') + '&page=' + $('.pagination .active').attr('page'),
+        '/list/?api_id=' + $('.list-group .active').attr('api_id') + '&page=' + $("#pageSelect .sel-page").text(),
         function(data, status) {
             $('#leftCol').html(data);
             $('.bottomCol').show()

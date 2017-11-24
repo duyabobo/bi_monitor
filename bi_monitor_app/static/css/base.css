@@ -55,9 +55,9 @@
 
 .bottomCol
 {
-    position: relative;
-    margin-left:0;
-    bottom:0;
+    position: absolute;
+    margin-left:24%;
+    bottom:-30px;
 }
 
 .nav li {

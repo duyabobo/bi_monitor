@@ -33,15 +33,15 @@
     </nav><!-- /.navbar -->
     <div class="container" style="position:absolute; top:60px; left:90px;">
       <div class="row row-offcanvas row-offcanvas-right">
-        <div class="col-xs-12 col-sm-9" id="leftCol">
-            <div class="container">左侧默认</div>
-        </div>
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
           <div class="list-group">
               {% block right_list %}
               {% endblock %}
             {# 右侧导航 #}
           </div>
+        </div>
+        <div class="col-xs-12 col-sm-9" id="leftCol">
+            <div class="container">左侧默认</div>
         </div>
       </div>
     <br/>
