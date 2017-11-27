@@ -7,21 +7,25 @@ from datetime import datetime, timedelta
 from bi_monitor_app.models import *
 
 
+def f0():
+    """删除邮件记录"""
+    EmailRecord.objects.all().delete()
+
+
 def f1():
-    """创建时报记录"""
-    for i in range(500):
+    """创建邮件记录"""
+    record_ids = []
+    for i in range(20):
         now = datetime.now()
-        EmailRecord(
-            email_key=[
-                'bi_access_hour_report',
-                'bi_api_week_report',
-                'bi_indicator_monitor_error_message',
-                'bi_cache_force_warning_message'
-            ][random.randint(0, 3)],
+        record = EmailRecord(
+            email_key='monitor_bi_data_msg',
             analysis_datetime=str(now)[:-10],
             from_datetime=str(now - timedelta(hours=random.randint(0, 24)))[:-10],
             end_datetime=str(now - timedelta(hours=random.randint(0, 24)))[:-10],
-        ).save()
+        )
+        record.save()
+        record_ids.append(record.id)
+    return record_ids
 
 
 def f2():
@@ -107,3 +111,26 @@ def f6():
             search_type=['今日','当月'][random.randint(0,1)],
             error_time='2017-11-23 16:20:48'
         ).save()
+
+
+def f7(record_ids):
+    """BI强制缓存监控错误信息数据测试数据创建"""
+    MonitorBiDataMsg.objects.all().delete()
+    for i in record_ids:
+        MonitorBiDataMsg(
+            email_recorder_id=i,
+            t_id='c2c_recheck_without_consign',
+            t_name='运营指标-C2C业绩',
+            indicator_name='for_sale_car_source_c2c',
+            search_time='17/11/25',
+            search_type='南区',
+            old_value='50681',
+            new_value='49428',
+            deviation='-12312'
+        ).save()
+
+
+def create_test_data():
+    record_ids = f1()
+    print record_ids
+    f7(record_ids)

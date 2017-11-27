@@ -92,6 +92,7 @@ CREATE TABLE bi_monitor.monitor_bi_cache_msg (
 
 CREATE TABLE bi_monitor.monitor_bi_data_msg (
 	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+    `email_recorder_id` BIGINT NOT NULL DEFAULT 0 COMMENT '所属的邮件id',
 	`t_name` varchar(255) NOT NULL DEFAULT '' COMMENT '报表名称',
 	`t_id` varchar(255) NOT NULL DEFAULT '' COMMENT '报表ID',
 	`indicator_name` varchar(255) NOT NULL DEFAULT '' COMMENT '指标名称',

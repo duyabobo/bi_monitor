@@ -131,6 +131,24 @@ class MonitorBiApiMsg(BaseModel):
         db_table = 'monitor_bi_api_msg'  # 自定义表名称
 
 
+class MonitorBiDataMsg(BaseModel):
+    """
+    BI数据快照监控错误信息记录表
+    """
+    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
+    t_id = models.CharField(max_length=255)  # 报表ID
+    t_name = models.CharField(max_length=255)  # 报表名称
+    indicator_name = models.CharField(max_length=255)  # 指标名称
+    search_time = models.CharField(max_length=100)  # 查询时间
+    search_type = models.CharField(max_length=100)  # 分组类型
+    old_value = models.CharField(max_length=255)  # 上次查询值
+    new_value = models.CharField(max_length=100)  # 此次查询值
+    deviation = models.CharField(max_length=100)  # 偏差值
+
+    class Meta:
+        db_table = 'monitor_bi_data_msg'  # 自定义表名称
+
+
 class MonitorBiCacheMsg(BaseModel):
     """
     BI强制缓存监控错误信息记录表

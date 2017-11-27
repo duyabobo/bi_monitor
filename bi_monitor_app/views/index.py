@@ -6,8 +6,9 @@ from django.shortcuts import render
 from bi_monitor_app.models import EmailRecord
 from bi_monitor_app.views import email_name_dict
 from bi_monitor_app.views import head_dict
-from bi_monitor_app.views.utils import bi_cache_force_warning_message
-from bi_monitor_app.views.utils import bi_indicator_monitor_error_message
+from bi_monitor_app.views.utils import monitor_bi_cache_msg
+from bi_monitor_app.views.utils import monitor_bi_api_msg
+from bi_monitor_app.views.utils import monitor_bi_data_msg
 from bi_monitor_app.views.utils import hour_report
 from bi_monitor_app.views.utils import week_report
 
@@ -29,9 +30,11 @@ def content_detail(request):
     elif api_id == 'bi_api_week_report':  # bi访问日志周报报表
         context = week_report.get_detail(email_recorder_id)
     elif api_id == 'monitor_bi_api_msg':  # BI指标监控告警邮件
-        context = bi_indicator_monitor_error_message.get_detail(email_recorder_id)
+        context = monitor_bi_api_msg.get_detail(email_recorder_id)
     elif api_id == 'monitor_bi_cache_msg':  # BI强制缓存告警邮件
-        context = bi_cache_force_warning_message.get_detail(email_recorder_id)
+        context = monitor_bi_cache_msg.get_detail(email_recorder_id)
+    elif api_id == 'monitor_bi_data_msg':  # BI数据快照监控错误信息邮件
+        context = monitor_bi_data_msg.get_detail(email_recorder_id)
     else:
         context = {'table_datas': []}
     return render(request, 'report_detail_2_dime.html', context=context)
