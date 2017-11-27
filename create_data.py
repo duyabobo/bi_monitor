@@ -18,7 +18,7 @@ def f1():
     for i in range(20):
         now = datetime.now()
         record = EmailRecord(
-            email_key='monitor_bi_enumeration_msg',
+            email_key='monitor_bi_interface_msg',
             analysis_datetime=str(now)[:-10],
             from_datetime=str(now - timedelta(hours=random.randint(0, 24)))[:-10],
             end_datetime=str(now - timedelta(hours=random.randint(0, 24)))[:-10],
@@ -115,7 +115,6 @@ def f6():
 
 def f7(record_ids):
     """BI强制缓存监控错误信息数据测试数据创建"""
-    MonitorBiDataMsg.objects.all().delete()
     for i in record_ids:
         MonitorBiDataMsg(
             email_recorder_id=i,
@@ -131,7 +130,6 @@ def f7(record_ids):
 
 def f8(record_ids):
     """BI业务源库枚举值监控错误信息邮件"""
-    MonitorBiDataMsg.objects.all().delete()
     for i in record_ids:
         MonitorBiEnumerationMsg(
             email_recorder_id=i,
@@ -143,7 +141,22 @@ def f8(record_ids):
         ).save()
 
 
+def f9(record_ids):
+    """创建BI接口监控错误信息记录表测试数据"""
+    for i in record_ids:
+        MonitorBiInterfaceMsg(
+            email_recorder_id=i,
+            t_name='vehicle_auction_appoint',
+            t_id='receive_result',
+            http_status='500',
+            search_type='当日',
+            monitor_type='报表',
+            history_error='25',
+            continuous_error='1',
+        ).save()
+
+
 def create_test_data():
     record_ids = f1()
     print record_ids
-    f8(record_ids)
+    f9(record_ids)

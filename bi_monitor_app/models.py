@@ -179,6 +179,23 @@ class MonitorBiEnumerationMsg(BaseModel):
         db_table = 'monitor_bi_enumeration_msg'  # 自定义表名称
 
 
+class MonitorBiInterfaceMsg(BaseModel):
+    """
+    BI接口监控错误信息记录表
+    """
+    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
+    t_name = models.CharField(max_length=255)  # 报表名称
+    t_id = models.CharField(max_length=100)  # 报表ID
+    http_status = models.CharField(max_length=50)  # HTTP状态
+    search_type = models.CharField(max_length=50)  # 查询类型
+    monitor_type = models.CharField(max_length=50)  # 监控类型
+    history_error = models.CharField(max_length=50)  # 历史错误次数
+    continuous_error = models.CharField(max_length=50)  # 连续错误次数
+
+    class Meta:
+        db_table = 'monitor_bi_interface_msg'  # 自定义表名称
+
+
 # monitor_bi下的表名
 class MonitorBiApi(models.Model):
     t_id = models.CharField(max_length=255, verbose_name='报表ID')

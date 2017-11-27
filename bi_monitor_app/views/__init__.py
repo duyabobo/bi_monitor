@@ -11,6 +11,7 @@ email_name_dict = {
     'monitor_bi_cache_msg': 'BI强制缓存告警邮件',
     'monitor_bi_data_msg': 'BI数据快照监控错误信息邮件',
     'monitor_bi_enumeration_msg': 'BI业务源库枚举值监控错误信息邮件',
+    'monitor_bi_interface_msg': 'BI接口监控告警邮件',
 }
 
 # 邮件的 email_key 和 邮件数据表的表头的对应关系
@@ -22,4 +23,5 @@ head_dict = {
     'monitor_bi_cache_msg': ['#', '统计的起始时间', '统计的结束时间', 'BI强制缓存告警次数'],
     'monitor_bi_data_msg': ['#', '统计的起始时间', '统计的结束时间', 'BI监控数据异常次数'],
     'monitor_bi_enumeration_msg': ['#', '统计的起始时间', '统计的结束时间', '库表监控枚举值异常次数'],
+    'monitor_bi_interface_msg': ['#', '统计的起始时间', '统计的结束时间', 'BI接口监控告警次数'],
 }
