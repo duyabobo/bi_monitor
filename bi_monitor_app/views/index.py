@@ -28,9 +28,9 @@ def content_detail(request):
         context = hour_report.get_detail(email_recorder_id)
     elif api_id == 'bi_api_week_report':  # bi访问日志周报报表
         context = week_report.get_detail(email_recorder_id)
-    elif api_id == 'bi_indicator_monitor_error_message':  # BI指标监控告警邮件
+    elif api_id == 'monitor_bi_api_msg':  # BI指标监控告警邮件
         context = bi_indicator_monitor_error_message.get_detail(email_recorder_id)
-    elif api_id == 'bi_cache_force_warning_message':  # BI强制缓存告警邮件
+    elif api_id == 'monitor_bi_cache_msg':  # BI强制缓存告警邮件
         context = bi_cache_force_warning_message.get_detail(email_recorder_id)
     else:
         context = {'table_datas': []}

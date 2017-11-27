@@ -144,3 +144,167 @@ class MonitorBiCacheMsg(BaseModel):
 
     class Meta:
         db_table = 'monitor_bi_cache_msg'  # 自定义表名称
+
+
+# monitor_bi下的表名
+class MonitorBiApi(models.Model):
+    t_id = models.CharField(max_length=255, verbose_name='报表ID')
+    t_name = models.CharField(max_length=255, blank=True, default='', verbose_name='报表名称')
+    indicator = models.CharField(max_length=255, verbose_name='指标indicator')
+    indicator_name = models.CharField(max_length=255, blank=True, default='', verbose_name='指标名称')
+    is_method = models.IntegerField(default=0, verbose_name='方法类型')
+    sub_indicator = models.CharField(max_length=1000, blank=True, default='', verbose_name='子指标indicator')
+    sub_indicator_name = models.CharField(max_length=1000, blank=True, default='', verbose_name='子指标名称')
+    target_id = models.CharField(max_length=255, blank=True, default='', verbose_name='重叠报表ID')
+    target_name = models.CharField(max_length=255, blank=True, default='', verbose_name='重叠报表名称')
+    target_indicator = models.CharField(max_length=1000, blank=True, default='', verbose_name='重叠指标indicator')
+    target_indicator_name = models.CharField(max_length=1000, blank=True, default='', verbose_name='重叠指标名称')
+    is_delete = models.IntegerField(default=0, verbose_name='是否删除')
+    is_complicate = models.IntegerField(default=0, verbose_name='是否重叠指标')
+
+    def __unicode__(self):
+        return self.t_id
+
+    class Meta:
+        db_table = 'monitor_bi_api'  # 自定义表名称
+
+
+class MonitorBiCache(models.Model):
+    t_id = models.CharField(max_length=255, verbose_name='报表ID')
+    t_name = models.CharField(max_length=255, blank=True, default='', verbose_name='报表名称')
+    t_type = models.CharField(max_length=255, blank=True, default='', verbose_name='报表类型')
+    is_day = models.IntegerField(default=1, verbose_name='是否按天缓存')
+    is_month = models.IntegerField(default=1, verbose_name='是否按月缓存')
+    is_delete = models.IntegerField(default=0, verbose_name='是否删除')
+
+    def __unicode__(self):
+        return self.t_id
+
+    class Meta:
+        db_table = 'monitor_bi_cache'  # 自定义表名称
+
+
+class MonitorBiData(models.Model):
+    t_id = models.CharField(max_length=255, verbose_name='报表ID')
+    t_name = models.CharField(max_length=255, blank=True, default='', verbose_name='报表名称')
+    t_type = models.CharField(max_length=255, blank=True, default='', verbose_name='报表类型')
+    is_personnel = models.IntegerField(default=0, verbose_name='是否人效报表')
+    is_delete = models.IntegerField(default=0, verbose_name='是否删除')
+
+    def __unicode__(self):
+        return self.t_id
+
+    class Meta:
+        db_table = 'monitor_bi_data'  # 自定义表名称
+
+
+class MonitorBiSourceGroupby(models.Model):
+    field_name = models.CharField(max_length=255, verbose_name='指标ID')
+    bi_job_id = models.CharField(max_length=100, verbose_name='清洗脚本名称')
+    origin_field = models.CharField(max_length=100, blank=True, verbose_name='源字段')
+    origin_db = models.CharField(max_length=50, blank=True, verbose_name='源数据库')
+    origin_sel = models.CharField(max_length=100, blank=True, verbose_name='源数据字段')
+    origin_sql = models.CharField(max_length=3000, blank=True, verbose_name='源数据SQL')
+    origin_time_type = models.IntegerField(default=0, verbose_name='源表时间类型')
+    target_field = models.CharField(max_length=100, blank=True, verbose_name='目标字段')
+    target_db = models.CharField(max_length=50, blank=True, verbose_name='目标数据库')
+    target_sel = models.CharField(max_length=100, blank=True, verbose_name='目标数据字段')
+    target_sql = models.CharField(max_length=3000, blank=True, verbose_name='目标数据SQL')
+    target_time_type = models.IntegerField(default=0, verbose_name='目标表时间类型')
+    middle_first_db = models.CharField(max_length=50, blank=True, verbose_name='中间表一数据库')
+    middle_first_sel = models.CharField(max_length=100, blank=True, verbose_name='中间表一数据字段')
+    middle_first_sql = models.CharField(max_length=3000, blank=True, verbose_name='中间表一数据SQL')
+    middle_first_time_type = models.IntegerField(default=0, verbose_name='中间表一时间类型')
+    middle_second_db = models.CharField(max_length=50, blank=True, verbose_name='中间表二数据库')
+    middle_second_sel = models.CharField(max_length=100, blank=True, verbose_name='中间表二数据字段')
+    middle_second_sql = models.CharField(max_length=3000, blank=True, verbose_name='中间表二数据SQL')
+    middle_second_time_type = models.IntegerField(default=0, verbose_name='中间表二时间类型')
+    is_complicate = models.IntegerField(default=0, verbose_name='是否跨库')
+    is_delete = models.IntegerField(default=0, verbose_name='是否删除')
+
+    def __unicode__(self):
+        return self.field_name
+
+    class Meta:
+        db_table = 'monitor_bi_source_groupby'  # 自定义表名称
+
+
+class MonitorBiTables(models.Model):
+    db_name = models.CharField(max_length=50, verbose_name='数据库名称')
+    t_id = models.CharField(max_length=50, verbose_name='库表')
+    t_name = models.CharField(max_length=200, blank=True, default='', verbose_name='库表名称')
+    t_column = models.CharField(max_length=50, blank=True, default='', verbose_name='时间字段')
+    time_type = models.IntegerField(default=1, verbose_name='时间类型')
+    is_delete = models.IntegerField(default=0, verbose_name='是否删除')
+
+    def __unicode__(self):
+        return self.t_id
+
+    class Meta:
+        db_table = 'monitor_bi_tables'  # 自定义表名称
+
+
+class MonitorBiEnumeration(models.Model):
+    db_name = models.CharField(max_length=50, verbose_name='数据库名称')
+    t_name = models.CharField(max_length=200, blank=True, default='', verbose_name='库表名称')
+    t_up_col = models.CharField(max_length=50, blank=True, default='', verbose_name='时间字段')
+    col_name = models.CharField(max_length=50, blank=True, default='', verbose_name='枚举字段名称')
+    col_value = models.CharField(max_length=1000, blank=True, default='', verbose_name='枚举字段列表')
+    time_type = models.IntegerField(default=1, verbose_name='时间类型')
+    is_delete = models.IntegerField(default=0, verbose_name='是否删除')
+
+    def __unicode__(self):
+        return self.t_name
+
+    class Meta:
+        db_table = 'monitor_bi_enumeration'  # 自定义表名称
+
+
+class MonitorBiInterface(models.Model):
+    t_id = models.CharField(max_length=100, verbose_name='报表ID')
+    t_name = models.CharField(max_length=100, blank=True, default='', verbose_name='报表名称')
+    t_type = models.CharField(max_length=100, blank=True, default='', verbose_name='报表类型')
+    history_error = models.IntegerField(default=0, verbose_name='历史错误')
+    continuous_error = models.IntegerField(default=0, verbose_name='连续错误')
+    is_delete = models.IntegerField(default=0, verbose_name='是否删除')
+
+    def __unicode__(self):
+        return self.t_id
+
+    class Meta:
+        db_table = 'monitor_bi_interface'  # 自定义表名称
+
+
+# monitor_cubes下的表名
+class MonitorBiUvPv(models.Model):
+    cubes_source = models.CharField(max_length=255, verbose_name='CUBES')
+    cubes_name = models.CharField(max_length=255, blank=True, verbose_name='CUBES名称')
+    ignore_user_email = models.CharField(max_length=1000, blank=True, default='', verbose_name='不监控用户email')
+    is_delete = models.IntegerField(default=0, verbose_name='是否删除')
+
+    def __unicode__(self):
+        return self.cubes_source
+
+    class Meta:
+        db_table = 'monitor_bi_uv_pv'  # 自定义表名称
+
+
+class MonitorBiColumnTable(models.Model):
+    cubes_source = models.CharField(max_length=255, verbose_name='CUBES')
+    cubes_name = models.CharField(max_length=255, blank=True, verbose_name='CUBES名称')
+    column_source_params = models.CharField(max_length=2000, blank=True, verbose_name='column请求参数')
+    table_source_params = models.CharField(max_length=2000, blank=True, verbose_name='table请求参数')
+    column_url = models.CharField(max_length=255, blank=True, verbose_name='column请求url')
+    table_url = models.CharField(max_length=255, blank=True, verbose_name='table请求url')
+    cookies_url = models.CharField(max_length=255, blank=True, verbose_name='cookies请求url')
+    login_params = models.CharField(max_length=50, blank=True, verbose_name='login参数')
+    cookies = models.CharField(max_length=50, blank=True, verbose_name='cookies')
+    is_login = models.IntegerField(default=0, verbose_name='是否login')
+    is_cookies = models.IntegerField(default=0, verbose_name='是否cookies')
+    is_delete = models.IntegerField(default=0, verbose_name='是否删除')
+
+    def __unicode__(self):
+        return self.cubes_source
+
+    class Meta:
+        db_table = 'monitor_bi_column_table'  # 自定义表名称
