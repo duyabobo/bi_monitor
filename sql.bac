@@ -110,6 +110,7 @@ CREATE TABLE bi_monitor.monitor_bi_data_msg (
 
 CREATE TABLE bi_monitor.monitor_bi_enumeration_msg (
 	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+    `email_recorder_id` BIGINT NOT NULL DEFAULT 0 COMMENT '所属的邮件id',
 	`db_mname` varchar(100) NOT NULL DEFAULT '' COMMENT '数据库',
 	`t_name` varchar(100) NOT NULL DEFAULT '' COMMENT '表',
 	`t_col` varchar(100) NOT NULL DEFAULT '' COMMENT '字段',

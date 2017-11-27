@@ -18,7 +18,7 @@ def f1():
     for i in range(20):
         now = datetime.now()
         record = EmailRecord(
-            email_key='monitor_bi_data_msg',
+            email_key='monitor_bi_enumeration_msg',
             analysis_datetime=str(now)[:-10],
             from_datetime=str(now - timedelta(hours=random.randint(0, 24)))[:-10],
             end_datetime=str(now - timedelta(hours=random.randint(0, 24)))[:-10],
@@ -129,8 +129,21 @@ def f7(record_ids):
             deviation='-12312'
         ).save()
 
+def f8(record_ids):
+    """BI业务源库枚举值监控错误信息邮件"""
+    MonitorBiDataMsg.objects.all().delete()
+    for i in record_ids:
+        MonitorBiEnumerationMsg(
+            email_recorder_id=i,
+            db_mname='ctob',
+            t_name='vehicle_auction_appoint',
+            t_col='receive_result',
+            t_value='(4, 1, 7, 11, 5, 6, 2, 3, 12, 0, 8, 25, 19, 28, 9, 14, 22, 13, 15, 18, 17, 24, 20, 16, 33, 26, 21, 32, 23, 27, 31, 30, 29, 39, 35, 36, 37, 34, 40, 38, 41, 42, 43, 44, 47)',
+            error_value='12'
+        ).save()
+
 
 def create_test_data():
     record_ids = f1()
     print record_ids
-    f7(record_ids)
+    f8(record_ids)

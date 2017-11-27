@@ -9,6 +9,7 @@ from bi_monitor_app.views import head_dict
 from bi_monitor_app.views.utils import monitor_bi_cache_msg
 from bi_monitor_app.views.utils import monitor_bi_api_msg
 from bi_monitor_app.views.utils import monitor_bi_data_msg
+from bi_monitor_app.views.utils import monitor_bi_enumeration_msg
 from bi_monitor_app.views.utils import hour_report
 from bi_monitor_app.views.utils import week_report
 
@@ -35,6 +36,8 @@ def content_detail(request):
         context = monitor_bi_cache_msg.get_detail(email_recorder_id)
     elif api_id == 'monitor_bi_data_msg':  # BI数据快照监控错误信息邮件
         context = monitor_bi_data_msg.get_detail(email_recorder_id)
+    elif api_id == 'monitor_bi_enumeration_msg':  # BI业务源库枚举值监控错误信息邮件
+        context = monitor_bi_enumeration_msg.get_detail(email_recorder_id)
     else:
         context = {'table_datas': []}
     return render(request, 'report_detail_2_dime.html', context=context)

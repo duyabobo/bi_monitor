@@ -164,6 +164,21 @@ class MonitorBiCacheMsg(BaseModel):
         db_table = 'monitor_bi_cache_msg'  # 自定义表名称
 
 
+class MonitorBiEnumerationMsg(BaseModel):
+    """
+    BI业务源库枚举值监控错误信息记录表
+    """
+    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
+    db_mname = models.CharField(max_length=100)  # 数据库
+    t_name = models.CharField(max_length=255)  # 表名称
+    t_col = models.CharField(max_length=100)  # 字段
+    t_value = models.CharField(max_length=1000)  # 枚举值
+    error_value = models.CharField(max_length=100)  # 异常值
+
+    class Meta:
+        db_table = 'monitor_bi_enumeration_msg'  # 自定义表名称
+
+
 # monitor_bi下的表名
 class MonitorBiApi(models.Model):
     t_id = models.CharField(max_length=255, verbose_name='报表ID')
