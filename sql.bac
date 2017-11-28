@@ -205,6 +205,7 @@ CREATE TABLE bi_monitor.monitor_bi_tables_msg (
 
 CREATE TABLE bi_monitor.monitor_cubes_column_msg (
 	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+    `email_recorder_id` BIGINT NOT NULL DEFAULT 0 COMMENT '所属的邮件id',
 	`t_name` varchar(255) NOT NULL DEFAULT '' COMMENT '报表名称',
 	`source_name` varchar(100) NOT NULL DEFAULT '' COMMENT 'source名称',
 	`http_status` varchar(50) NOT NULL DEFAULT '' COMMENT 'HTTP状态',

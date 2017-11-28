@@ -15,6 +15,7 @@ email_name_dict = {
     'monitor_bi_scripts_msg': 'BI数据清洗脚本运行状态监控告警邮件',
     'monitor_bi_source_data_msg': 'BI数据与业务源数据监控告警邮件',
     'monitor_bi_source_groupby_msg': 'BI数据与业务源数据字段监控告警邮件',
+    'monitor_cubes_column_msg': 'CUBES接口监控告警邮件-column监控',
 }
 
 # 邮件的 email_key 和 邮件数据表的表头的对应关系
@@ -30,4 +31,5 @@ head_dict = {
     'monitor_bi_scripts_msg': ['#', '监控开始时间', '监控结束时间', '数据清洗脚本告警次数'],
     'monitor_bi_source_data_msg': ['#', '监控开始时间', '监控结束时间', '监控告警次数'],
     'monitor_bi_source_groupby_msg': ['#', '监控开始时间', '监控结束时间', '监控告警次数'],
+    'monitor_cubes_column_msg': ['#', '监控开始时间', '监控结束时间', '监控告警次数'],
 }

@@ -202,6 +202,17 @@ def f12(record_ids):
         ).save()
 
 
+def f13(record_ids):
+    """CUBES接口column监控错误信息记录表数据"""
+    for i in record_ids:
+        MonitorCubesColumnMsg(
+            email_recorder_id=i,
+            t_name='C端售车（不包括保卖）',
+            source_name='cube_dw_c_sales',
+            http_status='target_name'
+        ).save()
+
+
 def create_test_data():
     import django
     django.setup()
@@ -250,3 +261,7 @@ def create_test_data():
     record_ids = f1(email_key)
     print email_key, record_ids
     f12(record_ids)
+    email_key = 'monitor_cubes_column_msg'
+    record_ids = f1(email_key)
+    print email_key, record_ids
+    f13(record_ids)
