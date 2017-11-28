@@ -12,12 +12,12 @@ from bi_monitor_app.views.utils import monitor_bi_data_msg
 from bi_monitor_app.views.utils import monitor_bi_enumeration_msg
 from bi_monitor_app.views.utils import monitor_bi_interface_msg
 from bi_monitor_app.views.utils import monitor_bi_scripts_msg
-from bi_monitor_app.views.utils import hour_report
-from bi_monitor_app.views.utils import week_report
+from bi_monitor_app.views.utils import monitor_bi_access_hour_report
+from bi_monitor_app.views.utils import monitor_bi_nginx_log_week_report
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html', context={'email_name_dict': email_name_dict})
 
 
 def content_detail(request):
@@ -28,22 +28,8 @@ def content_detail(request):
     """
     api_id = request.GET['api_id']  # 指定哪一类监控数据
     email_recorder_id = request.GET['item_id']  # 指定某一条监控数据
-    if api_id == 'bi_access_hour_report':  # bi访问汇总时报
-        context = hour_report.get_detail(email_recorder_id)
-    elif api_id == 'bi_api_week_report':  # bi访问日志周报报表
-        context = week_report.get_detail(email_recorder_id)
-    elif api_id == 'monitor_bi_api_msg':  # BI指标监控告警邮件
-        context = monitor_bi_api_msg.get_detail(email_recorder_id)
-    elif api_id == 'monitor_bi_cache_msg':  # BI强制缓存告警邮件
-        context = monitor_bi_cache_msg.get_detail(email_recorder_id)
-    elif api_id == 'monitor_bi_data_msg':  # BI数据快照监控错误信息邮件
-        context = monitor_bi_data_msg.get_detail(email_recorder_id)
-    elif api_id == 'monitor_bi_enumeration_msg':  # BI业务源库枚举值监控错误信息邮件
-        context = monitor_bi_enumeration_msg.get_detail(email_recorder_id)
-    elif api_id == 'monitor_bi_interface_msg':  # BI接口监控告警邮件
-        context = monitor_bi_interface_msg.get_detail(email_recorder_id)
-    elif api_id == 'monitor_bi_scripts_msg':  # BI数据清洗脚本运行状态监控告警邮件
-        context = monitor_bi_scripts_msg.get_detail(email_recorder_id)
+    if api_id in email_name_dict:
+        context = eval(api_id).get_detail(email_recorder_id)
     else:
         context = {'table_datas': []}
     return render(request, 'report_detail_2_dime.html', context=context)
@@ -62,7 +48,10 @@ def content_list(request):
     page = request.GET.get('page', 1)
     page = 0 if page == 'undefined' else int(page) - 1  # 分页控件页码从1开始
     email_records = EmailRecord.get_list(page, api_id)
-    body = map(lambda (i, x): [x.id, i+page*10, x.from_datetime, x.end_datetime, x.content_count], enumerate(email_records))
+    body = map(
+        lambda (i, x):
+        [x.id, i+page*10, x.from_datetime, x.end_datetime, x.content_count], enumerate(email_records)
+    )
     return render(request, 'report_list.html', context={
         'api_id': api_id,
         'name': email_name_dict[api_id],

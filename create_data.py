@@ -12,13 +12,13 @@ def f0():
     EmailRecord.objects.all().delete()
 
 
-def f1():
+def f1(email_key):
     """创建邮件记录"""
     record_ids = []
     for i in range(20):
         now = datetime.now()
         record = EmailRecord(
-            email_key='monitor_bi_scripts_msg',
+            email_key=email_key,
             analysis_datetime=str(now)[:-10],
             from_datetime=str(now - timedelta(hours=random.randint(0, 24)))[:-10],
             end_datetime=str(now - timedelta(hours=random.randint(0, 24)))[:-10],
@@ -28,9 +28,9 @@ def f1():
     return record_ids
 
 
-def f2():
+def f2(record_ids):
     """创建时报统计信息数据"""
-    for i in range(500):
+    for i in record_ids:
         for source in [0, 1]:
             table_content = [
                 ['访问次数', 32563, 31288, 560, 404, 238, 64, 9, 0],
@@ -41,19 +41,19 @@ def f2():
                 ['占比', 100, 77.08, 8.72, 11.24, 9.73, 1.2, 1.03, 0.0],
                 ['平均响应时间(ms)', 846.0, 298.0, 1376.0, 2559.0, 3548.0, 6588.0, 12144.0, 0]
             ]
-            BiAccessAnalysis(
+            MonitorBiAccessAnalysis(
                 email_recorder_id=i,
                 source=source,
                 table_content=json.dumps(table_content)
             ).save()
 
 
-def f3():
+def f3(record_ids):
     """创建值得关注的访问记录信息"""
-    for i in range(500):
+    for i in record_ids:
         for source in [0, 1]:
             for num in range(random.randint(1, 8)):
-                NoteWorthyLog(
+                MonitorBiNoteWorthyLog(
                     email_recorder_id=i,
                     source=source,
                     access_datetime=str(datetime.now())[:-10],
@@ -67,11 +67,11 @@ def f3():
                 ).save()
 
 
-def f4():
+def f4(record_ids):
     """创建周报测试数据"""
-    for i in range(500):
+    for i in record_ids:
         analysis_type = random.randint(0,1)
-        BiNginxLogWeekReport(
+        MonitorBiNginxLogWeekReport(
             email_recorder_id=i,
             analysis_type=analysis_type,
             analysis_key=[200, 300, 400, 404, 499, 500][random.randint(0, 5)]
@@ -83,9 +83,9 @@ def f4():
         ).save()
 
 
-def f5():
+def f5(record_ids):
     """创建BI指标监控告警数据记录"""
-    for i in range(500):
+    for i in record_ids:
         MonitorBiApiMsg(
             email_recorder_id=i,
             t_id=['operation_both', 'operation_buyer', 'process_index'][random.randint(0, 2)],
@@ -100,9 +100,9 @@ def f5():
         ).save()
 
 
-def f6():
+def f6(record_ids):
     """创建bi强制缓存报警信息数据"""
-    for i in range(500):
+    for i in record_ids:
         MonitorBiCacheMsg(
             email_recorder_id=i,
             t_id='c2c_recheck_without_consign',
@@ -114,7 +114,7 @@ def f6():
 
 
 def f7(record_ids):
-    """BI强制缓存监控错误信息数据测试数据创建"""
+    """BI数据快照监控错误信息邮件"""
     for i in record_ids:
         MonitorBiDataMsg(
             email_recorder_id=i,
@@ -127,6 +127,7 @@ def f7(record_ids):
             new_value='49428',
             deviation='-12312'
         ).save()
+
 
 def f8(record_ids):
     """BI业务源库枚举值监控错误信息邮件"""
@@ -170,6 +171,40 @@ def f10(record_ids):
 
 
 def create_test_data():
-    record_ids = f1()
-    print record_ids
+    f0()
+    email_key = 'monitor_bi_access_hour_report'
+    record_ids = f1(email_key)
+    print email_key, record_ids
+    f2(record_ids)
+    email_key = 'monitor_bi_access_hour_report'
+    record_ids = f1(email_key)
+    print email_key, record_ids
+    f3(record_ids)
+    email_key = 'monitor_bi_nginx_log_week_report'
+    record_ids = f1(email_key)
+    print email_key, record_ids
+    f4(record_ids)
+    email_key = 'monitor_bi_api_msg'
+    record_ids = f1(email_key)
+    print email_key, record_ids
+    f5(record_ids)
+    email_key = 'monitor_bi_cache_msg'
+    record_ids = f1(email_key)
+    print email_key, record_ids
+    f6(record_ids)
+    email_key = 'monitor_bi_data_msg'
+    record_ids = f1(email_key)
+    print email_key, record_ids
+    f7(record_ids)
+    email_key = 'monitor_bi_enumeration_msg'
+    record_ids = f1(email_key)
+    print email_key, record_ids
+    f8(record_ids)
+    email_key = 'monitor_bi_interface_msg'
+    record_ids = f1(email_key)
+    print email_key, record_ids
+    f9(record_ids)
+    email_key = 'monitor_bi_scripts_msg'
+    record_ids = f1(email_key)
+    print email_key, record_ids
     f10(record_ids)

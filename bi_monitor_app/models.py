@@ -61,7 +61,7 @@ class BaseModel(models.Model):
         return cls.objects.filter(email_recorder_id=int(email_recorder_id))
 
 
-class BiNginxLogWeekReport(BaseModel):
+class MonitorBiNginxLogWeekReport(BaseModel):
     """
     bi接口日志分析周报，从nginx日志分析统计的结果
     """
@@ -74,10 +74,10 @@ class BiNginxLogWeekReport(BaseModel):
     average_delay_microseconds = models.FloatField(default=0)  # 接口平均响应时间，单位是毫秒
 
     class Meta:
-        db_table = 'bi_nginx_log_week_report'  # 自定义表名称
+        db_table = 'monitor_bi_nginx_log_week_report'  # 自定义表名称
 
 
-class BiAccessAnalysis(BaseModel):
+class MonitorBiAccessAnalysis(BaseModel):
     """
     通过网页/API访问BI的日志统计数据，
     从数据库 guazi_bi 分析 bi_permission_logs(web)/ bi_permission_api_log(api) 数据表获得的统计信息
@@ -87,10 +87,10 @@ class BiAccessAnalysis(BaseModel):
     table_content = models.CharField(max_length=5000, default='')  # 报表的内容，json存储
 
     class Meta:
-        db_table = 'bi_access_analysis'  # 自定义表名称
+        db_table = 'monitor_bi_access_analysis'  # 自定义表名称
 
 
-class NoteWorthyLog(BaseModel):
+class MonitorBiNoteWorthyLog(BaseModel):
     """
     从数据库中查询的值得注意的访问日志记录，
     从数据库 guazi_bi 分析 bi_permission_logs(web)/ bi_permission_api_log(api) 数据表获得的日志信息
@@ -109,7 +109,7 @@ class NoteWorthyLog(BaseModel):
     api_key = models.CharField(max_length=50)  # 用户(原来表是这么注释的）
 
     class Meta:
-        db_table = 'noteworthy_log'  # 自定义表名称
+        db_table = 'monitor_bi_noteworthy_log'  # 自定义表名称
 
 
 class MonitorBiApiMsg(BaseModel):
