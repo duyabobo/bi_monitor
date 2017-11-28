@@ -229,6 +229,7 @@ CREATE TABLE bi_monitor.monitor_cubes_table_msg (
 
 CREATE TABLE bi_monitor.monitor_cubes_uv_pv_msg (
 	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+    `email_recorder_id` BIGINT NOT NULL DEFAULT 0 COMMENT '所属的邮件id',
 	`cubes_date` varchar(255) NOT NULL DEFAULT '' COMMENT '日期',
 	`cubes_name` varchar(100) NOT NULL DEFAULT '' COMMENT 'CUBE名称',
 	`usr_name` varchar(50) NOT NULL DEFAULT '' COMMENT '用户',
@@ -238,5 +239,5 @@ CREATE TABLE bi_monitor.monitor_cubes_uv_pv_msg (
 	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
 	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
 	PRIMARY KEY (`id`),
-	INDEX idx_cubes_date (`cubes_date`)
+	INDEX idx_email_recorder_id (`email_recorder_id`)
 ) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='CUBES用户行为监控错误信息记录表';

@@ -10,10 +10,10 @@
 </thead>
 <tbody>
 {% for line in body %}
-    <tr>
+    <tr class="my_list_item" item_id="{{ line.0 }}" api_id="{{ api_id }}" style="cursor:pointer">
     {% for b in line %}
         {% if not forloop.first %}
-            <td><a href="#" class="my_list_item" item_id="{{ line.0 }}" api_id="{{ api_id }}">{{ b }}</a></td>
+            <td><a>{{ b }}</a></td>
         {% endif %}
     {% endfor %}
     </tr>

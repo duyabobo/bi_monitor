@@ -21,7 +21,11 @@ from bi_monitor_app.views.utils import monitor_cubes_table_msg
 
 
 def index(request):
-    return render(request, 'index.html', context={'email_name_dict': email_name_dict})
+    return render(
+        request,
+        'index.html',
+        context={'email_name_items': sorted(email_name_dict.items(), key=lambda item: item[1])}
+    )
 
 
 def content_detail(request):

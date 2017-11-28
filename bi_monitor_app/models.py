@@ -274,6 +274,22 @@ class MonitorCubesColumnMsg(BaseModel):
         db_table = 'monitor_cubes_column_msg'  # 自定义表名称
 
 
+class MonitorCubesUvPvMsg(BaseModel):
+    """
+    CUBES用户行为监控错误信息记录表
+    """
+    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
+    cubes_date = models.CharField(max_length=255)  # 日期
+    cubes_name = models.CharField(max_length=100)  # CUBE名称
+    usr_name = models.CharField(max_length=50)  # 用户
+    usr_email = models.CharField(max_length=50)  # 邮箱
+    total_uv = models.CharField(max_length=50)  # UV数量
+    total_pv = models.CharField(max_length=50)  # PV数量
+
+    class Meta:
+        db_table = 'monitor_cubes_uv_pv_msg'  # 自定义表名称
+
+
 # monitor_bi下的表名
 class MonitorBiApi(models.Model):
     t_id = models.CharField(max_length=255, verbose_name='报表ID')
