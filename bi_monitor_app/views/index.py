@@ -11,6 +11,7 @@ from bi_monitor_app.views.utils import monitor_bi_api_msg
 from bi_monitor_app.views.utils import monitor_bi_data_msg
 from bi_monitor_app.views.utils import monitor_bi_enumeration_msg
 from bi_monitor_app.views.utils import monitor_bi_interface_msg
+from bi_monitor_app.views.utils import monitor_bi_scripts_msg
 from bi_monitor_app.views.utils import hour_report
 from bi_monitor_app.views.utils import week_report
 
@@ -41,6 +42,8 @@ def content_detail(request):
         context = monitor_bi_enumeration_msg.get_detail(email_recorder_id)
     elif api_id == 'monitor_bi_interface_msg':  # BI接口监控告警邮件
         context = monitor_bi_interface_msg.get_detail(email_recorder_id)
+    elif api_id == 'monitor_bi_scripts_msg':  # BI数据清洗脚本运行状态监控告警邮件
+        context = monitor_bi_scripts_msg.get_detail(email_recorder_id)
     else:
         context = {'table_datas': []}
     return render(request, 'report_detail_2_dime.html', context=context)

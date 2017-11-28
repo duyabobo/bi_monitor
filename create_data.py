@@ -18,7 +18,7 @@ def f1():
     for i in range(20):
         now = datetime.now()
         record = EmailRecord(
-            email_key='monitor_bi_interface_msg',
+            email_key='monitor_bi_scripts_msg',
             analysis_datetime=str(now)[:-10],
             from_datetime=str(now - timedelta(hours=random.randint(0, 24)))[:-10],
             end_datetime=str(now - timedelta(hours=random.randint(0, 24)))[:-10],
@@ -156,7 +156,20 @@ def f9(record_ids):
         ).save()
 
 
+def f10(record_ids):
+    """创建BI数据清洗脚本监控错误信息记录测试数据"""
+    for i in record_ids:
+        MonitorBiScriptsMsg(
+            email_recorder_id=i,
+            alert_msg='执行超时-30分钟',
+            script_name='update_appoint_task_middle_table',
+            script_status='1',
+            start_time='2017-11-28 04:04:28',
+            monitor_time='2017-11-28 04:45:01',
+        ).save()
+
+
 def create_test_data():
     record_ids = f1()
     print record_ids
-    f9(record_ids)
+    f10(record_ids)

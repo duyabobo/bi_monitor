@@ -196,6 +196,21 @@ class MonitorBiInterfaceMsg(BaseModel):
         db_table = 'monitor_bi_interface_msg'  # 自定义表名称
 
 
+class MonitorBiScriptsMsg(BaseModel):
+    """
+    BI数据清洗脚本监控错误信息记录表
+    """
+    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
+    alert_msg = models.CharField(max_length=255)  # 警报信息
+    script_name = models.CharField(max_length=255)  # 脚本名称
+    script_status = models.CharField(max_length=50)  # 脚本状态
+    start_time = models.CharField(max_length=50)  # 脚本开始时间
+    monitor_time = models.CharField(max_length=50)  # 监控查询时间
+
+    class Meta:
+        db_table = 'monitor_bi_scripts_msg'  # 自定义表名称
+
+
 # monitor_bi下的表名
 class MonitorBiApi(models.Model):
     t_id = models.CharField(max_length=255, verbose_name='报表ID')
