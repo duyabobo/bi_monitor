@@ -186,7 +186,25 @@ def f11(record_ids):
         ).save()
 
 
+def f12(record_ids):
+    """BI与业务源字段监控错误信息记录数据"""
+    for i in record_ids:
+        MonitorBiSourceGroupByMsg(
+            email_recorder_id=i,
+            indicator_name='C端的实际带看数（不包括保卖）',
+            source_name='source_name',
+            target_name='target_name',
+            search_time='2017-11-26 00:00:00 - 2017-11-27 16:04:57',
+            col_value='7462',
+            source_number='7450',
+            target_number='1234',
+            deviation='-12'
+        ).save()
+
+
 def create_test_data():
+    import django
+    django.setup()
     f0()
     email_key = 'monitor_bi_access_hour_report'
     record_ids = f1(email_key)
@@ -228,3 +246,7 @@ def create_test_data():
     record_ids = f1(email_key)
     print email_key, record_ids
     f11(record_ids)
+    email_key = 'monitor_bi_source_groupby_msg'
+    record_ids = f1(email_key)
+    print email_key, record_ids
+    f12(record_ids)

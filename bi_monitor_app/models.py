@@ -229,6 +229,24 @@ class MonitorBiSourceDataMsg(BaseModel):
         db_table = 'monitor_bi_source_data_msg'  # 自定义表名称
 
 
+class MonitorBiSourceGroupByMsg(BaseModel):
+    """
+    BI与业务源字段监控错误信息记录表
+    """
+    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
+    indicator_name = models.CharField(max_length=255)  # 指标名称
+    source_name = models.CharField(max_length=100)  # 业务源表
+    target_name = models.CharField(max_length=50)  # 目标表
+    search_time = models.CharField(max_length=50)  # 查询时间段
+    col_value = models.CharField(max_length=50)  # 字段值
+    source_number = models.CharField(max_length=50)  # 业务库数量
+    target_number = models.CharField(max_length=50)  # BI库数量
+    deviation = models.CharField(max_length=200)  # 偏差原因
+
+    class Meta:
+        db_table = 'monitor_bi_source_groupby_msg'  # 自定义表名称
+
+
 # monitor_bi下的表名
 class MonitorBiApi(models.Model):
     t_id = models.CharField(max_length=255, verbose_name='报表ID')
