@@ -247,6 +247,20 @@ class MonitorBiSourceGroupByMsg(BaseModel):
         db_table = 'monitor_bi_source_groupby_msg'  # 自定义表名称
 
 
+class MonitorCubesTablesMsg(BaseModel):
+    """
+    CUBES接口table监控错误信息记录表
+    """
+    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
+    db_name = models.CharField(max_length=255)  # 数据库名
+    t_name = models.CharField(max_length=100)  # 表名称
+    source_name = models.CharField(max_length=100)  # source名称
+    http_status = models.CharField(max_length=50)  # HTTP状态
+
+    class Meta:
+        db_table = 'monitor_cubes_table_msg'  # 自定义表名称
+
+
 class MonitorCubesColumnMsg(BaseModel):
     """
     CUBES接口column监控错误信息记录表

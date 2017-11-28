@@ -209,7 +209,18 @@ def f13(record_ids):
             email_recorder_id=i,
             t_name='C端售车（不包括保卖）',
             source_name='cube_dw_c_sales',
-            http_status='target_name'
+            http_status='500'
+        ).save()
+
+
+def f14(record_ids):
+    """CUBES接口table监控错误信息记录表"""
+    for i in record_ids:
+        MonitorCubesTablesMsg(
+            email_recorder_id=i,
+            t_name='C端售车（不包括保卖）',
+            source_name='cube_dw_c_sales',
+            http_status='400'
         ).save()
 
 
@@ -265,3 +276,7 @@ def create_test_data():
     record_ids = f1(email_key)
     print email_key, record_ids
     f13(record_ids)
+    email_key = 'monitor_cubes_table_msg'
+    record_ids = f1(email_key)
+    print email_key, record_ids
+    f14(record_ids)

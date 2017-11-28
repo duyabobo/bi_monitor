@@ -217,13 +217,14 @@ CREATE TABLE bi_monitor.monitor_cubes_column_msg (
 
 CREATE TABLE bi_monitor.monitor_cubes_table_msg (
 	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+    `email_recorder_id` BIGINT NOT NULL DEFAULT 0 COMMENT '所属的邮件id',
 	`t_name` varchar(255) NOT NULL DEFAULT '' COMMENT '报表名称',
 	`source_name` varchar(100) NOT NULL DEFAULT '' COMMENT 'source名称',
 	`http_status` varchar(50) NOT NULL DEFAULT '' COMMENT 'HTTP状态',
 	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
 	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
 	PRIMARY KEY (`id`),
-	INDEX idx_t_name (`t_name`)
+	INDEX idx_email_recorder_id (`email_recorder_id`)
 ) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='CUBES接口table监控错误信息记录表';
 
 CREATE TABLE bi_monitor.monitor_cubes_uv_pv_msg (
