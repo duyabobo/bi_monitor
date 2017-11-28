@@ -170,6 +170,22 @@ def f10(record_ids):
         ).save()
 
 
+def f11(record_ids):
+    """创建BI与业务源指标监控错误信息记录表数据"""
+    for i in record_ids:
+        MonitorBiSourceDataMsg(
+            email_recorder_id=i,
+            indicator_name='C端的实际带看数（不包括保卖）',
+            search_time='2017-11-26 00:00:00 - 2017-11-27 16:04:57',
+            source_value='7462',
+            bi_value='7450',
+            deviation='-12',
+            new_data_time='2017-11-27 16:04:57',
+            script_time='2017-11-27 16:08:09',
+            devi_reason='无新数据，清洗脚本update_appoint_task_middle_table已执行完毕，异常'
+        ).save()
+
+
 def create_test_data():
     f0()
     email_key = 'monitor_bi_access_hour_report'
@@ -208,3 +224,7 @@ def create_test_data():
     record_ids = f1(email_key)
     print email_key, record_ids
     f10(record_ids)
+    email_key = 'monitor_bi_source_data_msg'
+    record_ids = f1(email_key)
+    print email_key, record_ids
+    f11(record_ids)

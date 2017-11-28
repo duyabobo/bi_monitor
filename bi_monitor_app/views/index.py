@@ -14,6 +14,7 @@ from bi_monitor_app.views.utils import monitor_bi_interface_msg
 from bi_monitor_app.views.utils import monitor_bi_scripts_msg
 from bi_monitor_app.views.utils import monitor_bi_access_hour_report
 from bi_monitor_app.views.utils import monitor_bi_nginx_log_week_report
+from bi_monitor_app.views.utils import monitor_bi_source_data_msg
 
 
 def index(request):
