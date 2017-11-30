@@ -11,6 +11,7 @@ class EmailRecord(models.Model):
     from_datetime = models.CharField(max_length=50)  # 开始统计时间
     end_datetime = models.CharField(max_length=50)  # 结束统计时间
     content_count = models.IntegerField(default=0)  # 本次邮件发送的报警信息条数
+    created_at = models.DateTimeField(default=datetime.now())  # 记录创建时间
 
     class Meta:
         db_table = 'monitor_bi_record'  # 自定义表名称
@@ -81,7 +82,7 @@ class MonitorBiLogWeekReport(BaseModel):
     访问BI日志统计报表，从monitor_bi数据库分析统计的结果
     """
     email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
-    source = models.IntegerField(default=0)  # 所属类型：api还是web访问，0 web，1 api
+    access_source = models.IntegerField(default=0)  # 所属类型：api还是web访问，0 web，1 api
     delay_time_key = models.CharField(max_length=20, default='')  # 可能是 200/300/404/502，也可能是 0~1s
     api_count = models.IntegerField(default=0)  # api 数目统计
     percent = models.CharField(max_length=20, default='')  # 百分比数，80.3 就代表 80.3%
@@ -97,7 +98,7 @@ class MonitorBiAccessAnalysis(BaseModel):
     从数据库 guazi_bi 分析 bi_permission_logs(web)/ bi_permission_api_log(api) 数据表获得的统计信息
     """
     email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
-    source = models.IntegerField(default=0)  # 访问来源：0 WEB, 1 API
+    access_source = models.IntegerField(default=0)  # 访问来源：0 WEB, 1 API
     table_content = models.CharField(max_length=5000, default='')  # 报表的内容，json存储
 
     class Meta:
@@ -110,7 +111,7 @@ class MonitorBiNoteWorthyLog(BaseModel):
     从数据库 guazi_bi 分析 bi_permission_logs(web)/ bi_permission_api_log(api) 数据表获得的日志信息
     """
     email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
-    source = models.IntegerField(default=0)  # 访问来源：0 WEB, 1 API
+    access_source = models.IntegerField(default=0)  # 访问来源：0 WEB, 1 API
     access_datetime = models.CharField(max_length=50, default='')  # 接口访问的时间
     method = models.IntegerField(default=0)  # 接口访问的http方法：0 get，1 post，2 put，3 delete
     report_name = models.CharField(max_length=60)  # 报表名称

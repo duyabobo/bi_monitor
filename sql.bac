@@ -30,7 +30,7 @@ create table monitor_bi_nginx_log_week_report (
 create table monitor_bi_log_week_report (
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id自增',
     `email_recorder_id` BIGINT NOT NULL DEFAULT 0 COMMENT '所属的邮件id',
-    `source` TINYINT UNSIGNED NOT NULL COMMENT '访问来源：0 WEB, 1 API',
+    `access_source` TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '访问来源：0 WEB, 1 API',
     `delay_time_key` VARCHAR(20) NOT NULL DEFAULT '' COMMENT '可能是 全部/0~1s/1~2s/2~3s...',
     `api_count` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '指定某个analysis_type和analysis_key的统计数目',
     `percent` VARCHAR(20) NOT NULL DEFAULT '' COMMENT '指定某个analysis_type和analysis_key的统计数目所占百分比',
@@ -44,8 +44,8 @@ create table monitor_bi_log_week_report (
 CREATE TABLE monitor_bi_access_analysis (
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id自增',
     `email_recorder_id` BIGINT NOT NULL DEFAULT 0 COMMENT '所属的邮件id',
-    `source` TINYINT UNSIGNED NOT NULL COMMENT '访问来源：0 WEB, 1 API',
-    `table_content` VARCHAR(5000) NOT NULL COMMENT '报表的内容，json存储，确定不会超过5000长度',
+    `access_source` TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '访问来源：0 WEB, 1 API',
+    `table_content` VARCHAR(5000) NOT NULL default '[]' COMMENT '报表的内容，json存储，确定不会超过5000长度',
 	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
 	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
 	PRIMARY KEY (id),
@@ -55,8 +55,8 @@ CREATE TABLE monitor_bi_access_analysis (
 CREATE TABLE monitor_bi_noteworthy_log (
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id自增',
     `email_recorder_id` BIGINT NOT NULL DEFAULT 0 COMMENT '所属的邮件id',
-    `source` TINYINT UNSIGNED NOT NULL COMMENT '访问来源：0 WEB, 1 API',
-    `access_datetime` VARCHAR(50) NOT NULL COMMENT '接口访问的时间',
+    `access_source` TINYINT UNSIGNED DEFAULT 0 NOT NULL COMMENT '访问来源：0 WEB, 1 API',
+    `access_datetime` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '接口访问的时间',
     `method` integer NOT NULL DEFAULT 0 COMMENT '接口访问的http方法：0 get，1 post，2 put，3 delete',
     `report_name` varchar(60) NOT NULL DEFAULT '' COMMENT '报表名称',
     `report_id` varchar(200) NOT NULL DEFAULT '' COMMENT '报表id',

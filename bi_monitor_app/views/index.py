@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from bi_monitor_app.models import EmailRecord
 from bi_monitor_app.views import email_name_dict
-from bi_monitor_app.views import head_dict
+from bi_monitor_app.views import email_table_head
 from bi_monitor_app.views.utils import monitor_bi_cache_msg
 from bi_monitor_app.views.utils import monitor_bi_api_msg
 from bi_monitor_app.views.utils import monitor_bi_data_msg
@@ -29,7 +29,7 @@ def index(request):
     )
 
 
-def content_detail(request):
+def email_detail(request):
     """
     根据request中的api_id实现各种业务逻辑，查询各种类型的监控数据图表详情
     :param request:
@@ -44,7 +44,7 @@ def content_detail(request):
     return render(request, 'report_detail_2_dime.html', context=context)
 
 
-def content_list(request):
+def email_list(request):
     """
     查询各种类型的监控数据列表，
     列表在前端显示的时候是使用 table 展现的，
@@ -59,12 +59,12 @@ def content_list(request):
     email_records = EmailRecord.get_list(page, api_id)
     body = map(
         lambda (i, x):
-        [x.id, i+page*10, x.from_datetime, x.end_datetime, x.content_count], enumerate(email_records)
+        [x.id, i+page*10, x.created_at.strftime('%Y-%m-%d %H:%M')], enumerate(email_records)
     )
     return render(request, 'report_list.html', context={
         'api_id': api_id,
         'name': email_name_dict[api_id],
-        'head': head_dict[api_id],
+        'head': email_table_head,
         'body': body
         }
     )
@@ -81,5 +81,5 @@ def get_pager(request):
     return render(request, 'pager_info.html', context={
         'api_id': api_id,
         'total': total,
-        'total_page': int(total/10) + 1
+        'total_page': int(total/10) + 1 if total % 10 else int(total/10)
     })

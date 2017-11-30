@@ -42,7 +42,7 @@ def f2(record_ids):
             ]
             MonitorBiAccessAnalysis(
                 email_recorder_id=i,
-                source=source,
+                access_source=source,
                 table_content=json.dumps(table_content)
             ).save()
 
@@ -54,7 +54,7 @@ def f3(record_ids):
             for num in range(random.randint(1, 8)):
                 MonitorBiNoteWorthyLog(
                     email_recorder_id=i,
-                    source=source,
+                    access_source=source,
                     access_datetime=str(datetime.now())[:-10],
                     report_name='report_name',
                     report_id='report_id',
@@ -228,7 +228,7 @@ def f15(record_ids):
     for i in record_ids:
         MonitorBiLogWeekReport(
             email_recorder_id=i,
-            source=random.randint(0,1),
+            access_source=random.randint(0,1),
             delay_time_key='1~2s',
             api_count=400,
             percent='23.22',

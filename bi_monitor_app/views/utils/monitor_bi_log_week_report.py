@@ -25,7 +25,7 @@ def get_detail(email_recorder_id):
         ]
     ]
     for item in report_items:
-        table_datas[item.source][2].append([
+        table_datas[item.access_source][2].append([
             item.delay_time_key, item.api_count, item.percent, item.average_delay_microseconds
         ])
     return {'table_datas': table_datas}

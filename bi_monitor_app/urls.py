@@ -9,7 +9,7 @@ from views import index
 
 urlpatterns = [
     url(r'^$', index.index, name='index'),
-    url(r'^content', index.content_detail, name='content'),
-    url(r'^list', index.content_list, name='list'),
+    url(r'^content', index.email_detail, name='content'),
+    url(r'^list', index.email_list, name='list'),
     url(r'^get_pager', index.get_pager, name='get_pager')
 ]
