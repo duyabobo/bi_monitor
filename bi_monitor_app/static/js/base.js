@@ -1,5 +1,5 @@
 // {# 点击选项卡时，表格列表请求 #}
-$(document).on("click", ".list-group-item", function () {
+$(document).on("click", ".click-on", function () {
     $('.list-group a').removeClass('active');
     $(this).addClass('active');
     $.get(
@@ -112,4 +112,17 @@ $(document).on("click", "#back_to_list", function () {
         $('#nextPage').removeAttr('disabled');
         $('#lastPage').removeAttr('disabled');
     };
+});
+// {# 左侧表格展开或折叠 #}
+$(document).on("click", "a.father", function () {
+    next = $(this).next();
+    if (next.attr('class') === 'hidden')
+    {
+        $('#sidebar > div > li').attr('class', 'hidden');
+        next.removeAttr('class');
+    }
+    else
+    {
+        next.attr('class', 'hidden');
+    }
 });

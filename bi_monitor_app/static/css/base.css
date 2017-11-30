@@ -81,3 +81,7 @@ ul {margin:0;}
 #box {
     position: relative;
 }
+
+li .list-group-item {
+    background-color: #d1e6ff;
+}

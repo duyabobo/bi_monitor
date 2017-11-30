@@ -1,9 +1,18 @@
 {% extends 'base.html' %}
 
-{% block right_list %}
+{% block left_list %}
     {# 每次增加一个监控项目，都需要增加一个导航条，需要指定<a>的 id 属性为 api_id #}
     {# api_id 维护在views/__init__.py文件中的 email_name_dict 变量中，并在index的view中注入 #}
     {% for k, v in email_name_items %}
-        <a class="list-group-item" api_id={{ k }}>{{ v }}</a>
+        {% if not 'children' in v %}
+            <a class="list-group-item click-on" api_id={{ k }}>{{ v.title }}</a>
+        {% else %}
+            <a class="list-group-item father">{{ v.title }}</a>
+            <li class="hidden">
+                {% for child_key, child_value in v.children.items %}
+                    <a class="list-group-item {{ k }} children-item click-on"  api_id={{ child_key }}>{{ child_value.title }}</a>
+                {% endfor %}
+            </li>
+        {% endif %}
     {% endfor %}
 {% endblock %}

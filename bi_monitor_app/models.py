@@ -33,7 +33,7 @@ class EmailRecord(models.Model):
         :param email_key:  邮件类别
         :return:
         """
-        return cls.objects.filter(msg_table_name=email_key).order_by('-id')[10 * page: 10 * (page + 1)]
+        return cls.objects.filter(msg_table_name=email_key).order_by('-id')[20 * page: 20 * (page + 1)]
 
     @classmethod
     def get_total(cls, email_key):

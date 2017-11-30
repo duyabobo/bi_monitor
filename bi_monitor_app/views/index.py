@@ -4,7 +4,7 @@
 from django.shortcuts import render
 
 from bi_monitor_app.models import EmailRecord
-from bi_monitor_app.views import email_name_dict
+from bi_monitor_app.views import email_name_dict, children_email_name_dict
 from bi_monitor_app.views import email_table_head
 from bi_monitor_app.views.utils import monitor_bi_cache_msg
 from bi_monitor_app.views.utils import monitor_bi_api_msg
@@ -25,7 +25,7 @@ def index(request):
     return render(
         request,
         'index.html',
-        context={'email_name_items': sorted(email_name_dict.items(), key=lambda item: item[1])}
+        context={'email_name_items': sorted(email_name_dict.items(), key=lambda item: item[1]['title'])}
     )
 
 
@@ -37,7 +37,7 @@ def email_detail(request):
     """
     api_id = request.GET['api_id']  # 指定哪一类监控数据
     email_recorder_id = request.GET['item_id']  # 指定某一条监控数据
-    if api_id in email_name_dict:
+    if api_id in email_name_dict or api_id in children_email_name_dict:
         context = eval(api_id).get_detail(email_recorder_id)
     else:
         context = {'table_datas': []}
@@ -56,16 +56,24 @@ def email_list(request):
     api_id = request.GET['api_id']  # 指定哪一类监控数据
     page = request.GET.get('page', 1)
     page = 0 if page == 'undefined' else int(page) - 1  # 分页控件页码从1开始
+    if api_id in email_name_dict:
+        name = email_name_dict[api_id]['title']
+    elif api_id in children_email_name_dict:
+        name = children_email_name_dict[api_id]['title']
+    else:
+        name = ''
     email_records = EmailRecord.get_list(page, api_id)
     body = map(
         lambda (i, x):
-        [x.id, i+page*10, x.created_at.strftime('%Y-%m-%d %H:%M')], enumerate(email_records)
+        [[x.id, i + page * 20, x.created_at.strftime('%Y-%m-%d %H:%M')], [0, 0, 0]], enumerate(email_records[:10])
     )
+    for i, x in enumerate(email_records[10:]):
+        body[i][1] = [x.id, i + page * 20 + 10, x.created_at.strftime('%Y-%m-%d %H:%M')]
     return render(request, 'report_list.html', context={
         'api_id': api_id,
-        'name': email_name_dict[api_id],
+        'name': name,
         'head': email_table_head,
-        'body': body
+        'body': body,
         }
     )
 
@@ -81,5 +89,5 @@ def get_pager(request):
     return render(request, 'pager_info.html', context={
         'api_id': api_id,
         'total': total,
-        'total_page': int(total/10) + 1 if total % 10 else int(total/10)
+        'total_page': int(total/20) + 1 if total % 20 else int(total/20)
     })
