@@ -17,13 +17,14 @@ email_name_dict = {
     'monitor_bi_source_groupby_msg': 'BI数据与业务源数据字段监控告警邮件',
     'monitor_cubes_column_msg': 'CUBES接口监控告警邮件-column监控',
     'monitor_cubes_table_msg': 'CUBE接口监控告警邮件-table监控',
+    'monitor_bi_log_week_report': 'API/WEB访问BI日志统计报表'
 }
 
 # 邮件的 email_key 和 邮件数据表的表头的对应关系
 
 head_dict = {
     'monitor_bi_access_hour_report': ['#', '统计的起始时间', '统计的结束时间', '响应时间大于10s次数'],
-    'monitor_bi_nginx_log_week_report': ['#', '统计的起始时间', '统计的结束时间', '响应时间大于20s的次数'],
+    'monitor_bi_nginx_log_week_report': ['#', '统计的起始时间', '统计的结束时间', '响应时间大于10s的次数'],
     'monitor_bi_api_msg': ['#', '统计的起始时间', '统计的结束时间', 'BI指标监控告警次数'],
     'monitor_bi_cache_msg': ['#', '统计的起始时间', '统计的结束时间', 'BI强制缓存告警次数'],
     'monitor_bi_data_msg': ['#', '统计的起始时间', '统计的结束时间', 'BI监控数据异常次数'],
@@ -34,4 +35,5 @@ head_dict = {
     'monitor_bi_source_groupby_msg': ['#', '监控开始时间', '监控结束时间', '监控告警次数'],
     'monitor_cubes_column_msg': ['#', '监控开始时间', '监控结束时间', '监控告警次数'],
     'monitor_cubes_table_msg': ['#', '监控开始时间', '监控结束时间', '监控告警次数'],
+    'monitor_bi_log_week_report': ['#', '统计开始时间', '统计结束时间', '响应时间大于10s总数'],
 }

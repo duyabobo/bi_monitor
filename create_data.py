@@ -12,14 +12,13 @@ def f0():
     EmailRecord.objects.all().delete()
 
 
-def f1(email_key):
+def f1(msg_table_name):
     """创建邮件记录"""
     record_ids = []
     for i in range(20):
         now = datetime.now()
         record = EmailRecord(
-            email_key=email_key,
-            analysis_datetime=str(now)[:-10],
+            msg_table_name=msg_table_name,
             from_datetime=str(now - timedelta(hours=random.randint(0, 24)))[:-10],
             end_datetime=str(now - timedelta(hours=random.randint(0, 24)))[:-10],
         )
@@ -224,59 +223,76 @@ def f14(record_ids):
         ).save()
 
 
+def f15(record_ids):
+    """访问BI日志统计记录表"""
+    for i in record_ids:
+        MonitorBiLogWeekReport(
+            email_recorder_id=i,
+            source=random.randint(0,1),
+            delay_time_key='1~2s',
+            api_count=400,
+            percent='23.22',
+            average_delay_microseconds='1233.1'
+        ).save()
+
+
 def create_test_data():
     import django
     django.setup()
     f0()
-    email_key = 'monitor_bi_access_hour_report'
-    record_ids = f1(email_key)
-    print email_key, record_ids
+    msg_table_name = 'monitor_bi_access_hour_report'
+    record_ids = f1(msg_table_name)
+    print msg_table_name, record_ids
     f2(record_ids)
-    email_key = 'monitor_bi_access_hour_report'
-    record_ids = f1(email_key)
-    print email_key, record_ids
+    msg_table_name = 'monitor_bi_access_hour_report'
+    record_ids = f1(msg_table_name)
+    print msg_table_name, record_ids
     f3(record_ids)
-    email_key = 'monitor_bi_nginx_log_week_report'
-    record_ids = f1(email_key)
-    print email_key, record_ids
+    msg_table_name = 'monitor_bi_nginx_log_week_report'
+    record_ids = f1(msg_table_name)
+    print msg_table_name, record_ids
     f4(record_ids)
-    email_key = 'monitor_bi_api_msg'
-    record_ids = f1(email_key)
-    print email_key, record_ids
+    msg_table_name = 'monitor_bi_api_msg'
+    record_ids = f1(msg_table_name)
+    print msg_table_name, record_ids
     f5(record_ids)
-    email_key = 'monitor_bi_cache_msg'
-    record_ids = f1(email_key)
-    print email_key, record_ids
+    msg_table_name = 'monitor_bi_cache_msg'
+    record_ids = f1(msg_table_name)
+    print msg_table_name, record_ids
     f6(record_ids)
-    email_key = 'monitor_bi_data_msg'
-    record_ids = f1(email_key)
-    print email_key, record_ids
+    msg_table_name = 'monitor_bi_data_msg'
+    record_ids = f1(msg_table_name)
+    print msg_table_name, record_ids
     f7(record_ids)
-    email_key = 'monitor_bi_enumeration_msg'
-    record_ids = f1(email_key)
-    print email_key, record_ids
+    msg_table_name = 'monitor_bi_enumeration_msg'
+    record_ids = f1(msg_table_name)
+    print msg_table_name, record_ids
     f8(record_ids)
-    email_key = 'monitor_bi_interface_msg'
-    record_ids = f1(email_key)
-    print email_key, record_ids
+    msg_table_name = 'monitor_bi_interface_msg'
+    record_ids = f1(msg_table_name)
+    print msg_table_name, record_ids
     f9(record_ids)
-    email_key = 'monitor_bi_scripts_msg'
-    record_ids = f1(email_key)
-    print email_key, record_ids
+    msg_table_name = 'monitor_bi_scripts_msg'
+    record_ids = f1(msg_table_name)
+    print msg_table_name, record_ids
     f10(record_ids)
-    email_key = 'monitor_bi_source_data_msg'
-    record_ids = f1(email_key)
-    print email_key, record_ids
+    msg_table_name = 'monitor_bi_source_data_msg'
+    record_ids = f1(msg_table_name)
+    print msg_table_name, record_ids
     f11(record_ids)
-    email_key = 'monitor_bi_source_groupby_msg'
-    record_ids = f1(email_key)
-    print email_key, record_ids
+    msg_table_name = 'monitor_bi_source_groupby_msg'
+    record_ids = f1(msg_table_name)
+    print msg_table_name, record_ids
     f12(record_ids)
-    email_key = 'monitor_cubes_column_msg'
-    record_ids = f1(email_key)
-    print email_key, record_ids
+    msg_table_name = 'monitor_cubes_column_msg'
+    record_ids = f1(msg_table_name)
+    print msg_table_name, record_ids
     f13(record_ids)
-    email_key = 'monitor_cubes_table_msg'
-    record_ids = f1(email_key)
-    print email_key, record_ids
+    msg_table_name = 'monitor_cubes_table_msg'
+    record_ids = f1(msg_table_name)
+    print msg_table_name, record_ids
     f14(record_ids)
+    msg_table_name = 'monitor_bi_log_week_report'
+    record_ids = f1(msg_table_name)
+    print msg_table_name, record_ids
+    f15(record_ids)

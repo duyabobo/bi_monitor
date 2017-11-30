@@ -4,7 +4,7 @@
 <thead>
 <tr>
     {% for h in head %}
-        <th>{{ h }}</th>
+        <th style="border: 3px solid #ddd">{{ h }}</th>
     {% endfor %}
 </tr>
 </thead>
@@ -13,7 +13,7 @@
     <tr class="my_list_item" item_id="{{ line.0 }}" api_id="{{ api_id }}" style="cursor:pointer">
     {% for b in line %}
         {% if not forloop.first %}
-            <td><a>{{ b }}</a></td>
+            <td style="border: 3px solid #ddd"><a>{{ b }}</a></td>
         {% endif %}
     {% endfor %}
     </tr>

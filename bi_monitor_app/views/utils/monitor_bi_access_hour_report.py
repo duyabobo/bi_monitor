@@ -3,7 +3,7 @@
 # date='2017/11/22'
 import json
 
-from bi_monitor_app.models import MonitorBiAccessAnalysis, MonitorBiNoteWorthyLog
+from bi_monitor_app.models import MonitorBiAccessAnalysis, MonitorBiNoteWorthyLog, EmailRecord
 
 
 def get_detail(email_recorder_id):
@@ -12,24 +12,26 @@ def get_detail(email_recorder_id):
     :param email_recorder_id:
     :return:
     """
+    email_record = EmailRecord.get_one(email_recorder_id)
+    interval_time = '统计时段：{0} —— {1}'.format(email_record.from_datetime, email_record.end_datetime)
     table_datas = [
         [
-            ['通过网页访问BI的日志统计', '(12点到13点)'],
+            ['通过网页访问BI的日志统计', '({0})'.format(interval_time)],
             [' ', '全部', '0~1s', '1~2s', '2~3s', '3~5s', '5~10s', '10~20s', '20s +'],
             []
         ],
         [
-            ['通过网页访问BI的日志报表', '(12点到13点, 响应时间大于10s)'],
+            ['通过网页访问BI的日志报表', '({0}, 响应时间大于10s)'.format(interval_time)],
             ['访问时刻', '报表名称', '报表ID', '用户名', '执行时间(ms)', '参数'],
             []
         ],
         [
-            ['通过API访问BI的日志统计', '(12点到13点)'],
+            ['通过API访问BI的日志统计', '({0})'.format(interval_time)],
             [' ', '全部', '0~1s', '1~2s', '2~3s', '3~5s', '5~10s', '10~20s', '20s +'],
             []
         ],
         [
-            ['通过API访问BI的日志报表', '(12点到13点, 响应时间大于10s) '],
+            ['通过API访问BI的日志报表', '({0}, 响应时间大于10s)'.format(interval_time)],
             ['访问时刻', '部门', 'method', 'api_key', '执行时间(ms)', '参数'],
             []
         ]

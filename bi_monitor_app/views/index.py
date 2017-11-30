@@ -18,6 +18,7 @@ from bi_monitor_app.views.utils import monitor_bi_source_data_msg
 from bi_monitor_app.views.utils import monitor_bi_source_groupby_msg
 from bi_monitor_app.views.utils import monitor_cubes_column_msg
 from bi_monitor_app.views.utils import monitor_cubes_table_msg
+from bi_monitor_app.views.utils import monitor_bi_log_week_report
 
 
 def index(request):
@@ -80,5 +81,5 @@ def get_pager(request):
     return render(request, 'pager_info.html', context={
         'api_id': api_id,
         'total': total,
-        'total_page': int(total/10)
+        'total_page': int(total/10) + 1
     })

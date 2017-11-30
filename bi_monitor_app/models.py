@@ -7,14 +7,13 @@ from django.db import models
 
 class EmailRecord(models.Model):
     """邮件记录表，每条数据记录了一个报警邮件的一些基本属性（不包括邮件的body内容）"""
-    email_key = models.CharField(max_length=100)  # 邮件类别，每一种监控类型都有一个邮件类别
-    analysis_datetime = models.CharField(max_length=50)  # 统计结果生成的时间，或者发送邮件的时间
+    msg_table_name = models.CharField(max_length=100)  # 每一种监控类型都有一个邮件类别
     from_datetime = models.CharField(max_length=50)  # 开始统计时间
     end_datetime = models.CharField(max_length=50)  # 结束统计时间
     content_count = models.IntegerField(default=0)  # 本次邮件发送的报警信息条数
 
     class Meta:
-        db_table = 'email_record'  # 自定义表名称
+        db_table = 'monitor_bi_record'  # 自定义表名称
 
     @classmethod
     def get_one(cls, email_recorder_id):
@@ -33,7 +32,7 @@ class EmailRecord(models.Model):
         :param email_key:  邮件类别
         :return:
         """
-        return cls.objects.filter(email_key=email_key).order_by('-id')[10 * page: 10 * (page + 1)]
+        return cls.objects.filter(msg_table_name=email_key).order_by('-id')[10 * page: 10 * (page + 1)]
 
     @classmethod
     def get_total(cls, email_key):
@@ -42,7 +41,7 @@ class EmailRecord(models.Model):
         :param email_key:  邮件类别
         :return:
         """
-        return cls.objects.filter(email_key=email_key).count()
+        return cls.objects.filter(msg_table_name=email_key).count()
 
 
 class BaseModel(models.Model):
@@ -75,6 +74,21 @@ class MonitorBiNginxLogWeekReport(BaseModel):
 
     class Meta:
         db_table = 'monitor_bi_nginx_log_week_report'  # 自定义表名称
+
+
+class MonitorBiLogWeekReport(BaseModel):
+    """
+    访问BI日志统计报表，从monitor_bi数据库分析统计的结果
+    """
+    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
+    source = models.IntegerField(default=0)  # 所属类型：api还是web访问，0 web，1 api
+    delay_time_key = models.CharField(max_length=20, default='')  # 可能是 200/300/404/502，也可能是 0~1s
+    api_count = models.IntegerField(default=0)  # api 数目统计
+    percent = models.CharField(max_length=20, default='')  # 百分比数，80.3 就代表 80.3%
+    average_delay_microseconds = models.CharField(max_length=20, default='')  # 接口平均响应时间，单位是毫秒
+
+    class Meta:
+        db_table = 'monitor_bi_log_week_report'  # 自定义表名称
 
 
 class MonitorBiAccessAnalysis(BaseModel):
@@ -252,7 +266,6 @@ class MonitorCubesTablesMsg(BaseModel):
     CUBES接口table监控错误信息记录表
     """
     email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
-    db_name = models.CharField(max_length=255)  # 数据库名
     t_name = models.CharField(max_length=100)  # 表名称
     source_name = models.CharField(max_length=100)  # source名称
     http_status = models.CharField(max_length=50)  # HTTP状态

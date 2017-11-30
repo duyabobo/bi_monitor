@@ -1,53 +1,74 @@
 这里维护所有数据表的 create 语句
 
-create table email_record (
-    id BIGINT UNSIGNED NOT NULL DEFAULT 0 AUTOINCREMENT COMMENT 'id自增',
-    email_key VARCHAR(100) NOT NULL DEFAULT '' COMMENT '邮件类别，每一种监控类型都有一个邮件类别' COMMENT,
-    analysis_datetime VARCHAR(50) NOT NULL DEFAULT '' COMMENT '统计结果生成的时间，或者发送邮件的时间',
-    from_datetime VARCHAR(50) NOT NULL DEFAULT '' COMMENT '开始统计时间',
-    end_datetime VARCHAR(50) NOT NULL DEFAULT '' COMMENT '结束统计时间',
-    content_count INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '本次邮件发送的报警信息条数',
+create table monitor_bi_record (
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id自增',
+    `msg_table_name` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '邮件类别，每一种监控类型都有一个邮件类别' COMMENT,
+    `from_datetime` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '开始统计时间',
+    `end_datetime` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '结束统计时间',
+    `content_count` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '本次邮件发送的报警信息条数',
+    `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
     PRIMARY KEY (id),
     INDEX i_email_key (email_key)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '按照星期bi接口分析报表的信息';
 
 create table monitor_bi_nginx_log_week_report (
-    id BIGINT UNSIGNED NOT NULL DEFAULT 0 AUTOINCREMENT COMMENT 'id自增',
-    email_recorder_id BIGINT NOT NULL DEFAULT 0 COMMENT '所属的邮件id',
-    analysis_type TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '日志分析的类型：0 按照 http_code, 1 按照 delay_time',
-    analysis_key VARCHAR(20) NOT NULL DEFAULT '' COMMENT '统计时分类的标准：可能是 200/300/404/502，也可能是 0~1s，视analysis_type而定',
-    analysis_api VARCHAR(200) NOT NULL DEFAULT '' COMMENT '分析日志的目标api',
-    api_count INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '指定某个analysis_type和analysis_key的统计数目',
-    percent FLOAT[4, 2] NOT NULL DEFAULT 0 '指定某个analysis_type和analysis_key的统计数目所占百分比',
-    average_delay_microseconds FLOAT[10, 2] NOT NULL DEFAULT 0 '指定某个analysis_type和analysis_key的api的平均响应时间，单位毫秒',
-    PRIMARY KEY (id),
-    INDEX i_week_report_id (week_report_id)
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id自增',
+    `email_recorder_id` BIGINT NOT NULL DEFAULT 0 COMMENT '所属的邮件id',
+    `analysis_type` TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '日志分析的类型：0 按照 http_code, 1 按照 delay_time',
+    `analysis_key` VARCHAR(20) NOT NULL DEFAULT '' COMMENT '统计时分类的标准：可能是 200/300/404/502，也可能是 0~1s，视analysis_type而定',
+    `analysis_api` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '分析日志的目标api',
+    `api_count` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '指定某个analysis_type和analysis_key的统计数目',
+    `percent` FLOAT(4, 2) NOT NULL DEFAULT 0 COMMENT '指定某个analysis_type和analysis_key的统计数目所占百分比',
+    `average_delay_microseconds` FLOAT(10, 2) NOT NULL DEFAULT 0 COMMENT '指定某个analysis_type和analysis_key的api的平均响应时间，单位毫秒',
+	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
+	PRIMARY KEY (id),
+    INDEX idx_email_recorder_id (email_recorder_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT 'bi接口日志分析周报，从nginx日志分析统计的结果';
 
-CREATE TABLE "monitor_bi_access_analysis" (
-    "id" BIGINT UNSIGNED NOT NULL DEFAULT 0 AUTOINCREMENT COMMENT 'id自增',
-    "email_recorder_id" BIGINT NOT NULL DEFAULT 0 COMMENT '所属的邮件id',
-    "source" TINYINT UNSIGNED NOT NULL COMMENT '访问来源：0 WEB, 1 API',
-    "table_content" VARCHAR(5000) NOT NULL COMMENT '报表的内容，json存储，确定不会超过5000长度',
+create table monitor_bi_log_week_report (
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id自增',
+    `email_recorder_id` BIGINT NOT NULL DEFAULT 0 COMMENT '所属的邮件id',
+    `source` TINYINT UNSIGNED NOT NULL COMMENT '访问来源：0 WEB, 1 API',
+    `delay_time_key` VARCHAR(20) NOT NULL DEFAULT '' COMMENT '可能是 全部/0~1s/1~2s/2~3s...',
+    `api_count` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '指定某个analysis_type和analysis_key的统计数目',
+    `percent` VARCHAR(20) NOT NULL DEFAULT '' COMMENT '指定某个analysis_type和analysis_key的统计数目所占百分比',
+    `average_delay_microseconds` VARCHAR(20) NOT NULL DEFAULT '' COMMENT '平均响应时间，单位毫秒',
+	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
     PRIMARY KEY (id),
-    INDEX i_week_report_id (week_report_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '某个星期的bi接口日志分析结果';
+    INDEX idx_email_recorder_id (email_recorder_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '访问BI日志统计报表，从monitor_bi数据库分析统计的结果';
 
-CREATE TABLE "monitor_bi_noteworthy_log" (
-    "id" BIGINT UNSIGNED NOT NULL DEFAULT 0 AUTOINCREMENT COMMENT 'id自增',
-    "email_recorder_id" BIGINT NOT NULL DEFAULT 0 COMMENT '所属的邮件id',
-    "source" TINYINT UNSIGNED NOT NULL COMMENT '访问来源：0 WEB, 1 API',
-    "access_datetime" VARCHAR(50) NOT NULL COMMENT '接口访问的时间',
-    "method" integer NOT NULL DEFAULT 0 COMMENT '接口访问的http方法：0 get，1 post，2 put，3 delete',
-    "report_name" varchar(60) NOT NULL DEFAULT '' COMMENT '报表名称',
-    "report_id" varchar(200) NOT NULL DEFAULT '' COMMENT '报表id',
-    "user_name" varchar(50) NOT NULL DEFAULT '' COMMENT '访问者名称',
-    "delay_microseconds" FLOAT[10, 2] NOT NULL DEFAULT 0 COMMENT '响应时间，单位毫秒',
-    "parameters" varchar(500) NOT NULL DEFAULT '' COMMENT '接口访问的参数',
-    "department_name" varchar(20) NOT NULL DEFAULT '' COMMENT 'api访问专用字段：部门名称',
-    "api_key" varchar(50) NOT NULL DEFAULT '' COMMENT 'api访问专用字段：api key',
+CREATE TABLE monitor_bi_access_analysis (
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id自增',
+    `email_recorder_id` BIGINT NOT NULL DEFAULT 0 COMMENT '所属的邮件id',
+    `source` TINYINT UNSIGNED NOT NULL COMMENT '访问来源：0 WEB, 1 API',
+    `table_content` VARCHAR(5000) NOT NULL COMMENT '报表的内容，json存储，确定不会超过5000长度',
+	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
+	PRIMARY KEY (id),
+    INDEX idx_email_recorder_id (email_recorder_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '某个小时的bi接口日志分析结果';
+
+CREATE TABLE monitor_bi_noteworthy_log (
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id自增',
+    `email_recorder_id` BIGINT NOT NULL DEFAULT 0 COMMENT '所属的邮件id',
+    `source` TINYINT UNSIGNED NOT NULL COMMENT '访问来源：0 WEB, 1 API',
+    `access_datetime` VARCHAR(50) NOT NULL COMMENT '接口访问的时间',
+    `method` integer NOT NULL DEFAULT 0 COMMENT '接口访问的http方法：0 get，1 post，2 put，3 delete',
+    `report_name` varchar(60) NOT NULL DEFAULT '' COMMENT '报表名称',
+    `report_id` varchar(200) NOT NULL DEFAULT '' COMMENT '报表id',
+    `user_name` varchar(50) NOT NULL DEFAULT '' COMMENT '访问者名称',
+    `delay_microseconds` FLOAT(10, 2) NOT NULL DEFAULT 0 COMMENT '响应时间，单位毫秒',
+    `parameters` varchar(500) NOT NULL DEFAULT '' COMMENT '接口访问的参数',
+    `department_name` varchar(20) NOT NULL DEFAULT '' COMMENT 'api访问专用字段：部门名称',
+    `api_key` varchar(50) NOT NULL DEFAULT '' COMMENT 'api访问专用字段：api key',
+	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+	`updated_at` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录更新时间',
     PRIMARY KEY (id),
-    INDEX i_week_report_id (week_report_id)
+    INDEX idx_email_recorder_id (email_recorder_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '从数据库中查询的值得注意的访问日志记录';
 
 
