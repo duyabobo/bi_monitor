@@ -50,5 +50,24 @@
         {# 下侧分页器 #}
       </div>
     </div>
+<script>
+    {#  页面加载完毕，自动显示左侧导航的第一个导航条邮件列表  #}
+    $(document).ready(function(){
+        $('#sidebar > div > a:nth-child(1)').addClass('active');
+        $.get(
+            '/list/?api_id=' + $('#sidebar > div > a:nth-child(1)').attr('api_id'),
+            function(data, status) {
+                $('#rightCol').html(data);
+            }
+        );
+        $.get(
+            '/get_pager/?api_id=' + $('#sidebar > div > a:nth-child(1)').attr('api_id'),
+            function (data, ststus) {
+                $('.bottomCol').html(data);
+            }
+        );
+        $('.bottomCol').show()
+        });
+</script>
 </body>
 </html>

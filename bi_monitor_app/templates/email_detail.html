@@ -5,7 +5,11 @@
     <div style="text-align: center">
     <strong>
         {% for t in title %}
-            {{ t }}({{ analysiss_time }})<br/>
+            {% if forloop.first %}
+                {{ t }}({{ analysiss_time }})<br/>
+            {% else %}
+                {{ t }}<br/>
+            {% endif %}
         {% endfor %}
     </strong>
     </div>
