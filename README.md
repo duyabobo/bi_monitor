@@ -10,7 +10,7 @@
     2. py包
         项目依赖的py包都记录在 bi_monitor/requirements.txt 中。
     3. db配置
-        数据库使用自带的 sqlite3。
+        数据库配置维护在 db/bi_config.py 下面的 db_config['bi_monitor'] 中，django 的 settings 文件会导入之。
     4. 数据表table结构
         数据表的结构可以参考 bi_monitor/sql.bac 文件中的 create table 语句。
     5. 部署步骤(首先进入bi_data_monitor工作目录)

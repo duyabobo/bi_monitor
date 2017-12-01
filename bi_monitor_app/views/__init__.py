@@ -3,6 +3,21 @@
 # date='2017/11/15'
 # api_id 为 key，对应监控的名称为 value
 
+# 邮件类型列表有序 email_key
+
+sorted_email_name = [
+    'monitor_bi_interface_msg',
+    'monitor_bi_log_report',
+    'monitor_bi_api_msg',
+    'monitor_bi_data_msg',
+    'monitor_bi_source_data_msg',
+    'monitor_bi_source_groupby_msg',
+    'monitor_bi_enumeration_msg',
+    'monitor_bi_scripts_msg',
+    'monitor_bi_cache_msg',
+    'monitor_cubes_msg'
+]
+
 # 邮件的 email_key 和 邮件名称的对应关系
 email_name_dict = {
     'monitor_bi_log_report': {
@@ -31,7 +46,7 @@ email_name_dict = {
 }
 
 # 邮件数据表的表头
-email_table_head = ['#', '邮件生成时间', '#', '邮件生成时间']
+email_table_head = ['邮件生成时间', '监控报警次数', '邮件生成时间', '监控报警次数']
 
 
 def get_children_email_name_dict():

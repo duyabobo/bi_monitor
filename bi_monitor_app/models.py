@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import collections
 from datetime import datetime
 
 from django.db import models
@@ -47,6 +48,7 @@ class EmailRecord(models.Model):
 
 class BaseModel(models.Model):
     """基础扩展类"""
+    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
 
     class Meta:
         abstract = True
@@ -60,12 +62,34 @@ class BaseModel(models.Model):
         """
         return cls.objects.filter(email_recorder_id=int(email_recorder_id))
 
+    @classmethod
+    def get_warning_dict(cls, email_record_ids):
+        """
+        获取对应邮件id的邮件内容中有多少报警信息
+        :param email_record_ids:
+        :return:
+        """
+        email_recorder_ids = map(
+            lambda x:
+            x['email_recorder_id'],
+            cls.objects.values('email_recorder_id').filter(email_recorder_id__in=email_record_ids).all()
+        )
+        return dict(collections.Counter(email_recorder_ids))
+
+    @classmethod
+    def get_warning_dict_empty(cls, email_record_ids):
+        """
+        获取对应邮件id的邮件内容中有多少报警信息
+        :param email_record_ids:
+        :return:
+        """
+        return {k: '_' for k in email_record_ids}
+
 
 class MonitorBiNginxLogWeekReport(BaseModel):
     """
     bi接口日志分析周报，从nginx日志分析统计的结果
     """
-    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
     analysis_type = models.IntegerField(default=0)  # 统计类别： 0 按照 http_code, 1 按照 delay_time
     analysis_key = models.CharField(max_length=20, default='')  # 可能是 200/300/404/502，也可能是 0~1s
     analysis_api = models.CharField(max_length=200, default='/api/dashboard?')  # 分析的接口： 默认是 '/api/dashboard?'
@@ -81,7 +105,6 @@ class MonitorBiLogWeekReport(BaseModel):
     """
     访问BI日志统计报表，从monitor_bi数据库分析统计的结果
     """
-    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
     access_source = models.IntegerField(default=0)  # 所属类型：api还是web访问，0 web，1 api
     delay_time_key = models.CharField(max_length=20, default='')  # 可能是 200/300/404/502，也可能是 0~1s
     api_count = models.IntegerField(default=0)  # api 数目统计
@@ -97,7 +120,6 @@ class MonitorBiAccessAnalysis(BaseModel):
     通过网页/API访问BI的日志统计数据，
     从数据库 guazi_bi 分析 bi_permission_logs(web)/ bi_permission_api_log(api) 数据表获得的统计信息
     """
-    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
     access_source = models.IntegerField(default=0)  # 访问来源：0 WEB, 1 API
     table_content = models.CharField(max_length=5000, default='')  # 报表的内容，json存储
 
@@ -110,7 +132,6 @@ class MonitorBiNoteWorthyLog(BaseModel):
     从数据库中查询的值得注意的访问日志记录，
     从数据库 guazi_bi 分析 bi_permission_logs(web)/ bi_permission_api_log(api) 数据表获得的日志信息
     """
-    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
     access_source = models.IntegerField(default=0)  # 访问来源：0 WEB, 1 API
     access_datetime = models.CharField(max_length=50, default='')  # 接口访问的时间
     method = models.IntegerField(default=0)  # 接口访问的http方法：0 get，1 post，2 put，3 delete
@@ -131,7 +152,6 @@ class MonitorBiApiMsg(BaseModel):
     """
     BI指标监控告警邮件
     """
-    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
     t_id = models.CharField(max_length=255)  # 报表ID
     t_name = models.CharField(max_length=255)  # 报表名称
     search_time = models.CharField(max_length=100)  # 查询时间
@@ -150,7 +170,6 @@ class MonitorBiDataMsg(BaseModel):
     """
     BI数据快照监控错误信息记录表
     """
-    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
     t_id = models.CharField(max_length=255)  # 报表ID
     t_name = models.CharField(max_length=255)  # 报表名称
     indicator_name = models.CharField(max_length=255)  # 指标名称
@@ -168,7 +187,6 @@ class MonitorBiCacheMsg(BaseModel):
     """
     BI强制缓存监控错误信息记录表
     """
-    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
     t_id = models.CharField(max_length=255)  # 报表ID
     t_name = models.CharField(max_length=255)  # 报表名称
     http_status = models.CharField(max_length=100)  # HTTP状态
@@ -183,7 +201,6 @@ class MonitorBiEnumerationMsg(BaseModel):
     """
     BI业务源库枚举值监控错误信息记录表
     """
-    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
     db_mname = models.CharField(max_length=100)  # 数据库
     t_name = models.CharField(max_length=255)  # 表名称
     t_col = models.CharField(max_length=100)  # 字段
@@ -198,7 +215,6 @@ class MonitorBiInterfaceMsg(BaseModel):
     """
     BI接口监控错误信息记录表
     """
-    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
     t_name = models.CharField(max_length=255)  # 报表名称
     t_id = models.CharField(max_length=100)  # 报表ID
     http_status = models.CharField(max_length=50)  # HTTP状态
@@ -215,7 +231,6 @@ class MonitorBiScriptsMsg(BaseModel):
     """
     BI数据清洗脚本监控错误信息记录表
     """
-    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
     alert_msg = models.CharField(max_length=255)  # 警报信息
     script_name = models.CharField(max_length=255)  # 脚本名称
     script_status = models.CharField(max_length=50)  # 脚本状态
@@ -230,7 +245,6 @@ class MonitorBiSourceDataMsg(BaseModel):
     """
     BI与业务源指标监控错误信息记录表
     """
-    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
     indicator_name = models.CharField(max_length=255)  # 指标名称
     search_time = models.CharField(max_length=100)  # 查询时间
     source_value = models.CharField(max_length=50)  # 业务库值
@@ -248,7 +262,6 @@ class MonitorBiSourceGroupByMsg(BaseModel):
     """
     BI与业务源字段监控错误信息记录表
     """
-    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
     indicator_name = models.CharField(max_length=255)  # 指标名称
     source_name = models.CharField(max_length=100)  # 业务源表
     target_name = models.CharField(max_length=50)  # 目标表
@@ -266,7 +279,6 @@ class MonitorCubesTablesMsg(BaseModel):
     """
     CUBES接口table监控错误信息记录表
     """
-    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
     t_name = models.CharField(max_length=100)  # 表名称
     source_name = models.CharField(max_length=100)  # source名称
     http_status = models.CharField(max_length=50)  # HTTP状态
@@ -279,7 +291,6 @@ class MonitorCubesColumnMsg(BaseModel):
     """
     CUBES接口column监控错误信息记录表
     """
-    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
     t_name = models.CharField(max_length=255)  # 报表名称
     source_name = models.CharField(max_length=100)  # source名称
     http_status = models.CharField(max_length=50)  # HTTP状态
@@ -292,7 +303,6 @@ class MonitorCubesUvPvMsg(BaseModel):
     """
     CUBES用户行为监控错误信息记录表
     """
-    email_recorder_id = models.IntegerField(default=0)  # 所属的邮件id
     cubes_date = models.CharField(max_length=255)  # 日期
     cubes_name = models.CharField(max_length=100)  # CUBE名称
     usr_name = models.CharField(max_length=50)  # 用户

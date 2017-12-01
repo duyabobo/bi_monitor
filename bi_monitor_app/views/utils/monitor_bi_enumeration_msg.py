@@ -23,3 +23,12 @@ def get_detail(email_recorder_id):
             item.db_mname, item.t_name, item.t_col, item.t_value, item.error_value
         ])
     return {'table_datas': table_datas}
+
+
+def get_warning_dict(email_record_ids):
+    """
+    根据 email_record_ids 查询每一个 email_record_id 对应的邮件内容中有多少条告警信息
+    :param email_record_ids:
+    :return:
+    """
+    return MonitorBiEnumerationMsg.get_warning_dict(email_record_ids)

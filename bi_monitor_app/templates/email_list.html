@@ -12,7 +12,7 @@
 {% for item in body %}
     <tr style="cursor:pointer">
     {% for line in item %}
-        {% if line.2 != 0 %}
+        {% if line.1 != 0 %}
             {% for b in line %}
                 {% if not forloop.first %}
                     <td class="my_list_item" item_id="{{ line.0 }}" api_id="{{ api_id }}" style="border: 3px solid #ddd"><a href="#">{{ b }}</a></td>

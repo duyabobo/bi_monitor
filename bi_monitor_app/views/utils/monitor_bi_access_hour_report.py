@@ -58,3 +58,12 @@ def get_detail(email_recorder_id):
         if n_w.access_source == 1:
             table_datas[3][2].append(content)
     return {'table_datas': table_datas}
+
+
+def get_warning_dict(email_record_ids):
+    """
+    根据 email_record_ids 查询每一个 email_record_id 对应的邮件内容中有多少条告警信息
+    :param email_record_ids:
+    :return:
+    """
+    return MonitorBiNoteWorthyLog.get_warning_dict_empty(email_record_ids)

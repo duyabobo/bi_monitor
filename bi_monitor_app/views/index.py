@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from bi_monitor_app.models import EmailRecord
 from bi_monitor_app.views import email_name_dict, children_email_name_dict
-from bi_monitor_app.views import email_table_head
+from bi_monitor_app.views import email_table_head, sorted_email_name
 from bi_monitor_app.views.utils import monitor_bi_cache_msg
 from bi_monitor_app.views.utils import monitor_bi_api_msg
 from bi_monitor_app.views.utils import monitor_bi_data_msg
@@ -22,10 +22,11 @@ from bi_monitor_app.views.utils import monitor_bi_log_week_report
 
 
 def index(request):
+    email_name_items = map(lambda x: [x, email_name_dict[x]], sorted_email_name)
     return render(
         request,
         'index.html',
-        context={'email_name_items': sorted(email_name_dict.items(), key=lambda item: item[1]['title'])}
+        context={'email_name_items': email_name_items}
     )
 
 
@@ -63,19 +64,19 @@ def email_list(request):
     else:
         name = ''
     email_records = EmailRecord.get_list(page, api_id)
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
     body = map(
         lambda (i, x):
-        [[x.id, i + page * 20, x.created_at.strftime('%Y-%m-%d %H:%M')], [0, 0, 0]], enumerate(email_records[:10])
+        [[x.id, x.created_at.strftime('%Y-%m-%d %H:%M'), warning_num_dict.get(x.id, 0)], [0, 0, 0]], enumerate(email_records[:10])
     )
     for i, x in enumerate(email_records[10:]):
-        body[i][1] = [x.id, i + page * 20 + 10, x.created_at.strftime('%Y-%m-%d %H:%M')]
+        body[i][1] = [x.id, x.created_at.strftime('%Y-%m-%d %H:%M'), warning_num_dict.get(x.id, 0)]
     return render(request, 'email_list.html', context={
         'api_id': api_id,
         'name': name,
         'head': email_table_head,
         'body': body,
-        }
-                  )
+        })
 
 
 def get_pager(request):
