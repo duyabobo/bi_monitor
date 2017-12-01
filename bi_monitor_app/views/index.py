@@ -1,6 +1,7 @@
 # coding=utf-8
 # author='duyabo'
 # date='2017/11/15'
+from datetime import datetime
 from django.shortcuts import render
 
 from bi_monitor_app.models import EmailRecord
@@ -37,11 +38,13 @@ def email_detail(request):
     :return:
     """
     api_id = request.GET['api_id']  # 指定哪一类监控数据
+    analysiss_time = request.GET['analysiss_time']  # 汇总生成的时间
     email_recorder_id = request.GET['item_id']  # 指定某一条监控数据
     if api_id in email_name_dict or api_id in children_email_name_dict:
         context = eval(api_id).get_detail(email_recorder_id)
     else:
         context = {'table_datas': []}
+    context['analysiss_time'] = analysiss_time
     return render(request, 'email_detail.html', context=context)
 
 

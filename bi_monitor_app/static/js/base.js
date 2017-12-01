@@ -19,7 +19,7 @@ $(document).on("click", ".click-on", function () {
 // {# 表格详情请求 #}
 $(document).on("click", ".my_list_item", function () {
     $.get(
-        '/content/?api_id=' + $(this).attr('api_id') + '&item_id=' + $(this).attr('item_id'),
+        '/content/?api_id=' + $(this).attr('api_id') + '&item_id=' + $(this).attr('item_id') + '&analysiss_time=' + $(this).attr('analysiss_time'),
         function(data, status) {
             $('#rightCol').html(data);
             $('.bottomCol').hide();
