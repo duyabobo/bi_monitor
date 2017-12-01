@@ -15,7 +15,7 @@
         {% if line.2 != 0 %}
             {% for b in line %}
                 {% if not forloop.first %}
-                    <td class="my_list_item" item_id="{{ line.0 }}" api_id="{{ api_id }}" style="border: 3px solid #ddd"><a>{{ b }}</a></td>
+                    <td class="my_list_item" item_id="{{ line.0 }}" api_id="{{ api_id }}" style="border: 3px solid #ddd"><a href="#">{{ b }}</a></td>
                 {% endif %}
             {% endfor %}
         {% endif %}

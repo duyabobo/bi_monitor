@@ -27,7 +27,7 @@
     left:0;
 }
 
-.leftCol {
+.rightCol {
     float: left;
     position: fixed;
     top: 41px;
@@ -35,22 +35,6 @@
     left:0;
     width:160px;
     background-color:#3D3D3D
-}
-
-.right {
-    position: fixed;
-    width:85%;
-    top:41px;
-    bottom: 0;
-    margin-left:180px;
-    margin-right:10px
-}
-
-.rightCol
-{
-    top:41px;
-    bottom: 0;
-    height:400px;
 }
 
 .bottomCol
@@ -84,4 +68,8 @@ ul {margin:0;}
 
 li .list-group-item {
     background-color: #d1e6ff;
+}
+
+.list-group-item {
+    cursor: pointer;
 }

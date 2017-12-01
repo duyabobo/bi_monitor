@@ -5,7 +5,7 @@ $(document).on("click", ".click-on", function () {
     $.get(
         '/list/?api_id=' + $(this).attr('api_id'),
         function(data, status) {
-            $('#leftCol').html(data);
+            $('#rightCol').html(data);
         }
     );
     $.get(
@@ -21,7 +21,7 @@ $(document).on("click", ".my_list_item", function () {
     $.get(
         '/content/?api_id=' + $(this).attr('api_id') + '&item_id=' + $(this).attr('item_id'),
         function(data, status) {
-            $('#leftCol').html(data);
+            $('#rightCol').html(data);
             $('.bottomCol').hide();
         }
     )
@@ -31,7 +31,7 @@ $(document).on("click", "#pageSelect li", function () {
     $.get(
         '/list/?api_id=' + $('.list-group .active').attr('api_id') + '&page=' + $("#pageSelect .sel-page").text(),
         function(data, status) {
-            $('#leftCol').html(data);
+            $('#rightCol').html(data);
         }
     );
     if ($('#pageSelect > li.sel-page').text() === '1')
@@ -59,7 +59,7 @@ $(document).on("click", "#box button", function () {
     $.get(
         '/list/?api_id=' + $('.list-group .active').attr('api_id') + '&page=' + $("#pageSelect .sel-page").text(),
         function(data, status) {
-            $('#leftCol').html(data);
+            $('#rightCol').html(data);
         }
     );
     if ($('#pageSelect > li.sel-page').text() === '1')
@@ -88,7 +88,7 @@ $(document).on("click", "#back_to_list", function () {
     $.get(
         '/list/?api_id=' + $('.list-group .active').attr('api_id') + '&page=' + $("#pageSelect .sel-page").text(),
         function(data, status) {
-            $('#leftCol').html(data);
+            $('#rightCol').html(data);
             $('.bottomCol').show()
         }
     );
