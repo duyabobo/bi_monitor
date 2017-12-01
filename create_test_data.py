@@ -1,9 +1,14 @@
 # coding=utf-8
 # author='duyabo'
 # date='2017/11/22'
+# 创建测试数据：
+## python manage.py shell
+## from create_test_data import *
+## create_test_data()
 import json
 import random
-from datetime import datetime, timedelta
+from datetime import timedelta
+
 from bi_monitor_app.models import *
 
 

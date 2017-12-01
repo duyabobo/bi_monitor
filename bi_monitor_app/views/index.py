@@ -41,7 +41,7 @@ def email_detail(request):
         context = eval(api_id).get_detail(email_recorder_id)
     else:
         context = {'table_datas': []}
-    return render(request, 'report_detail_2_dime.html', context=context)
+    return render(request, 'email_detail.html', context=context)
 
 
 def email_list(request):
@@ -69,13 +69,13 @@ def email_list(request):
     )
     for i, x in enumerate(email_records[10:]):
         body[i][1] = [x.id, i + page * 20 + 10, x.created_at.strftime('%Y-%m-%d %H:%M')]
-    return render(request, 'report_list.html', context={
+    return render(request, 'email_list.html', context={
         'api_id': api_id,
         'name': name,
         'head': email_table_head,
         'body': body,
         }
-    )
+                  )
 
 
 def get_pager(request):
