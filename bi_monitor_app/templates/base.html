@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>BI监控 dashboard</title>
     <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
     <link href="{% static "css/paging.css" %}"  rel="stylesheet">
     <link href="{% static "css/base.css" %}" rel="stylesheet">
@@ -41,33 +41,21 @@
           </div>
         </div>
         <div class="col-xs-12 col-sm-9" id="rightCol">
-            <div class="container">右侧默认</div>
         </div>
       </div>
     <br/>
     <br/>
-      <div class="bottomCol">
+      <div class="bottomCol" style="display: block;">
         {# 下侧分页器 #}
       </div>
     </div>
 <script>
     {#  页面加载完毕，自动显示左侧导航的第一个导航条邮件列表  #}
     $(document).ready(function(){
-        $('#sidebar > div > a:nth-child(1)').addClass('active');
-        $.get(
-            '/list/?api_id=' + $('#sidebar > div > a:nth-child(1)').attr('api_id'),
-            function(data, status) {
-                $('#rightCol').html(data);
-            }
-        );
-        $.get(
-            '/get_pager/?api_id=' + $('#sidebar > div > a:nth-child(1)').attr('api_id'),
-            function (data, ststus) {
-                $('.bottomCol').html(data);
-            }
-        );
-        $('.bottomCol').show()
-        });
+        $('#sidebar > div > a:nth-child(1)').addClass('active');  {# 默认选中第一个导航条 #}
+        email_item_list();
+        setInterval("reloadCollectAuto()",60000);  {#一分钟刷新一次#}
+    });
 </script>
 </body>
 </html>

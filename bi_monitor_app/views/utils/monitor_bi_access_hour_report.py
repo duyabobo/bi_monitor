@@ -39,23 +39,37 @@ def get_detail(email_recorder_id):
     bi_analysises = MonitorBiAccessAnalysis.get_items(email_recorder_id)
     for b_a in bi_analysises:
         table_content = json.loads(b_a.table_content)
-        if b_a.access_source == 0:
+        if b_a.access_source == 0:  # web访问
             table_datas[0][2].extend(table_content)
-        if b_a.access_source == 1:
+        if b_a.access_source == 1:  # api访问
             table_datas[2][2].extend(table_content)
     note_worthies = MonitorBiNoteWorthyLog.get_items(email_recorder_id)
+    method_dict = {
+        0: 'get',
+        1: 'post',
+        2: 'put',
+        3: 'delete'
+    }  # 0 get，1 post，2 put，3 delete
     for n_w in note_worthies:
-        content = [
-            n_w.access_datetime,
-            n_w.department_name,
-            n_w.method,
-            n_w.api_key,
-            n_w.delay_microseconds,
-            n_w.parameters
-        ]
-        if n_w.access_source == 0:
+        if n_w.access_source == 0:  # web 访问
+            content = [
+                n_w.access_datetime,
+                n_w.report_name,
+                n_w.report_id,
+                n_w.user_name,
+                n_w.delay_microseconds,
+                n_w.parameters
+            ]
             table_datas[1][2].append(content)
-        if n_w.access_source == 1:
+        if n_w.access_source == 1:  # api 访问
+            content = [
+                n_w.access_datetime,
+                n_w.department_name,
+                method_dict.get(n_w.method, 'get'),
+                n_w.api_key,
+                n_w.delay_microseconds,
+                n_w.parameters
+            ]
             table_datas[3][2].append(content)
     return {'table_datas': table_datas}
 

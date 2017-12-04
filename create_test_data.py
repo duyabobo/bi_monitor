@@ -20,7 +20,7 @@ def f0():
 def f1(msg_table_name):
     """创建邮件记录"""
     record_ids = []
-    for i in range(20):
+    for i in range(50):
         now = datetime.now()
         record = EmailRecord(
             msg_table_name=msg_table_name,
@@ -241,6 +241,23 @@ def f15(record_ids):
         ).save()
 
 
+def f16(record_ids):
+    """创建测试数据：BI监控指标异常-同比及环比监控错误信息"""
+    for i in record_ids:
+        MonitorBiApiCompareMsg(
+            email_recorder_id=i,
+            t_name='运营指标-二手车业绩',
+            t_id='used_car_achievement',
+            indicator_name='保卖放款',
+            indicator_id='finance_give_consigned',
+            search_type='环比查询',
+            today_value='1',
+            compare_value='222',
+            compare_result='-100.00%'
+        ).save()
+
+
+
 def create_test_data():
     import django
     django.setup()
@@ -301,3 +318,7 @@ def create_test_data():
     record_ids = f1(msg_table_name)
     print msg_table_name, record_ids
     f15(record_ids)
+    msg_table_name = 'monitor_bi_api_compare_msg'
+    record_ids = f1(msg_table_name)
+    print msg_table_name, record_ids
+    f16(record_ids)

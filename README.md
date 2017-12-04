@@ -14,6 +14,7 @@
     4. 数据表table结构
         数据表的结构可以参考 bi_monitor/sql.bac 文件中的 create table 语句。
     5. 部署步骤(首先进入bi_data_monitor工作目录)
+        mkdir /data/service_logs/services/bi_data_monitor
         cd bi_monitor
         pip install -f requirements.txt
         python manage.py runserver &

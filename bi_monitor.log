@@ -1,0 +1,679 @@
+ERROR 2017-12-04 14:30:12,937 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:30:13,957 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:30:14,957 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:30:15,960 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:30:16,940 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:30:17,953 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:30:18,934 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:30:19,953 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:30:20,954 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:30:21,941 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:30:22,944 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:30:23,941 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:30:24,938 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:30:25,969 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:30:26,948 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:30:27,944 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:30:28,944 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:30:29,936 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:31:10,394 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:31:50,404 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:32:00,394 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 14:32:10,411 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'undefined' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'undefined' is not defined
+ERROR 2017-12-04 15:20:30,737 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: invalid literal for int() with base 10: ''
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 85, in email_list
+    page = 0 if page == 'undefined' else int(page) - 1  # 分页控件页码从1开始
+ValueError: invalid literal for int() with base 10: ''
+ERROR 2017-12-04 15:20:55,756 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: invalid literal for int() with base 10: ''
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 85, in email_list
+    page = 0 if page == 'undefined' else int(page) - 1  # 分页控件页码从1开始
+ValueError: invalid literal for int() with base 10: ''
+ERROR 2017-12-04 15:20:58,023 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: invalid literal for int() with base 10: ''
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 85, in email_list
+    page = 0 if page == 'undefined' else int(page) - 1  # 分页控件页码从1开始
+ValueError: invalid literal for int() with base 10: ''
+ERROR 2017-12-04 15:21:07,467 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: invalid literal for int() with base 10: ''
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 85, in email_list
+    page = 0 if page == 'undefined' else int(page) - 1  # 分页控件页码从1开始
+ValueError: invalid literal for int() with base 10: ''
+ERROR 2017-12-04 15:54:17,736 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'collect_real_time' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'collect_real_time' is not defined
+ERROR 2017-12-04 15:55:31,924 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'collect_real_time' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'collect_real_time' is not defined
+ERROR 2017-12-04 15:55:33,697 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'collect_real_time' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'collect_real_time' is not defined
+ERROR 2017-12-04 16:05:07,805 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: collect_real_time.html
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    'body': []  # todo
+  File "D:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: collect_real_time.html
+ERROR 2017-12-04 16:05:17,759 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: collect_real_time.html
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    'body': []  # todo
+  File "D:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: collect_real_time.html
+ERROR 2017-12-04 16:05:27,763 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: collect_real_time.html
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    'body': []  # todo
+  File "D:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: collect_real_time.html
+ERROR 2017-12-04 16:06:37,756 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: collect_real_time.html
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    'body': []  # todo
+  File "D:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: collect_real_time.html
+ERROR 2017-12-04 16:06:47,750 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: collect_real_time.html
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    'body': []  # todo
+  File "D:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: collect_real_time.html
+ERROR 2017-12-04 16:06:57,753 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: collect_real_time.html
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    'body': []  # todo
+  File "D:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: collect_real_time.html
+ERROR 2017-12-04 16:07:07,762 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: collect_real_time.html
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    'body': []  # todo
+  File "D:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: collect_real_time.html
+ERROR 2017-12-04 16:07:17,770 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: collect_real_time.html
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    'body': []  # todo
+  File "D:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: collect_real_time.html
+ERROR 2017-12-04 16:07:27,757 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: collect_real_time.html
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    'body': []  # todo
+  File "D:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: collect_real_time.html
+ERROR 2017-12-04 16:07:37,793 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: collect_real_time.html
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    'body': []  # todo
+  File "D:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: collect_real_time.html
+ERROR 2017-12-04 16:07:47,759 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: collect_real_time.html
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    'body': []  # todo
+  File "D:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: collect_real_time.html
+ERROR 2017-12-04 16:07:57,769 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: collect_real_time.html
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    'body': []  # todo
+  File "D:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: collect_real_time.html
+ERROR 2017-12-04 16:08:07,816 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: collect_real_time.html
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    'body': []  # todo
+  File "D:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: collect_real_time.html
+ERROR 2017-12-04 16:08:17,778 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: collect_real_time.html
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    'body': []  # todo
+  File "D:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: collect_real_time.html
+ERROR 2017-12-04 16:08:27,789 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: collect_real_time.html
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    'body': []  # todo
+  File "D:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: collect_real_time.html
+ERROR 2017-12-04 16:08:47,766 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: collect_real_time.html
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    'body': []  # todo
+  File "D:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: collect_real_time.html
+ERROR 2017-12-04 16:08:57,756 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: collect_real_time.html
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    'body': []  # todo
+  File "D:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Python27\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: collect_real_time.html
+ERROR 2017-12-04 16:09:07,773 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'collect_real_time' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'collect_real_time' is not defined
+ERROR 2017-12-04 16:09:17,813 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'collect_real_time' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'collect_real_time' is not defined
+ERROR 2017-12-04 16:09:27,760 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'collect_real_time' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'collect_real_time' is not defined
+ERROR 2017-12-04 16:09:37,763 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'collect_real_time' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'collect_real_time' is not defined
+ERROR 2017-12-04 16:11:33,881 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'collect_real_time' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'collect_real_time' is not defined
+ERROR 2017-12-04 16:11:40,769 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: name 'collect_real_time' is not defined
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 93, in email_list
+    warning_num_dict = eval(api_id).get_warning_dict(map(lambda x: x.id, email_records))
+  File "<string>", line 1, in <module>
+NameError: name 'collect_real_time' is not defined
+ERROR 2017-12-04 17:10:48,990 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: Unsupported lookup 'not' for CharField or join on the field not permitted.
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    email_records = EmailRecord.get_latest_20()
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\models.py", line 45, in get_latest_20
+    return cls.objects.filter(msg_table_name__not='monitor_bi_access_hour_report').order_by('-id')[0: 20]
+  File "D:\Python27\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Python27\lib\site-packages\django\db\models\query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python27\lib\site-packages\django\db\models\query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1102, in build_lookup
+    lhs = self.try_transform(lhs, name, lookups)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1120, in try_transform
+    (name, lhs.output_field.__class__.__name__))
+FieldError: Unsupported lookup 'not' for CharField or join on the field not permitted.
+ERROR 2017-12-04 17:10:50,069 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: Unsupported lookup 'not' for CharField or join on the field not permitted.
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    email_records = EmailRecord.get_latest_20()
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\models.py", line 45, in get_latest_20
+    return cls.objects.filter(msg_table_name__not='monitor_bi_access_hour_report').order_by('-id')[0: 20]
+  File "D:\Python27\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Python27\lib\site-packages\django\db\models\query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python27\lib\site-packages\django\db\models\query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1102, in build_lookup
+    lhs = self.try_transform(lhs, name, lookups)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1120, in try_transform
+    (name, lhs.output_field.__class__.__name__))
+FieldError: Unsupported lookup 'not' for CharField or join on the field not permitted.
+ERROR 2017-12-04 17:11:00,092 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: Unsupported lookup 'not' for CharField or join on the field not permitted.
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    email_records = EmailRecord.get_latest_20()
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\models.py", line 45, in get_latest_20
+    return cls.objects.filter(msg_table_name__not='monitor_bi_access_hour_report').order_by('-id')[0: 20]
+  File "D:\Python27\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Python27\lib\site-packages\django\db\models\query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python27\lib\site-packages\django\db\models\query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1102, in build_lookup
+    lhs = self.try_transform(lhs, name, lookups)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1120, in try_transform
+    (name, lhs.output_field.__class__.__name__))
+FieldError: Unsupported lookup 'not' for CharField or join on the field not permitted.
+ERROR 2017-12-04 17:11:10,931 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: Unsupported lookup 'not' for CharField or join on the field not permitted.
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    email_records = EmailRecord.get_latest_20()
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\models.py", line 45, in get_latest_20
+    return cls.objects.filter(msg_table_name__not='monitor_bi_access_hour_report').order_by('-id')[0: 20]
+  File "D:\Python27\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Python27\lib\site-packages\django\db\models\query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python27\lib\site-packages\django\db\models\query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1102, in build_lookup
+    lhs = self.try_transform(lhs, name, lookups)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1120, in try_transform
+    (name, lhs.output_field.__class__.__name__))
+FieldError: Unsupported lookup 'not' for CharField or join on the field not permitted.
+ERROR 2017-12-04 17:11:20,954 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: Unsupported lookup 'not' for CharField or join on the field not permitted.
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    email_records = EmailRecord.get_latest_20()
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\models.py", line 45, in get_latest_20
+    return cls.objects.filter(msg_table_name__not='monitor_bi_access_hour_report').order_by('-id')[0: 20]
+  File "D:\Python27\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Python27\lib\site-packages\django\db\models\query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python27\lib\site-packages\django\db\models\query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1102, in build_lookup
+    lhs = self.try_transform(lhs, name, lookups)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1120, in try_transform
+    (name, lhs.output_field.__class__.__name__))
+FieldError: Unsupported lookup 'not' for CharField or join on the field not permitted.
+ERROR 2017-12-04 17:11:30,934 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: Unsupported lookup 'not' for CharField or join on the field not permitted.
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    email_records = EmailRecord.get_latest_20()
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\models.py", line 45, in get_latest_20
+    return cls.objects.filter(msg_table_name__not='monitor_bi_access_hour_report').order_by('-id')[0: 20]
+  File "D:\Python27\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Python27\lib\site-packages\django\db\models\query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python27\lib\site-packages\django\db\models\query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1102, in build_lookup
+    lhs = self.try_transform(lhs, name, lookups)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1120, in try_transform
+    (name, lhs.output_field.__class__.__name__))
+FieldError: Unsupported lookup 'not' for CharField or join on the field not permitted.
+ERROR 2017-12-04 17:11:40,953 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: Unsupported lookup 'not' for CharField or join on the field not permitted.
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 91, in email_list
+    email_records = EmailRecord.get_latest_20()
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\models.py", line 45, in get_latest_20
+    return cls.objects.filter(msg_table_name__not='monitor_bi_access_hour_report').order_by('-id')[0: 20]
+  File "D:\Python27\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Python27\lib\site-packages\django\db\models\query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python27\lib\site-packages\django\db\models\query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1102, in build_lookup
+    lhs = self.try_transform(lhs, name, lookups)
+  File "D:\Python27\lib\site-packages\django\db\models\sql\query.py", line 1120, in try_transform
+    (name, lhs.output_field.__class__.__name__))
+FieldError: Unsupported lookup 'not' for CharField or join on the field not permitted.
+ERROR 2017-12-04 17:22:11,615 c:\users\duyabo\bi_data_monitor\bi_monitor\bi_monitor_app\views\index.py index.py index inner_func 39: invalid literal for int() with base 10: ''
+Traceback (most recent call last):
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 37, in inner_func
+    result = func(request)
+  File "C:/Users/duyabo/bi_data_monitor/bi_monitor\bi_monitor_app\views\index.py", line 85, in email_list
+    page = 0 if page == 'undefined' else int(page) - 1  # 分页控件页码从1开始
+ValueError: invalid literal for int() with base 10: ''

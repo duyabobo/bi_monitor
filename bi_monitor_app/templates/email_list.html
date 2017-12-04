@@ -1,4 +1,4 @@
-{# 监控结果列表显示，需要注入的变量： api_id、detail_url_is_needed、title、head 和 body 列表所需要的数据 #}
+{# 监控结果列表显示，需要注入的变量： detail_url_is_needed、title、head 和 body 列表所需要的数据 #}
 <div class="text-center" style="font-size:20px; font-weight: bold"> {{ name }} </div>
 <table class="table table-bordered">
 <thead>
@@ -13,11 +13,12 @@
     <tr style="cursor:pointer">
     {% for line in item %}
         {% if line.1 != 0 %}
-            {% for b in line %}
-                {% if not forloop.first %}
-                    <td class="my_list_item" analysiss_time="{{ line.1 }}" item_id="{{ line.0 }}" api_id="{{ api_id }}" style="border: 3px solid #ddd"><a href="#">{{ b }}</a></td>
-                {% endif %}
-            {% endfor %}
+            <td class="my_list_item" analysiss_time="{{ line.1 }}" item_id="{{ line.0 }}" api_id="{{ line.3 }}" style="border: 3px solid #ddd">
+                <a href="#">{{ line.1 }}</a>
+            </td>
+            <td class="my_list_item" analysiss_time="{{ line.1 }}" item_id="{{ line.0 }}" api_id="{{ line.3 }}" style="border: 3px solid #ddd">
+                <a href="#">{{ line.2 }}</a>
+            </td>
         {% endif %}
     {% endfor %}
     </tr>

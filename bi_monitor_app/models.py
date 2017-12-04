@@ -37,6 +37,14 @@ class EmailRecord(models.Model):
         return cls.objects.filter(msg_table_name=email_key).order_by('-id')[20 * page: 20 * (page + 1)]
 
     @classmethod
+    def get_latest_20(cls):
+        """
+        获取最新的20条报警邮件
+        :return:
+        """
+        return cls.objects.exclude(msg_table_name='monitor_bi_access_hour_report').order_by('-id')[0: 20]
+
+    @classmethod
     def get_total(cls, email_key):
         """
         获取某一类邮件的邮件总数
@@ -86,6 +94,23 @@ class BaseModel(models.Model):
         return {k: '_' for k in email_record_ids}
 
 
+class MonitorBiApiCompareMsg(BaseModel):
+    """
+    BI监控指标异常-同比及环比监控错误信息记录表
+    """
+    t_id = models.CharField(max_length=255)  # 报表ID
+    t_name = models.CharField(max_length=255)  # 报表名称
+    indicator_name = models.CharField(max_length=255)  # 指标名称
+    indicator_id = models.CharField(max_length=255)  # 指标Indicator
+    search_type = models.CharField(max_length=100)  # 查询类型
+    today_value = models.CharField(max_length=20, default='')  # 今日指标值
+    compare_result = models.CharField(max_length=20, default='')  # 比较结果
+    compare_value = models.CharField(max_length=50, default='')  # 对比指标值
+
+    class Meta:
+        db_table = 'monitor_bi_api_compare_msg'  # 自定义表名称
+
+
 class MonitorBiNginxLogWeekReport(BaseModel):
     """
     bi接口日志分析周报，从nginx日志分析统计的结果
@@ -118,7 +143,7 @@ class MonitorBiLogWeekReport(BaseModel):
 class MonitorBiAccessAnalysis(BaseModel):
     """
     通过网页/API访问BI的日志统计数据，
-    从数据库 guazi_bi 分析 bi_permission_logs(web)/ bi_permission_api_log(api) 数据表获得的统计信息
+    从数据库 bi 分析 bi_permission_logs(web)/ bi_permission_api_log(api) 数据表获得的统计信息
     """
     access_source = models.IntegerField(default=0)  # 访问来源：0 WEB, 1 API
     table_content = models.CharField(max_length=5000, default='')  # 报表的内容，json存储
@@ -130,7 +155,7 @@ class MonitorBiAccessAnalysis(BaseModel):
 class MonitorBiNoteWorthyLog(BaseModel):
     """
     从数据库中查询的值得注意的访问日志记录，
-    从数据库 guazi_bi 分析 bi_permission_logs(web)/ bi_permission_api_log(api) 数据表获得的日志信息
+    从数据库 bi 分析 bi_permission_logs(web)/ bi_permission_api_log(api) 数据表获得的日志信息
     """
     access_source = models.IntegerField(default=0)  # 访问来源：0 WEB, 1 API
     access_datetime = models.CharField(max_length=50, default='')  # 接口访问的时间

@@ -262,3 +262,21 @@ CREATE TABLE bi_monitor.monitor_cubes_uv_pv_msg (
 	PRIMARY KEY (`id`),
 	INDEX idx_email_recorder_id (`email_recorder_id`)
 ) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='CUBES用户行为监控错误信息记录表';
+
+
+CREATE TABLE `monitor_bi_api_compare_msg` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '数据主键',
+  `t_name` varchar(255) NOT NULL DEFAULT '' COMMENT '报表名称',
+  `t_id` varchar(100) NOT NULL DEFAULT '' COMMENT '报表ID',
+  `indicator_name` varchar(50) NOT NULL DEFAULT '' COMMENT '指标名称',
+  `indicator_id` varchar(50) NOT NULL DEFAULT '' COMMENT '指标Indicator',
+  `search_type` varchar(50) NOT NULL DEFAULT '' COMMENT '查询类型',
+  `today_value` varchar(50) NOT NULL DEFAULT '' COMMENT '今日指标值',
+  `compare_result` varchar(50) NOT NULL DEFAULT '' COMMENT '比较结果',
+  `email_recorder_id` int(11) NOT NULL DEFAULT '0' COMMENT '报表记录中间表外键',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '记录更新时间',
+  `compare_value` varchar(50) NOT NULL DEFAULT '' COMMENT '对比指标值',
+  PRIMARY KEY (`id`),
+  KEY `idx_email_recorder_id` (`email_recorder_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=386 DEFAULT CHARSET=utf8 COMMENT='BI监控指标异常-同比及环比监控错误信息记录表'
